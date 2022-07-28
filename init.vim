@@ -25,6 +25,7 @@ Plug 'junegunn/vim-easy-align'
 " you complete me config generator
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
+" Plug 'junegunn/fzf.vim'
 
 " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'
@@ -89,9 +90,17 @@ set termguicolors
 " scroll off
 set scrolloff=4
 " try
+set nowrap
 set hidden
 set nobackup
+set noswapfile
 " set cursorline
+" set comment string for c++
+autocmd filetype cpp set commentstring=//%s
+" views for folds
+autocmd BufWinEnter *.cpp,*.vim silent loadview
+autocmd BufWinLeave *.cpp,*.vim silent mkview
+
 
 " terminal mode
 autocmd TermOpen * startinsert
@@ -145,11 +154,35 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
+" BUFFERS
+nnoremap <s-h> :bp<CR>
+nnoremap <s-l> :bn<CR>
+
+" ESC
+inoremap jk <ESC>
+inoremap kj <ESC>
+" drag lines
+inoremap <a-k> <Esc>:m .-2<CR>==gi
+inoremap <a-j> <Esc>:m .+1<CR>==gi
+nnoremap <A-k>  :m .-2<CR>==
+nnoremap <A-j>  :m .+1<CR>==
+
+
+" visual!
+xnoremap <A-j> :m '>+1<CR>gv-gv
+xnoremap <A-k> :m '<-2<CR>gv-gv
+" indent
+vnoremap < <gv
+vnoremap > >gv
+
 " resize
 nnoremap <c-left>  :vert res +3<CR>
 nnoremap <c-right> :vert res -3<CR>
 nnoremap <c-up>    :res +3<CR>
 nnoremap <c-down>  :res -3<CR>
+
+" clear line
+" nnoremap <c-k> cc<ESC>
 
 " allign
 nmap ga <Plug>(EasyAlign)
@@ -189,17 +222,24 @@ let g:airline_symbols.dirty='⚡'
 let g:airline_symbols.colnr = ':'
 " let g:airline_symbols.
 
+" MACROS
+
+" delete alternate line, for copy paste madness
+
 
 " C++ files!!!
 " load template
 autocmd filetype cpp :command! Tmp %d| re ~/Desktop/tmp.cpp| 1,1d| :normal 45j$zz
 " compile
-autocmd filetype cpp nnoremap <F9> :w <CR> :1000sp <bar> :term g++ -g -fdiagnostics-color -Wall -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fstack-protector -D LLOC -std=c++20 % -o _%:r <CR> <CR>
+" autocmd filetype cpp nnoremap <F9> :w <CR> :1000sp <bar> :term g++ -g -fdiagnostics-color -Wall -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fstack-protector -D LLOC -std=c++20 % -o %:h/_%:t:r  2>%:h/_c <bar> !head -n30 %:h/_c<CR> <CR>
+autocmd filetype cpp nnoremap <F9> :w <CR> :1000sp <bar> :term g++ -g -fdiagnostics-color -Wall -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fstack-protector -D LLOC -std=c++20 % -o %:h/_%:t:r <CR> <CR>
 " run
 " autocmd filetype cpp nnoremap <F10> :!./%:r  :checkt <CR>
-autocmd filetype cpp nnoremap <F10> :!./_%:r  <CR>
-" search documentation!
+autocmd filetype cpp nnoremap <F10> :!%:h/_%:t:r  <CR>
+" fuzzy search documentation!
 autocmd filetype cpp nnoremap <F1> :1000sp <bar> :term cpref.sh <CR>
+" fuzzy search templates!
+" autocmd filetype cpp :command :T
 
 " submit hh
 autocmd filetype cpp :command! -nargs=+ Cfsubmit :!cf.exe submit -f % <args> <CR>
