@@ -98,9 +98,8 @@ set noswapfile
 " set comment string for c++
 autocmd filetype cpp set commentstring=//%s
 " views for folds
-autocmd BufWinEnter *.cpp,*.vim silent loadview
-autocmd BufWinLeave *.cpp,*.vim silent mkview
-
+autocmd BufWinLeave * silent mkview
+autocmd BufWinEnter * silent! loadview
 
 " terminal mode
 autocmd TermOpen * startinsert
