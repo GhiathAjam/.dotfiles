@@ -98,11 +98,25 @@ set noswapfile
 " set comment string for c++
 autocmd filetype cpp set commentstring=//%s
 " views for folds
-autocmd BufWinLeave * silent mkview
-autocmd BufWinEnter * silent! loadview
+autocmd BufWinLeave *.cpp,*.txt,*.vim,*.lua silent mkview
+autocmd BufWinEnter *.cpp,*.txt,*.vim,*.lua  silent! loadview
 
 " terminal mode
 autocmd TermOpen * startinsert
+
+" clipboard
+lua << EOF
+vim.g.clipboard = {
+  copy = {
+    ["+"] = "win32yank.exe -i --crlf",
+    ["*"] = "win32yank.exe -i --crlf",
+  },
+  paste = {
+    ["+"] = "win32yank.exe -o --lf",
+    ["*"] = "win32yank.exe -o --lf",
+  },
+}
+EOF
 
 " let g:indentLine_char_list = ['║', '▌']
 let g:indentLine_char = '▏'
@@ -228,7 +242,7 @@ let g:airline_symbols.colnr = ':'
 
 " C++ files!!!
 " load template
-autocmd filetype cpp :command! Tmp %d| re ~/Desktop/tmp.cpp| 1,1d| :normal 45j$zz
+autocmd filetype cpp :command! Tmp %d| re ~/Desktop/tmp.cpp| 1,1d| 17,17+21fo| 51,51+19fo| :normal 45G$zz
 " compile
 " autocmd filetype cpp nnoremap <F9> :w <CR> :1000sp <bar> :term g++ -g -fdiagnostics-color -Wall -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fstack-protector -D LLOC -std=c++20 % -o %:h/_%:t:r  2>%:h/_c <bar> !head -n30 %:h/_c<CR> <CR>
 autocmd filetype cpp nnoremap <F9> :w <CR> :1000sp <bar> :term g++ -g -fdiagnostics-color -Wall -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fstack-protector -D LLOC -std=c++20 % -o %:h/_%:t:r <CR> <CR>
