@@ -89,14 +89,15 @@ set splitbelow
 set termguicolors
 " scroll off
 set scrolloff=4
-" try
 set nowrap
 set hidden
 set nobackup
 set noswapfile
-" set cursorline
+" try
+set cursorline
+set autowrite
 " set comment string for c++
-autocmd filetype cpp set commentstring=//%s
+autocmd filetype cpp setlocal commentstring=//%s
 " views for folds
 autocmd BufWinLeave *.cpp,*.txt,*.vim,*.lua silent mkview
 autocmd BufWinEnter *.cpp,*.txt,*.vim,*.lua  silent! loadview
@@ -242,10 +243,11 @@ let g:airline_symbols.colnr = ':'
 
 " C++ files!!!
 " load template
-autocmd filetype cpp :command! Tmp %d| re ~/Desktop/tmp.cpp| 1,1d| 17,17+21fo| 51,51+19fo| :normal 45G$zz
+autocmd filetype cpp :command! Tmp %d| 0read ~/Desktop/tmp.cpp| 17,28fo| 41,60fo| :normal 35G$zz
 " compile
-" autocmd filetype cpp nnoremap <F9> :w <CR> :1000sp <bar> :term g++ -g -fdiagnostics-color -Wall -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fstack-protector -D LLOC -std=c++20 % -o %:h/_%:t:r  2>%:h/_c <bar> !head -n30 %:h/_c<CR> <CR>
-autocmd filetype cpp nnoremap <F9> :w <CR> :1000sp <bar> :term g++ -g -fdiagnostics-color -Wall -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fstack-protector -D LLOC -std=c++20 % -o %:h/_%:t:r <CR> <CR>
+" autocmd filetype cpp nnoremap <F9> :w <CR> :1000sp <bar> :term g++ -g -Wno-variadic-macros -fdiagnostics-color -Wall -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fstack-protector -D LLOC -std=c++20 % -o %:h/_%:t:r <CR> <CR>
+autocmd filetype cpp setlocal makeprg=g++\ -g\ -Wno-variadic-macros\ -Wall\ -Wextra\ -pedantic\ -Wshadow\ -Wformat=2\ -Wfloat-equal\ -Wconversion\ -Wlogical-op\ -Wshift-overflow=2\ -Wduplicated-cond\ -Wcast-qual\ -Wcast-align\ -D_GLIBCXX_DEBUG\ -D_GLIBCXX_DEBUG_PEDANTIC\ -D_FORTIFY_SOURCE=2\ -fstack-protector\ -D\ LLOC\ -std=c++20\ %\ -o\ %:h/_%:t:r
+autocmd filetype cpp nnoremap <F9> :make <CR>
 " run
 " autocmd filetype cpp nnoremap <F10> :!./%:r  :checkt <CR>
 autocmd filetype cpp nnoremap <F10> :!%:h/_%:t:r  <CR>
