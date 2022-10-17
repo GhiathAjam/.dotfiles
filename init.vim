@@ -59,10 +59,11 @@ Plug 'Yggdroot/indentLine'
 " icons
 Plug 'ryanoasis/vim-devicons'
 " minimap
-Plug 'wfxr/minimap.vim'
+" Plug 'wfxr/minimap.vim'
 
 " Initialize plugin system
 call plug#end()
+" Using Vim-Plug
 
 
 "" MEEE
@@ -96,14 +97,17 @@ set noswapfile
 " try
 set cursorline
 set autowrite
+set undofile
+set list
 " set comment string for c++
 autocmd filetype cpp setlocal commentstring=//%s
 " views for folds
-autocmd BufWinLeave *.cpp,*.txt,*.vim,*.lua silent mkview
-autocmd BufWinEnter *.cpp,*.txt,*.vim,*.lua  silent! loadview
+autocmd BufWinLeave *.cpp,*.txt,*.vim,*.lua silent  mkview
+autocmd BufWinEnter *.cpp,*.txt,*.vim,*.lua silent! loadview
 
 " terminal mode
 autocmd TermOpen * startinsert
+
 
 " clipboard
 lua << EOF
@@ -181,19 +185,19 @@ inoremap <a-j> <Esc>:m .+1<CR>==gi
 nnoremap <A-k>  :m .-2<CR>==
 nnoremap <A-j>  :m .+1<CR>==
 
-
 " visual!
 xnoremap <A-j> :m '>+1<CR>gv-gv
 xnoremap <A-k> :m '<-2<CR>gv-gv
+
 " indent
 vnoremap < <gv
 vnoremap > >gv
 
 " resize
-nnoremap <c-left>  :vert res +3<CR>
-nnoremap <c-right> :vert res -3<CR>
-nnoremap <c-up>    :res +3<CR>
-nnoremap <c-down>  :res -3<CR>
+nnoremap <c-right> :vert res +3<CR>
+nnoremap <c-left>  :vert res -3<CR>
+nnoremap <c-up>    :res +1<CR>
+nnoremap <c-down>  :res -1<CR>
 
 " clear line
 " nnoremap <c-k> cc<ESC>
@@ -240,21 +244,22 @@ let g:airline_symbols.colnr = ':'
 
 " delete alternate line, for copy paste madness
 
-
 " C++ files!!!
 " load template
-autocmd filetype cpp :command! Tmp %d| 0read ~/Desktop/tmp.cpp| 17,28fo| 41,60fo| :normal 35G$zz
+" autocmd local to buffer in cpp files
+
+autocmd filetype cpp :command! -buffer Tmp %d| 0read ~/Desktop/tmp.cpp| 11,19fo| 24,26fo| 33,46fo| 47d| :normal 28Gzz
 " compile
-" autocmd filetype cpp nnoremap <F9> :w <CR> :1000sp <bar> :term g++ -g -Wno-variadic-macros -fdiagnostics-color -Wall -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fstack-protector -D LLOC -std=c++20 % -o %:h/_%:t:r <CR> <CR>
-autocmd filetype cpp setlocal makeprg=g++\ -g\ -Wno-variadic-macros\ -Wall\ -Wextra\ -pedantic\ -Wshadow\ -Wformat=2\ -Wfloat-equal\ -Wconversion\ -Wlogical-op\ -Wshift-overflow=2\ -Wduplicated-cond\ -Wcast-qual\ -Wcast-align\ -D_GLIBCXX_DEBUG\ -D_GLIBCXX_DEBUG_PEDANTIC\ -D_FORTIFY_SOURCE=2\ -fstack-protector\ -D\ LLOC\ -std=c++20\ %\ -o\ %:h/_%:t:r
-autocmd filetype cpp nnoremap <F9> :make <CR>
+autocmd filetype cpp setlocal makeprg=g++\ -g\ -Wunused-macros\ -Wstack-usage=12345678\ -Wuninitialized\ -fmax-errors=1\ -fsanitize=pointer-subtract\ -fsanitize=pointer-compare\ -fno-sanitize-recover\ -fsanitize=address\ -fsanitize=undefined\ -Wno-variadic-macros\ -Wall\ -Wextra\ -pedantic\ -Wshadow\ -Wformat=2\ -Wfloat-equal\ -Wconversion\ -Wlogical-op\ -Wshift-overflow=2\ -Wduplicated-branches\ -Wduplicated-cond\ -Wcast-qual\ -Wcast-align\ -D_GLIBCXX_DEBUG\ -D_GLIBCXX_ASSERTIONS\ -D_GLIBCXX_DEBUG_PEDANTIC\ -D_FORTIFY_SOURCE=2\ -fstack-protector\ -D\ LLOC\ -std=c++20\ %\ -o\ %:h/_%:t:r\ 2>&1\ \\\|\ head\ -n28
+autocmd filetype cpp nnoremap <buffer> <F9> :make! <CR>
 " run
-" autocmd filetype cpp nnoremap <F10> :!./%:r  :checkt <CR>
-autocmd filetype cpp nnoremap <F10> :!%:h/_%:t:r  <CR>
+autocmd filetype cpp nnoremap <buffer> <F10> :!%:h/_%:t:r <./input.txt > ./output.txt <CR>
+" run interactively
+autocmd filetype cpp nnoremap <buffer> <F11> :!%:h/_%:t:r <CR>
 " fuzzy search documentation!
-autocmd filetype cpp nnoremap <F1> :1000sp <bar> :term cpref.sh <CR>
+autocmd filetype cpp nnoremap <buffer> <F1> :1000sp <bar> :term cpref.sh <CR>
 " fuzzy search templates!
 " autocmd filetype cpp :command :T
 
 " submit hh
-autocmd filetype cpp :command! -nargs=+ Cfsubmit :!cf.exe submit -f % <args> <CR>
+autocmd filetype cpp :command! -buffer -nargs=+ Cfsubmit :!cf.exe submit -f % <args> <CR>
