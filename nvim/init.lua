@@ -1,0 +1,1 @@
+/home/gheiath/.config/nvim/init.lua

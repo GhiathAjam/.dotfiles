@@ -1,0 +1,1 @@
+/home/gheiath/.config/nvim/lua/jhd/autocmd.lua
