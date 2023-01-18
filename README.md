@@ -7,6 +7,10 @@
 
 ### Configs and some info
 not all up yet
+- WSL
+  - Windows 10
+  - WSL2
+  - Disable GUI (too much RAM!)
 - Neovim
   - WSL (Kali) under Windows 10
   - goal is 100% lua
