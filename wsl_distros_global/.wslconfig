@@ -1,0 +1,14 @@
+[wsl2]
+# Boolean to turn on or off support for GUI applications (WSLg) in WSL. Only available for Windows 11.
+guiApplications=false
+#How much memory to assign to the WSL 2 VM.
+# default: min (4GB, 50%)
+#memoey=2GB
+#How much swap space to add to the WSL 2 VM, 0 for no swap file. Swap storage is disk-based RAM used when memory demand exceeds limit on hardware device.
+# default: 25% of available RAM
+#swap=1GB
+#Boolean specifying if ports bound to wildcard or localhost in the WSL 2 VM should be connectable from the host via localhost:port.
+# Turn off default connection to bind WSL 2 localhost to Windows localhost
+#localhostForwarding = true
+# Disables nested virtualization
+#nestedVirtualization=false
