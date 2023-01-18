@@ -1,1 +1,0 @@
-/home/gheiath/.config/nvim/after/plugin/easy-align.lua
