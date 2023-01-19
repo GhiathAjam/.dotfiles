@@ -25,3 +25,5 @@ not all up yet
   - WSL (Kali) under Windows 10
 - Bash
   - WSL (Kali) under Windows 10
+- compile_commands.json:
+  - Used with C++ LSPs  ccls / clangd

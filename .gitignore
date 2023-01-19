@@ -1,9 +1,8 @@
 mpv_win/watch_later
 lvim_wsl_kali/lazy-lock.json
 lvim_wsl_kali/plugin/packer_compiled.lua
-compile_commands.json
+nvim_wsl_kali/kickstart.lua
+nvim_wsl_kali/plugin/packer_compiled.lua
 bash_wsl_kali
 tmux_wsl_kali
 .vimspector.json
-nvim_wsl_kali/kickstart.lua
-nvim_wsl_kali/plugin/packer_compiled.lua
