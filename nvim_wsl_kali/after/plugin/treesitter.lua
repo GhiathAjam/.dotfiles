@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all"
-  ensure_installed = { "help", "cpp", "lua", "vim", "python" },
+  -- A list of parser names, or 'all'
+  ensure_installed = { 'help', 'cpp', 'lua', 'vim', 'python' },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -9,8 +9,8 @@ require'nvim-treesitter.configs'.setup {
   -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
   auto_install = false,
 
-  -- List of parsers to ignore installing (for "all")
-  -- ignore_install = { "javascript" },
+  -- List of parsers to ignore installing (for 'all')
+  -- ignore_install = { 'javascript' },
 
   highlight = {
     -- `false` will disable the whole extension

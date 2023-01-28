@@ -1,19 +1,32 @@
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "zsh",
+-- vim.api.nvim_create_autocmd('FileType', {
+--   pattern = 'zsh',
 --   callback = function()
 --     -- let treesitter use bash highlight for zsh files as well
---     require("nvim-treesitter.highlight").attach(0, "bash")
+--     require('nvim-treesitter.highlight').attach(0, 'bash')
 --   end,
 -- })
 
 local myg = vim.api.nvim_create_augroup('user', { clear = true })
 vim.api.nvim_clear_autocmds({ group = myg })
 
--- formatoptions FIX
-vim.api.nvim_create_autocmd("FileType", {
+-- views for folds
+vim.api.nvim_create_autocmd('BufWinEnter', {
   group = myg,
-  pattern = "*",
+  pattern = { '*.c', '*.h', '*.cpp', '*.txt', '*.vim', '*.lua' },
+  command = 'silent! loadview',
+})
+
+vim.api.nvim_create_autocmd('BufWinLeave', {
+  group = myg,
+  pattern = { '*.c', '*.h', '*.cpp', '*.txt', '*.vim', '*.lua' },
+  command = 'mkview',
+})
+
+-- formatoptions FIX
+vim.api.nvim_create_autocmd('FileType', {
+  group = myg,
+  pattern = '*',
   callback = function()
     -- :h fo-table
     -- default: jcroql
@@ -22,6 +35,13 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt.formatoptions:remove { 'c', 'o' }
     end,
 })
+
+-- -- Copilot
+-- vim.api.nvim_create_autocmd('FileType', {
+--   group = myg,
+--   pattern = '*',
+--   command = 'Copilot'
+-- })
 
 -- Yank
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -39,18 +59,18 @@ vim.api.nvim_create_autocmd('TermOpen', {
 })
 
 -- python
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd('FileType', {
   group = myg,
-  pattern = "python",
+  pattern = 'python',
   callback = function()
     vim.opt_local.makeprg = [[python3 %]]
   end
 })
 
 -- cpp
--- vim.api.nvim_create_autocmd("FileType", {
+-- vim.api.nvim_create_autocmd('FileType', {
 --   group = myg,
---   pattern = "cpp",
+--   pattern = 'cpp',
 --   command = 'setlocal commentstring=//%s',
 -- })
 
@@ -59,7 +79,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd('FileType', {
   group = myg,
   pattern = 'cpp',
-  command = ':command! -buffer Tmp %d| 0read ~/Desktop/tmp.cpp| 11,19fo| 33,46fo| 47d| :normal 28Gzz'
+  command = ':command! -buffer Tmp %d| 0read ~/Desktop/tmp.cpp| set foldmethod=manual| 11,19fo| 33,46fo| 47d| :normal 28Gzz'
 })
 
 -- compile

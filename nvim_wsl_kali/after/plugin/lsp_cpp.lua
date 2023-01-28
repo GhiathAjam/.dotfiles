@@ -17,15 +17,15 @@ local ccls_conf = {
     offset_encoding = 'utf-8',
     -- root_dir = [[root_pattern('compile_commands.json', '.ccls', '.git')]],
     init_options = {
-      -- compilationDatabaseDirectory = "build";
+      -- compilationDatabaseDirectory = 'build';
       -- index = {
       --   threads = 0;
       -- };
       cache = {
-        directory = ".ccls-cache";
+        directory = '.ccls-cache';
       };
       clang = {
-        excludeArgs = { "-frounding-math", "-Wconversion" } ;
+        excludeArgs = { '-frounding-math', '-Wconversion' } ;
       };
     }
 }

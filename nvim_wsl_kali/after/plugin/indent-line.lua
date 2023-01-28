@@ -9,34 +9,34 @@ vim.cmd [[highlight IndentBlanklineIndent7 guibg=#1f1f1f gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent8 guibg=#1a1a1a gui=nocombine]]
 
 
-require("indent_blankline").setup {
+require('indent_blankline').setup {
     show_end_of_line = true,
-    space_char_blankline = " ",
+    space_char_blankline = ' ',
     show_trailing_blankline_indent = false,
-    -- char = "|",
-    -- char = "│",
-    -- char = "┊",
+    -- char = '|',
+    -- char = '│',
+    -- char = '┊',
      -- char_list = {'▌', '║', '▏', '│', '|', '¦', '┆', '┊'},
      char_list = {'▏', '│', '|', '¦', '┆', '┊'},
 
     -- 1 background
     -- char_highlight_list = {
-    --     "IndentBlanklineIndent7",
-    --     "IndentBlanklineIndent8",
+    --     'IndentBlanklineIndent7',
+    --     'IndentBlanklineIndent8',
     -- },
     -- space_char_highlight_list = {
-    --     "IndentBlanklineIndent7",
-    --     "IndentBlanklineIndent8",
+    --     'IndentBlanklineIndent7',
+    --     'IndentBlanklineIndent8',
     -- },
 
     -- 2 colorful
     char_highlight_list = {
-        "IndentBlanklineIndent1",
-        "IndentBlanklineIndent2",
-        "IndentBlanklineIndent3",
-        "IndentBlanklineIndent4",
-        "IndentBlanklineIndent5",
-        "IndentBlanklineIndent6",
+      'IndentBlanklineIndent1',
+      'IndentBlanklineIndent2',
+      'IndentBlanklineIndent3',
+      'IndentBlanklineIndent4',
+      'IndentBlanklineIndent5',
+      'IndentBlanklineIndent6',
     },
 
     -- 3 Treesitter

@@ -13,13 +13,13 @@ telescope.setup {
     dynamic_preview_title = true,
     results_title = false,
     vimgrep_arguments = {
-      "rg",
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case"
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case'
     },
   },
 }
@@ -36,14 +36,14 @@ telescope.setup {
     --     Currently mappings still need to be added, Example:
     --       mappings = {
     --         i = {
-    --           ["<C-Down>"] = require('telescope.actions').cycle_history_next,
-    --           ["<C-Up>"] = require('telescope.actions').cycle_history_prev,
+    --           ['<C-Down>'] = require('telescope.actions').cycle_history_next,
+    --           ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
     --         },
     --       },
 
     --     Fields:
     --       - path:    The path to the telescope history as string.
-    --                  default: stdpath("data")/telescope_history
+    --                  default: stdpath('data')/telescope_history
     --       - limit:   The amount of entries that will be written in the
     --                  history.
     --                  Warning: If limit is set to nil it will grow unbound.

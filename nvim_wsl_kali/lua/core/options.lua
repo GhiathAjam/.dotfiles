@@ -1,21 +1,22 @@
 vim.g.clipboard = {
   copy = {
-    ["+"] = "win32yank.exe -i --crlf",
-    ["*"] = "win32yank.exe -i --crlf",
+    ['+'] = 'win32yank.exe -i --crlf',
+    ['*'] = 'win32yank.exe -i --crlf',
   },
   paste = {
-    ["+"] = "win32yank.exe -o --lf",
-    ["*"] = "win32yank.exe -o --lf",
+    ['+'] = 'win32yank.exe -o --lf',
+    ['*'] = 'win32yank.exe -o --lf',
   },
 }
-
 
 vim.opt.makeprg = './%'
 
 -- TRY
 vim.opt.colorcolumn = '80'
 -- vim.opt.completeopt = { 'menuone', 'preview', 'noinsert', 'noselect' }
-vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+-- menuone -> show menu even if single match
+vim.opt.completeopt = { 'menuone', 'noselect' }
+
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 
 vim.opt.showtabline = 2
@@ -24,7 +25,7 @@ vim.opt.numberwidth = 3 -- set number column width to 2 {default 4}
 
 vim.opt.updatetime = 500 -- faster completion
 
--- set wildmode=longest,list   " get bash-like tab completions
+-- set wildmode=longest,list   -- get bash-like tab completions
 -- set spell
     -- If you exit Vim and later start it again, you would normally lose a lot of
     -- information.  The ShaDa file can be used to remember that information, which
@@ -35,7 +36,7 @@ vim.opt.updatetime = 500 -- faster completion
     -- timeoutlen = 1000, -- time to wait for a mapped sequence to complete (in milliseconds)
     -- pumheight = 10, -- pop up menu height
     -- title = true, -- set the title of window to the value of the titlestring
-    -- -- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
+    -- -- opt.titlestring = '%<%F%=%l/%L - nvim' -- what the title of the window will be set to
 
 
 -- line numbers
@@ -86,9 +87,9 @@ vim.opt.undofile = true
 
 -- show tabs and tralining spaces
 vim.opt.list = true
-vim.opt.listchars:append "space:⋅"
--- vim.opt.listchars:remove "eol"
-vim.opt.listchars:append "eol:↴"
+vim.opt.listchars:append 'space:⋅'
+-- vim.opt.listchars:remove 'eol'
+vim.opt.listchars:append 'eol:↴'
 
 vim.opt.signcolumn = 'yes'
 vim.opt.viewoptions = 'folds,cursor'
@@ -100,9 +101,9 @@ vim.opt.foldenable = false
 vim.opt.foldminlines = 4
 vim.opt.foldnestmax = 4
 
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
 
-vim.cmd 'colorscheme tokyonight-night' 
+vim.cmd [[ colorscheme tokyonight-night ]]
 -- colorscheme monokai-phoenix
 -- hi MatchParen guifg=#E0E0E0 guibg=#E0E0E0
 -- fix bad matchign paren!

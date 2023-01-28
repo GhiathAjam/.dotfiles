@@ -18,6 +18,7 @@ return packer.startup(function(use)
 
   use { 'williamboman/mason.nvim' }
   use { 'williamboman/mason-lspconfig.nvim' }
+  use { 'mfussenegger/nvim-dap' }
 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -67,39 +68,44 @@ return packer.startup(function(use)
   -- }
 
   -- nvim-cmp
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lua'
-  use "saadparwaiz1/cmp_luasnip"
-  use 'jose-elias-alvarez/null-ls.nvim' -- LSP diagnostics and code actions
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-cmdline' },
+      { 'hrsh7th/cmp-nvim-lua' },
+      { 'L3MON4D3/LuaSnip' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'dmitmel/cmp-digraphs' },
+    },
+  }
+
+  -- use { 'neoclide/coc.nvim', branch = 'release' }
 
   -- Snippets
-  use "L3MON4D3/LuaSnip"
-  use "rafamadriz/friendly-snippets"
+  use 'rafamadriz/friendly-snippets'
+
+  use 'jose-elias-alvarez/null-ls.nvim' -- LSP diagnostics and code actions
 
   -- Copilot
   use {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      vim.schedule(function()
-        require("copilot").setup()
-      end)
-    end,
+    'zbirenbaum/copilot.lua',
+    -- cmd = 'Copilot',
+    -- event = 'InsertEnter',
+    -- config = function()
+    --   vim.schedule(function()
+    --     require('copilot').setup()
+    --   end)
+    -- end,
   }
 
-  -- use {
-  --   "zbirenbaum/copilot-cmp",
-  --   after = { "copilot.lua" },
-  --   config = function()
-  --     require("copilot_cmp").setup()
-  --   end
-  -- }
-  --
+  use {
+    'zbirenbaum/copilot-cmp',
+    after = { 'copilot.lua', 'nvim-cmp' },
+  }
+
   use 'junegunn/vim-easy-align'
 
   -- Multiple Plug commands can be written in a single line using | separators
@@ -124,7 +130,7 @@ return packer.startup(function(use)
   use 'tpope/vim-surround'
 
   use 'numToStr/Comment.nvim'
-  use "lukas-reineke/indent-blankline.nvim"
+  use 'lukas-reineke/indent-blankline.nvim'
   use 'lewis6991/gitsigns.nvim'
 
   -- Debuggeer
@@ -158,7 +164,7 @@ return packer.startup(function(use)
 --  use {'andymass/vim-matchup', event = 'VimEnter'}
 --
 --  -- Load on a combination of conditions: specific filetypes or commands
---  -- Also run code after load (see the "config" key)
+--  -- Also run code after load (see the 'config' key)
 --  use {
 --    'w0rp/ale',
 --    ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
