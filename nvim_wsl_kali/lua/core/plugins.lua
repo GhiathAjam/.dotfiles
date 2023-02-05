@@ -18,7 +18,10 @@ return packer.startup(function(use)
 
   use { 'williamboman/mason.nvim' }
   use { 'williamboman/mason-lspconfig.nvim' }
+
   use { 'mfussenegger/nvim-dap' }
+  use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
+  use { 'theHamsta/nvim-dap-virtual-text' }
 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -26,6 +29,8 @@ return packer.startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+
+  use 'ThePrimeagen/vim-be-good'
   -- use 'jacoborus/tender.vim'
 
   use {
@@ -34,6 +39,14 @@ return packer.startup(function(use)
   }
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use 'HiPhish/nvim-ts-rainbow2'
+  -- use 'nvim-treesitter/nvim-treesitter-refactor' -- vim illuminate is better
+  use 'nvim-treesitter/nvim-treesitter-context'
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use 'andymass/vim-matchup'
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
+
+  use 'RRethy/vim-illuminate'
 
   use {
     'ThePrimeagen/harpoon',
@@ -43,6 +56,7 @@ return packer.startup(function(use)
   use 'mbbill/undotree'
 
   use 'tpope/vim-fugitive'
+  use 'lewis6991/gitsigns.nvim'
 
   -- code auto completion
   use 'neovim/nvim-lspconfig'
@@ -81,6 +95,8 @@ return packer.startup(function(use)
       { 'dmitmel/cmp-digraphs' },
     },
   }
+
+  use 'folke/neodev.nvim'
 
   -- use { 'neoclide/coc.nvim', branch = 'release' }
 
@@ -125,28 +141,29 @@ return packer.startup(function(use)
   -- Unmanaged plugin (manually installed and updated)
   -- Plug '~/my-prototype-plugin'
 
-  -- use 'norcalli/nvim-colorizer.lua'
+  use 'norcalli/nvim-colorizer.lua'
   -- use 'jiangmiao/auto-pairs'
   use 'tpope/vim-surround'
 
   use 'numToStr/Comment.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
-  use 'lewis6991/gitsigns.nvim'
 
   -- Debuggeer
-  -- Plug 'mfussenegger/nvim-dap'
   -- use 'puremourning/vimspector'
 
   -- Colors
-  -- Plug 'flazz/vim-colorschemes'
-  -- Plug 'rktjmp/lush.nvim'
-  -- use 'Reewr/vim-monokai-phoenix'
-  -- use 'rockyzhang24/arctic.nvim'
-  use { 'folke/tokyonight.nvim',  branch = 'main' }
+  use {
+    -- 'morhetz/gruvbox',
+    'ellisonleao/gruvbox.nvim',
+    event = 'VimEnter',
+    config = function()
+     require('core.gruvbox')
+    end,
+  }
+
+  use 'petertriho/nvim-scrollbar' 
 
   -- Statusline
-  -- use 'vim-airline/vim-airline'
-  -- use 'vim-airline/vim-airline-themes'
 
   -- blocks
   -- use 'ryanoasis/vim-devicons'
@@ -214,6 +231,4 @@ return packer.startup(function(use)
 --  -- You can specify multiple plugins in a single call
 --  use {'tjdevries/colorbuddy.vim', {'nvim-treesitter/nvim-treesitter', opt = true}}
 --
---  -- You can alias plugin names
---  use {'dracula/vim', as = 'dracula'}
 end)

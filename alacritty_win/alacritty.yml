@@ -85,7 +85,7 @@ window:
   title: 'اسلك'
 
   # Allow terminal applications to change Alacritty's window title.
-  dynamic_title: false
+  dynamic_title: true
 
   # Window class (Linux/BSD only):
   # class:
@@ -1233,6 +1233,10 @@ key_bindings:
   # Vi Mode
   #- { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
   #- { key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          }
+  #- { key: Space,  mods: Control, action: ReceiveChar           }
+  #- { key: Space,  mods: Control, chars: "\x00"           }
+  #- { key: Space,  mods: Control, chars: "\x1b[00;4u"           }
+  #- { key: J,        mods: Control|Shift, chars: "\x1b[74;5u"                }
   #- { key: Escape,                      mode: Vi|~Search, action: ClearSelection          }
   #- { key: I,                           mode: Vi|~Search, action: ToggleViMode            }
   #- { key: I,                           mode: Vi|~Search, action: ScrollToBottom          }

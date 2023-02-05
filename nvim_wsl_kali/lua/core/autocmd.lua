@@ -79,7 +79,7 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('FileType', {
   group = myg,
   pattern = 'cpp',
-  command = ':command! -buffer Tmp %d| 0read ~/Desktop/tmp.cpp| set foldmethod=manual| 11,19fo| 33,46fo| 47d| :normal 28Gzz'
+  command = ':command! -buffer Tmp %d| 0read ~/Desktop/tmp.cpp| 11,19fo| 33,46fo| 47d| :normal 28Gzz'
 })
 
 -- compile
@@ -95,7 +95,7 @@ vim.api.nvim_create_autocmd('FileType', {
     -Wshift-overflow=2 -Wduplicated-branches -Wduplicated-cond -Wcast-qual\\
     -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_ASSERTIONS\\
     -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fstack-protector -D LLOC\\
-    -std=c++20 % -o %:h/_%:t:r 2>&1 \| head -n28]]
+    -std=c++20 % -o %:h/%:t:r 2>&1 \| head -n28]]
   end
 })
 
@@ -103,7 +103,7 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('FileType', {
   group = myg,
   pattern = 'cpp',
-  command = 'nnoremap <buffer> <F10> :!%:h/_%:t:r <./input.txt > ./output.txt <CR>'
+  command = 'nnoremap <buffer> <F10> :!%:h/%:t:r <./input.txt > ./output.txt <CR>'
 })
 
 -- run interactively

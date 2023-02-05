@@ -8,16 +8,15 @@ vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent7 guibg=#1f1f1f gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent8 guibg=#1a1a1a gui=nocombine]]
 
-
 require('indent_blankline').setup {
     show_end_of_line = true,
     space_char_blankline = ' ',
     show_trailing_blankline_indent = false,
-    -- char = '|',
     -- char = '│',
     -- char = '┊',
-     -- char_list = {'▌', '║', '▏', '│', '|', '¦', '┆', '┊'},
-     char_list = {'▏', '│', '|', '¦', '┆', '┊'},
+    -- char_list = {'▌', '│', '║'}
+    -- let g:indent_blankline_context_char_list = ['┃', '║', '╬', '█']
+    char_list = {'▏', '|', '¦', '┆', '┊', ''},
 
     -- 1 background
     -- char_highlight_list = {
@@ -40,7 +39,7 @@ require('indent_blankline').setup {
     },
 
     -- 3 Treesitter
-    show_current_context = true,
+    show_current_context = false,
     show_current_context_start = true,
 }
 
@@ -48,7 +47,17 @@ if true then
   if false then
     if false then
       if true then
-        print 'hi'
+        if false then
+          if false then
+            print 'hii'
+
+
+
+
+
+            print 'ee'
+          end
+        end
       end
     end
   end

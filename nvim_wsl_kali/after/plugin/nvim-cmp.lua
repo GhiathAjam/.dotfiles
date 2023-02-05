@@ -1,7 +1,3 @@
--- if true then
---   return
--- end
-
 local cmp_status_ok, cmp = pcall(require, 'cmp')
 if not cmp_status_ok then
   vim.notify('cmp no exist, nvim-cmp.lua')
@@ -23,31 +19,31 @@ end
 
 --   פּ ﯟ   some other good icons
 local kind_icons = {
-  Text = '',
-  Method = 'm',
-  Function = '',
-  Constructor = '',
-  Field = '',
-  Variable = '',
   Class = '',
+  Color = '',
+  Constant = '',
+  Constructor = '',
+  Enum = '',
+  EnumMember = '',
+  Event = '',
+  Field = '',
+  File = '',
+  Folder = '',
+  Function = '',
   Interface = '',
+  Keyword = '',
+  Method = 'm',
   Module = '',
+  Operator = '',
   Property = '',
+  Reference = '',
+  Snippet = '',
+  Struct = '',
+  Text = '',
+  TypeParameter = '',
   Unit = '',
   Value = '',
-  Enum = '',
-  Keyword = '',
-  Snippet = '',
-  Color = '',
-  File = '',
-  Reference = '',
-  Folder = '',
-  EnumMember = '',
-  Constant = '',
-  Struct = '',
-  Event = '',
-  Operator = '',
-  TypeParameter = '',
+  Variable = '',
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
@@ -58,11 +54,13 @@ cmp.setup {
     end,
   },
   mapping = {
-    ['<C-k>'] = cmp.mapping.select_prev_item(),
-		['<C-j>'] = cmp.mapping.select_next_item(),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+		['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-k>'] = cmp.mapping.select_prev_item({count=10}),
+		['<C-j>'] = cmp.mapping.select_next_item({count=10}),
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    -- ['<c-x><c-n>'] = cmp.mapping(cmp.mapping.complete({config={sources={{name='digraphs'}}}}), { 'i', 'c' }),
     ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
     ['<C-e>'] = cmp.mapping {
       i = cmp.mapping.abort(),
@@ -70,7 +68,7 @@ cmp.setup {
     },
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
-    ['<CR>'] = cmp.mapping.confirm { select = true },
+    ['<CR>'] = cmp.mapping.confirm { select = false },
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -103,9 +101,18 @@ cmp.setup {
   formatting = {
     fields = { 'kind', 'abbr', 'menu' },
     format = function(entry, vim_item)
+      local max_len = 40
+      if string.len(vim_item.abbr) > max_len then
+        vim_item.abbr = string.sub(vim_item.abbr, 1, max_len) .. '...'
+      end
+      -- pad smaller lengths
+      -- if string.len(vim_item.abbr) < max_len then
+      --   vim_item.abbr = vim_item.abbr .. string.rep(' ', max_len - string.len(vim_item.abbr))
+      -- end
       -- Kind icons
-      vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
-      -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+      -- vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
+      -- This concatonates the icons with the name of the item kind
+      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
       vim_item.menu = ({
         nvim_lsp = '[LSP]',
         nvim_lua = '[NVIM_LUA]',
@@ -119,20 +126,27 @@ cmp.setup {
     end,
   },
   sources = {
-    { name = 'nvim_lua', group_index = 2 },
     { name = 'copilot',  group_index = 2 },
-    { name = 'nvim_lsp', group_index = 2 },
     { name = 'luasnip',  group_index = 2 },
+    { name = 'nvim_lsp', group_index = 2 },
     { name = 'buffer',   group_index = 2 },
     { name = 'path',     group_index = 2 },
-    { name = 'digraphs', group_index = 3 },
+    { name = 'nvim_lua', group_index = 3 },
+    { name = 'digraphs', group_index = 4 },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
     select = true,
   },
   window = {
-    documentation = cmp.config.window.bordered()
+    documentation = {
+      border = 'rounded',
+      -- max_width = 130,
+      -- max_height = 30,
+    },
+    completion = {
+      border = 'rounded',
+    },
   },
   experimental = {
     ghost_text  = false,

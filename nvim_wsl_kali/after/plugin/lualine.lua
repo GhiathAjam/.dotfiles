@@ -1,6 +1,4 @@
 vim.opt.showmode = false
-
-
 -- apt install powerline-font
 -- powerline symbols
 -- let g:airline_symbols.branch = ''
@@ -11,11 +9,13 @@ vim.opt.showmode = false
 -- let g:airline_symbols.colnr = ':'
 -- let g:airline_symbols.
 
-require('lualine').setup {
+require('lualine').setup {  
   options = {
     icons_enabled = true,
 
     theme = 'horizon',
+    -- theme = 'tokyonight',
+    -- theme = 'gruvbox',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {

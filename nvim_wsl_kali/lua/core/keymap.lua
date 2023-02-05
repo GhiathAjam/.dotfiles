@@ -3,6 +3,34 @@ local map = vim.keymap.set
 
 map('n', '<leader>x', function() print 'hii' end, opt)
 
+local builtin = require('telescope.builtin')
+map('n', '<leader>ff', builtin.find_files, opt)
+map('n', '<leader>fg', builtin.live_grep, opt)
+-- map('n', '<leader>fs', builtin.grep_string, opt)
+map('n', '<leader>fb', builtin.buffers, opt)
+map('n', '<leader>fh', builtin.help_tags, opt)
+map('n', '<leader>fc', builtin.colorscheme, opt)
+
+-- Debug !
+-- let g:vimspector_sign_priority = {
+--   \    'vimspectorBP':         20,
+--   \ }
+-- let g:vimspector_code_minwidth = 70
+-- let g:vimspector_terminal_minwidth = 27
+-- let g:vimspector_sidebar_width = 42
+
+local dap = require('dap')
+map('n', '<F2>', dap.toggle_breakpoint, opt)
+-- conditional breakpoint
+map('n', '<leader>B', ':lua require("dap").set_breakpoint(vim.fn.input("Breakpoint Condition: "))<CR>', opt)
+-- map('n', '<leader>C', ':lua require("dap").set_breakpoint(nil, vim.fn.input("Brekpoint hit count: "))<CR>', opt)
+map('n', '<F4>', dap.terminate, opt)
+map('n', '<F5>', dap.continue, opt)
+map('n', '<F6>', dap.step_over, opt)
+map('n', '<F7>', dap.step_into, opt)
+map('n', '<F8>', dap.step_out, opt)
+map('v', '<F3>', require('dapui').eval, opt)
+
 -- map leader e to open explorer
 -- Open Explorer to the right, set edits to first window!
 map('n', '<leader>e', ':Lexplore! 33<CR>:let g:netrw_chgwin=1<CR>', opt)
@@ -11,19 +39,12 @@ map('n', '<leader>e', ':Lexplore! 33<CR>:let g:netrw_chgwin=1<CR>', opt)
 -- map('n', '<leader>ps', vim.cmd.PackerSync, opt)
 
 -- source, write, quit
-map('n', '<leader>so', vim.cmd.source, opt)
+map('n', '<leader>so', function() vim.cmd.write() vim.cmd.source() end, opt)
 map('n', '<leader>w', vim.cmd.write, opt)
 map('n', '<leader>q', vim.cmd.quit, opt)
 
 
--- map('n', '<F2>', '<Plug>VimspectorToggleBreakpoint <CR>', opt)
--- map('n', '<F4>', ':VimspectorReset <CR>', opt)
--- map('n', '<F5>', '<Plug>VimspectorContinue <CR>', opt)
--- map('n', '<F6>', '<Plug>VimspectorStepOver <CR>', opt)
--- map('n', '<F7>', '<Plug>VimspectorStepInto <CR>', opt)
--- map('n', '<F8>', '<Plug>VimspectorStepOut <CR>', opt)
-
--- beter window navigation
+-- better window navigation
 map('n', '<c-h>', '<c-w>h', opt)
 map('n', '<c-j>', '<c-w>j', opt)
 map('n', '<c-k>', '<c-w>k', opt)

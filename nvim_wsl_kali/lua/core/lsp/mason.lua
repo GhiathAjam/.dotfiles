@@ -4,6 +4,7 @@ local servers = {
 	'pyright',
 	'jsonls',
   'clangd',
+  -- 'ccls',
 }
 
 local settings = {
@@ -21,8 +22,8 @@ local settings = {
 
 require('mason').setup(settings)
 require('mason-lspconfig').setup({
-	ensure_installed = servers,
-	automatic_installation = true,
+	-- ensure_installed = servers,
+	-- automatic_installation = true,
 })
 
 local lspconfig_status_ok, lspconfig = pcall(require, 'lspconfig')
@@ -44,6 +45,10 @@ for _, server in pairs(servers) do
 	if require_ok then
 		opts = vim.tbl_deep_extend('force', conf_opts, opts)
 	end
+
+  -- print all entries of opts table
+  -- print(server .. ' opts')
+  -- print(vim.inspect(opts))
 
 	lspconfig[server].setup(opts)
 end

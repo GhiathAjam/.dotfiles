@@ -13,31 +13,34 @@ vim.opt.makeprg = './%'
 
 -- TRY
 vim.opt.colorcolumn = '80'
--- vim.opt.completeopt = { 'menuone', 'preview', 'noinsert', 'noselect' }
 -- menuone -> show menu even if single match
-vim.opt.completeopt = { 'menuone', 'noselect' }
+vim.opt.completeopt = { 'menuone', 'preview', 'noselect', 'noinsert' }
 
-vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
+-- so that `` is visible in markdown files
+vim.opt.conceallevel = 0
 
+-- always show tabline
 vim.opt.showtabline = 2
 
-vim.opt.numberwidth = 3 -- set number column width to 2 {default 4}
+-- set number column width to 2 {default 4}
+vim.opt.numberwidth = 3
 
-vim.opt.updatetime = 500 -- faster completion
+-- faster completion
+vim.opt.updatetime = 500
 
--- set wildmode=longest,list   -- get bash-like tab completions
--- set spell
-    -- If you exit Vim and later start it again, you would normally lose a lot of
-    -- information.  The ShaDa file can be used to remember that information, which
-    -- enables you to continue where you left off.  Its name is the abbreviation of
-    -- SHAred DAta because it is used for sharing data between Neovim sessions.
+-- we went to hopsital 
+-- check spelling of comments
+vim.opt.spell = true
 
-    -- writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-    -- timeoutlen = 1000, -- time to wait for a mapped sequence to complete (in milliseconds)
-    -- pumheight = 10, -- pop up menu height
-    -- title = true, -- set the title of window to the value of the titlestring
-    -- -- opt.titlestring = '%<%F%=%l/%L - nvim' -- what the title of the window will be set to
+-- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.timeoutlen = 500
 
+-- pop up menu height
+-- pumheight = 10,
+-- set the title of window to the value of the titlestring
+vim.opt.title = true
+-- what the title of the window will be set to
+-- vim.opt.titlestring = '%<%F%=%l/%L - nvim'
 
 -- line numbers
 vim.opt.number = true
@@ -52,6 +55,7 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 -- autoindent + syntax
+vim.opt.autoindent = true
 vim.opt.smartindent = true
 
 -- search options
@@ -85,26 +89,38 @@ vim.opt.cursorcolumn = false
 vim.opt.autowrite = true
 vim.opt.undofile = true
 
--- show tabs and tralining spaces
+-- show hidden characters
 vim.opt.list = true
-vim.opt.listchars:append 'space:⋅'
--- vim.opt.listchars:remove 'eol'
-vim.opt.listchars:append 'eol:↴'
+vim.opt.listchars = {
+  -- space = '␣•·⋅',
+  lead = ' ',
+  tab = '→·',
+  -- multispace = '---+'
+  -- leadmultispace = '---+'
+  extends  = '»',
+  precedes = '«',
+  -- conceal = '·',
+  -- nbsp = '␣',
+  space = '·',
+  eol = '↴',
+  trail = '•',
+}
 
 vim.opt.signcolumn = 'yes'
 vim.opt.viewoptions = 'folds,cursor'
 
 -- treesitter based folding
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.opt.foldenable = false
-vim.opt.foldminlines = 4
-vim.opt.foldnestmax = 4
+-- vim.opt.foldmethod = 'expr'
+-- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+-- vim.opt.foldenable = false
+-- vim.opt.foldminlines = 4
+-- vim.opt.foldnestmax = 4
+
+vim.opt.foldmethod = 'manual'
 
 vim.g.mapleader = ' '
 
-vim.cmd [[ colorscheme tokyonight-night ]]
 -- colorscheme monokai-phoenix
 -- hi MatchParen guifg=#E0E0E0 guibg=#E0E0E0
--- fix bad matchign paren!
+-- fix bad matching parenthesis!
 -- ( { [  ] } )
