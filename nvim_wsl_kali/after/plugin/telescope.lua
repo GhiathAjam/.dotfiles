@@ -11,14 +11,17 @@ telescope.setup {
       '--with-filename',
       '--line-number',
       '--column',
-      '--smart-case'
+      '--smart-case',
     },
   },
   pickers = {
     colorscheme = {
-      enable_preview = true
-    }
-  }
+      enable_preview = true,
+    },
+    find_files = {
+      follow = true,
+    },
+  },
 }
 
 -- See:  

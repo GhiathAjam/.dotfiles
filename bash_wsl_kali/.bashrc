@@ -162,13 +162,12 @@ export WATCH_INTERVAL=1
 # more PATH
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="$HOME/Desktop/scripts:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export CPLUS_INCLUDE_PATH="/usr/include/x86_64-linux-gnu/c++/11:.:/usr/include/c++/11:/usr/include/c++/11/backward:/usr/lib/gcc/x86_64-linux-gnu/11/include:/usr/local/include:/usr/include/x86_64-linux-gnu:/usr/include:$CPLUS_INCLUDE_PATH"
 
 # Sources
 # better colors
-source ~/.local/share/lscolors.sh
-# mpv auto complete
-source ~/.local/share/mpv.bash-completion
+source ~/Desktop/repos/lscolors/lscolors.sh
 
 # better auto complete
 bind "set completion-ignore-case on"
@@ -196,6 +195,7 @@ alias grep='\rg'
 alias rg='batgrep -i'
 # alias diff='delta'
 alias man='batman'
+alias tldr='tldr -t ocean'
 # problem with non files
 # alias fzf="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'"
 

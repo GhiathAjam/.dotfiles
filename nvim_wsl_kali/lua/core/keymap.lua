@@ -29,7 +29,7 @@ map('n', '<F5>', dap.continue, opt)
 map('n', '<F6>', dap.step_over, opt)
 map('n', '<F7>', dap.step_into, opt)
 map('n', '<F8>', dap.step_out, opt)
-map('v', '<F3>', require('dapui').eval, opt)
+-- map('v', '<F3>', require('dapui').eval, opt)
 
 -- map leader e to open explorer
 -- Open Explorer to the right, set edits to first window!

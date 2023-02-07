@@ -4,7 +4,8 @@ local ensure_packer = function()
   if fn.empty(fn.glob(install_path)) > 0 then
     vim.notify('INSTALLING PACKER')
     fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
+    -- vim.cmd [[packadd packer.nvim]]
+    -- vim.cmd [[ packloadall! ]]
     return true
   end
   return false
@@ -53,8 +54,8 @@ return packer.startup(function(use)
   -- use 'nvim-treesitter/nvim-treesitter-refactor' -- vim illuminate is better
   use 'nvim-treesitter/nvim-treesitter-context'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
-  use 'andymass/vim-matchup'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
+  use 'andymass/vim-matchup'
 
   use 'RRethy/vim-illuminate'
 

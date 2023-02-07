@@ -1,7 +1,7 @@
+require('core.plugins')
 require('core.options')
 require('core.keymap')
 require('core.autocmd')
-require('core.plugins')
 require('core.lsp')
 
 -- let g:vimspector_code_minwidth = 70
