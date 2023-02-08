@@ -163,11 +163,11 @@ export WATCH_INTERVAL=1
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="$HOME/Desktop/scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export CPLUS_INCLUDE_PATH="/usr/include/x86_64-linux-gnu/c++/11:.:/usr/include/c++/11:/usr/include/c++/11/backward:/usr/lib/gcc/x86_64-linux-gnu/11/include:/usr/local/include:/usr/include/x86_64-linux-gnu:/usr/include:$CPLUS_INCLUDE_PATH"
+# export CPLUS_INCLUDE_PATH="/usr/include/x86_64-linux-gnu/c++/11:.:/usr/include/c++/11:/usr/include/c++/11/backward:/usr/lib/gcc/x86_64-linux-gnu/11/include:/usr/local/include:/usr/include/x86_64-linux-gnu:/usr/include:$CPLUS_INCLUDE_PATH"
 
 # Sources
 # better colors
-source ~/Desktop/repos/lscolors/lscolors.sh
+source ~/Desktop/repos/LS_COLORS/lscolors.sh
 
 # better auto complete
 bind "set completion-ignore-case on"
