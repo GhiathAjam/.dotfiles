@@ -1,6 +1,11 @@
-local dap = require('dap')
-local dapui = require('dapui')
-local dap_virtual_text = require('nvim-dap-virtual-text')
+local _1, dap              = pcall(require, 'dap')
+local _2, dapui            = pcall(require, 'dapui')
+local _3, dap_virtual_text = pcall(require, 'nvim-dap-virtual-text')
+
+if not (_1 and _2 and _3) then
+  vim.notify('Hey Gh: one of: dap, dapui, dap-virtual text missing')
+  return
+end
 
 vim.cmd [[ highlight Breakpoint          guifg=#FF0000 ]]
 vim.cmd [[ highlight ConditionBreakpoint guifg=#FFFF00 ]]

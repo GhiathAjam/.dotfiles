@@ -213,11 +213,11 @@ alias et='\emacs -nw'
 # sudo chmod 700 /run/user/$UID
 
 ## .dotfiles
-alias bashrc='nvim ~/.bashrc'
-alias initv='nvim ~/.config/nvim/init.vim'
-alias initl='lvim ~/.config/lvim/config.lua'
-alias gitconfig='nvim ~/.gitconfig'
-alias qute='nvim /mnt/c/Users/Ghieath/AppData/Roaming/qutebrowser/config/config.py'
+alias cb='nvim ~/.bashrc'
+alias cn='nvim ~/.config/nvim/init.lua'
+# alias cq='nvim /mnt/c/Users/Ghieath/AppData/Roaming/qutebrowser/config/config.py'
+alias ca='nvim /mnt/c/Users/Ghieath/scoop/persist/alacritty/alacritty.yml'
+alias cm='nvim /mnt/c/Users/Ghieath/scoop/persist/mpv/portable_config'
 
 # powerline
 # powerline-daemon -q

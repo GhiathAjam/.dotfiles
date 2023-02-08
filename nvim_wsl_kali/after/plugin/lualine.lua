@@ -9,7 +9,10 @@ vim.opt.showmode = false
 -- let g:airline_symbols.colnr = ':'
 -- let g:airline_symbols.
 
-require('lualine').setup {  
+local _, lualine = pcall(require, 'lualine')
+if not _ then return end
+
+lualine.setup {  
   options = {
     icons_enabled = true,
 

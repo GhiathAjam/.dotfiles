@@ -96,7 +96,7 @@ gitsigns.setup {
   end
 }
 
-vim.cmd [[ highlight GitSignsAdd guifg=#00CF00 ]]
-vim.cmd [[ highlight GitSignsChange guifg=#CFCF00 ]]
-vim.cmd [[ highlight GitSignsDelete guifg=#CF0000 ]]
+-- vim.cmd [[ highlight GitSignsAdd guifg=#00CF00 ]]
+-- vim.cmd [[ highlight GitSignsChange guifg=#CFCF00 ]]
+-- vim.cmd [[ highlight GitSignsDelete guifg=#CF0000 ]]
 

@@ -2,7 +2,13 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
-require('neodev').setup {
+local _, neodev = pcall(require, 'neodev')
+if not _ then
+  vim.notify('hey Gh: neodev missing')
+  return
+end
+
+neodev.setup {
   library = {
     enabled = true, -- when not enabled, neodev will not change any settings to the LSP server
     -- these settings will be used for your Neovim config directory

@@ -3,13 +3,15 @@ local map = vim.keymap.set
 
 map('n', '<leader>x', function() print 'hii' end, opt)
 
-local builtin = require('telescope.builtin')
-map('n', '<leader>ff', builtin.find_files, opt)
-map('n', '<leader>fg', builtin.live_grep, opt)
--- map('n', '<leader>fs', builtin.grep_string, opt)
-map('n', '<leader>fb', builtin.buffers, opt)
-map('n', '<leader>fh', builtin.help_tags, opt)
-map('n', '<leader>fc', builtin.colorscheme, opt)
+local _, builtin = pcall(require, 'telescope.builtin')
+if _ then
+  map('n', '<leader>ff', builtin.find_files, opt)
+  map('n', '<leader>fg', builtin.live_grep, opt)
+  -- map('n', '<leader>fs', builtin.grep_string, opt)
+  map('n', '<leader>fb', builtin.buffers, opt)
+  map('n', '<leader>fh', builtin.help_tags, opt)
+  map('n', '<leader>fc', builtin.colorscheme, opt)
+end
 
 -- Debug !
 -- let g:vimspector_sign_priority = {
@@ -19,17 +21,22 @@ map('n', '<leader>fc', builtin.colorscheme, opt)
 -- let g:vimspector_terminal_minwidth = 27
 -- let g:vimspector_sidebar_width = 42
 
-local dap = require('dap')
-map('n', '<F2>', dap.toggle_breakpoint, opt)
--- conditional breakpoint
-map('n', '<leader>B', ':lua require("dap").set_breakpoint(vim.fn.input("Breakpoint Condition: "))<CR>', opt)
--- map('n', '<leader>C', ':lua require("dap").set_breakpoint(nil, vim.fn.input("Brekpoint hit count: "))<CR>', opt)
-map('n', '<F4>', dap.terminate, opt)
-map('n', '<F5>', dap.continue, opt)
-map('n', '<F6>', dap.step_over, opt)
-map('n', '<F7>', dap.step_into, opt)
-map('n', '<F8>', dap.step_out, opt)
--- map('v', '<F3>', require('dapui').eval, opt)
+local ok, dap = pcall(require, 'dap')
+local ok2, _ = pcall(require, 'dapui')
+if ok then
+  map('n', '<F2>', dap.toggle_breakpoint, opt)
+  -- conditional breakpoint
+  map('n', '<leader>B', ':lua require("dap").set_breakpoint(vim.fn.input("Breakpoint Condition: "))<CR>', opt)
+  -- map('n', '<leader>C', ':lua require("dap").set_breakpoint(nil, vim.fn.input("Brekpoint hit count: "))<CR>', opt)
+  map('n', '<F4>', dap.terminate, opt)
+  map('n', '<F5>', dap.continue, opt)
+  map('n', '<F6>', dap.step_over, opt)
+  map('n', '<F7>', dap.step_into, opt)
+  map('n', '<F8>', dap.step_out, opt)
+  if ok2 then
+    -- map('v', '<F3>', require('dapui').eval, opt)
+  end
+end
 
 -- map leader e to open explorer
 -- Open Explorer to the right, set edits to first window!
