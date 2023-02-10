@@ -117,17 +117,7 @@ return packer.startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim' -- LSP diagnostics and code actions
 
   -- Copilot
-  use {
-    'zbirenbaum/copilot.lua',
-    -- cmd = 'Copilot',
-    -- event = 'InsertEnter',
-    -- config = function()
-    --   vim.schedule(function()
-    --     require('copilot').setup()
-    --   end)
-    -- end,
-  }
-
+  use 'zbirenbaum/copilot.lua'
   use {
     'zbirenbaum/copilot-cmp',
     after = { 'copilot.lua', 'nvim-cmp' },
@@ -166,11 +156,10 @@ return packer.startup(function(use)
   use {
     -- 'morhetz/gruvbox',
     'ellisonleao/gruvbox.nvim',
-    event = 'VimEnter',
-    config = function()
-     require('core.gruvbox')
-    end,
   }
+
+  use { 'LunarVim/onedarker.nvim', branch = 'freeze' }
+  -- use 'LunarVim/onedarker.nvim'
 
   use 'petertriho/nvim-scrollbar' 
 

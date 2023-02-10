@@ -10,6 +10,13 @@
 local myg = vim.api.nvim_create_augroup('user', { clear = true })
 vim.api.nvim_clear_autocmds({ group = myg })
 
+-- colorscheme
+vim.api.nvim_create_autocmd('VimEnter', {
+  group = myg,
+  callback = function() require('core.colors') end,
+  -- command = 'colorscheme onedarker'
+})
+
 -- views for folds
 vim.api.nvim_create_autocmd('BufWinEnter', {
   group = myg,

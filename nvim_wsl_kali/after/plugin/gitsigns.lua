@@ -25,7 +25,7 @@ gitsigns.setup {
   },
   signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
   numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
-  linehl     = true, -- Toggle with `:Gitsigns toggle_linehl`
+  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff  = true, -- Toggle with `:Gitsigns toggle_word_diff`
   watch_gitdir = {
     interval = 1000,
@@ -96,7 +96,16 @@ gitsigns.setup {
   end
 }
 
+-- vim.cmd [[ hi clear GitSignsAdd ]]
+-- vim.cmd [[ hi clear GitSignsChange ]]
+-- vim.cmd [[ hi clear GitSignsDelete ]]
+
 -- vim.cmd [[ highlight GitSignsAdd guifg=#00CF00 ]]
 -- vim.cmd [[ highlight GitSignsChange guifg=#CFCF00 ]]
 -- vim.cmd [[ highlight GitSignsDelete guifg=#CF0000 ]]
 
+-- vim.cmd [[ hi clear DiffAdd ]]
+-- vim.cmd [[ hi clear DiffChange ]]
+
+-- vim.cmd [[ highlight DiffAdd guibg=#213020 ]]
+-- vim.cmd [[ highlight DiffChange guibg=#202000 ]]

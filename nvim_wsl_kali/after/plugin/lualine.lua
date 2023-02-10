@@ -16,7 +16,8 @@ lualine.setup {
   options = {
     icons_enabled = true,
 
-    theme = 'horizon',
+    theme = 'onedarker',
+    -- theme = 'horizon',
     -- theme = 'tokyonight',
     -- theme = 'gruvbox',
     component_separators = { left = '', right = ''},
