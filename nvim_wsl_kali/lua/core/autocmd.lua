@@ -13,7 +13,7 @@ vim.api.nvim_clear_autocmds({ group = myg })
 -- colorscheme
 vim.api.nvim_create_autocmd('VimEnter', {
   group = myg,
-  callback = function() require('core.colors') end,
+  callback = function() vim.defer_fn(function() require('core.colors') end, 0) end,
   -- command = 'colorscheme onedarker'
 })
 

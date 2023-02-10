@@ -1,6 +1,12 @@
 -- vim.cmd [[ colorscheme gruvbox ]]
 vim.cmd [[ colorscheme onedarker ]]
 
+vim.cmd [[ hi clear SpellBad ]]
+vim.cmd [[ hi clear SpellCap ]]
+vim.cmd [[ hi clear SpellRare ]]
+vim.cmd [[ hi clear SpellLocal ]]
+vim.cmd [[ hi SpellBad gui=strikethrough ]]
+-- hopstial
 
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]]

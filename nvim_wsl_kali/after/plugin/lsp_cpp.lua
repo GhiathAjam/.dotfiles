@@ -1,4 +1,4 @@
-return
+if true then return end
 
 local lspconfig = require 'lspconfig'
 local coq = require 'coq'

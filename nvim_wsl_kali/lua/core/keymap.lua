@@ -1,18 +1,6 @@
 local opt = { noremap = true, silent = true }
 local map = vim.keymap.set
 
--- apt install powerline-font
--- powerline symbols
--- let g:airline_symbols.branch = ''
--- let g:airline_symbols.readonly = ''
--- let g:airline_symbols.linenr = '☰ '
--- let g:airline_symbols.maxlinenr = ''
--- let g:airline_symbols.dirty='⚡'
--- let g:airline_symbols.colnr = ':'
--- let g:airline_symbols.
-    -- component_separators = { left = '', right = ''},
-    -- section_separators = { left = '', right = ''},
-
 map('n', '<leader>x', function() print 'hii' end, opt)
 
 local _, builtin = pcall(require, 'telescope.builtin')
