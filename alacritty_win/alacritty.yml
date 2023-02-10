@@ -14,14 +14,14 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-env:
+# env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: xterm-256color
+  # TERM: xterm-256color
 
 
 window:
@@ -30,28 +30,29 @@ window:
   # Number of lines/columns (not pixels) in the terminal. The number of columns
   # must be at least `2`, while using a value of `0` for columns and lines will
   # fall back to the window manager's recommended size.
-  dimensions:
-    columns: 151
-    lines: 38
+  # dimensions:
+  #   columns: 151
+  #   lines: 38
 
   # Window position (changes require restart)
   #
   # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
-  position:
-    x: 0
-    y: 0
+  # position:
+  #   x: 0
+  #   y: 0
 
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  padding:
-    x: 4
-    y: 3
+  # padding:
+  #   x: 8
+  #   y: 3
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
+  # dynamic_padding: true
 
   # Window decorations
   #
@@ -62,14 +63,14 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, and no title bar buttons
-  #decorations: full
-  decorations: none
+  decorations: full
+  # decorations: none
 
   # Background opacity
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.9
+  opacity: 0.98
 
   # Startup Mode (changes require restart)
   #
@@ -129,17 +130,11 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: JetBrainsMono NFM
+    # family: JetBrainsMono NFM
     # family: FiraCode NFM
     # family: Source Code Pro
-    # family: CodeNewRoman Nerd Font
-    # family: RobotoMono Nerd Font
-    # family: Hack
-    # family: JetBrains Mono
-    # family: UbuntuMono Nerd Font
-    # family: Monofur Nerd Font
-    # family: TerminessTTF Nerd Font
-    # family: Mononoki Nerd Font
+    family: CaskaydiaCove NFM
+    # family: Consolas
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -150,17 +145,11 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrainsMono NFM
+    # family: JetBrainsMono NFM
     # family: FiraCode NFM
     # family: Source Code Pro
-    # family: CodeNewRoman Nerd Font
-    # family: RobotoMono Nerd Font
-    # family: Hack
-    # family: JetBrains Mono
-    # family: UbuntuMono Nerd Font
-    # family: Monofur Nerd Font
-    # family: TerminessTTF Nerd Font
-    # family: Mononoki Nerd Font
+    family: CaskaydiaCove NFM
+    # family: Consolas
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -171,17 +160,11 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrainsMono NFM
+    # family: JetBrainsMono NFM
     # family: FiraCode NFM
     # family: Source Code Pro
-    # family: CodeNewRoman Nerd Font
-    # family: RobotoMono Nerd Font
-    # family: Hack
-    # family: JetBrains Mono
-    # family: UbuntuMono Nerd Font
-    # family: Monofuritalic Nerd Font Mono
-    # family: TerminessTTF Nerd Font
-    # family: Mononoki Nerd Font
+    family: CaskaydiaCove NFM
+    # family: Consolas
 
     # The `style` can be specified to pick a specific face.
     # style: Italic
@@ -193,17 +176,11 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrainsMono NFM
+    # family: JetBrainsMono NFM
     # family: FiraCode NFM
     # family: Source Code Pro
-    # family: CodeNewRoman Nerd Font
-    # family: RobotoMono Nerd Font
-    # family: Hack
-    # family: JetBrains Mono
-    # family: UbuntuMono Nerd Font
-    # family: Monofuritalic Nerd Font Mono
-    # family: TerminessTTF Nerd Font
-    # family: Mononoki Nerd Font
+    family: CaskaydiaCove NFM
+    # family: Consolas
 
     # The `style` can be specified to pick a specific face.
     # style: Bold Italic
@@ -215,8 +192,8 @@ font:
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
-    x: 1
-    y: 1
+    x: 0
+    y: 0
 
   # Use built-in font for box drawing characters.
   #
@@ -226,7 +203,7 @@ font:
   #builtin_box_drawing: true
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
+# draw_bold_text_with_bright_colors: true
 
 ## Color Template
 # Colors (Tomorrow Night)
@@ -1031,6 +1008,11 @@ mouse:
 #  - { mouse: Right,                 action: ExpandSelection }
 #  - { mouse: Right,  mods: Control, action: ExpandSelection }
 #  - { mouse: Middle, mode: ~Vi,     action: PasteSelection  }
+
+# mouse_bindings:
+#  - { mouse: Right,                action: ReceiveChar }
+#  - { mouse: Left,                 action: ReceiveChar }
+#  - { mouse: Middle,               action: ReceiveChar  }
 
 # Key bindings
 #

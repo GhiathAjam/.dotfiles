@@ -26,6 +26,7 @@ configs=(
 
 for path in ${!configs[@]}; do
   name=$REPO/${configs[$path]}
+  printf "Copying $path To:\t $name \n"
   # remove old
   # printf "rm -rf $name \n"
   rm -rf $name
