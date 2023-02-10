@@ -40,7 +40,12 @@ end
 
 -- map leader e to open explorer
 -- Open Explorer to the right, set edits to first window!
-map('n', '<leader>e', ':Lexplore! 33<CR>:let g:netrw_chgwin=1<CR>', opt)
+
+if vim.fn.exists(':NvimTreeToggle') == 2 then
+  map('n', '<leader>e', ':NvimTreeToggle<CR>', opt)
+else
+  map('n', '<leader>e', ':Lexplore! 33<CR>:let g:netrw_chgwin=1<CR>', opt)
+end
 
 -- packer -> waste of keys!
 -- map('n', '<leader>ps', vim.cmd.PackerSync, opt)
