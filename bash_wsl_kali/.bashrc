@@ -205,6 +205,9 @@ alias go='cd ~/Desktop/main; nvim -S Session.vim'
 # configure nvim
 alias goc='cd ~/.config/nvim; nvim init.lua'
 
+# git
+alias gs='git status'
+
 # EMACS
 alias emacs='emacsclient -c -a ""'
 alias et='\emacs -nw'

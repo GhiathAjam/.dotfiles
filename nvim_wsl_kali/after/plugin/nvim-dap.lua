@@ -7,13 +7,9 @@ if not (_1 and _2 and _3) then
   return
 end
 
-vim.cmd [[ highlight Breakpoint          guifg=#FF0000 ]]
-vim.cmd [[ highlight ConditionBreakpoint guifg=#FFFF00 ]]
-vim.cmd [[ highlight DapStopped          guifg=#00FF00 ]]
-
-vim.fn.sign_define('DapBreakpoint',          {text='', texthl='Breakpoint', linehl='', numhl=''})
-vim.fn.sign_define('DapBreakpointCondition', {text='', texthl='ConditionBreakpoint', linehl='', numhl=''})
-vim.fn.sign_define('DapStopped',             {text='', texthl='DapStopped', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpoint',          { text='', texthl='DiagnosticError', linehl='', numhl='' })
+vim.fn.sign_define('DapBreakpointCondition', { text='', texthl='DiagnosticWarn', linehl='', numhl='' })
+vim.fn.sign_define('DapStopped',             { text='', texthl='BrightGreen', linehl='', numhl='' })
 
 -- auto start dapui when dap fires
 dap.listeners.after.event_initialized['dapui_config'] = dapui.open
@@ -23,7 +19,7 @@ dap.listeners.after.event_exited['dapui_config'] = dapui.close
 dap.adapters.cppdbg = {
   id = 'cppdbg',
   type = 'executable',
-  command = os.getenv('HOME') .. '/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+  command = os.getenv('HOME') .. '/.local/share/nvim/mason/bin/OpenDebugAD7',
 }
 
 dap.adapters.codelldb = {
@@ -31,8 +27,7 @@ dap.adapters.codelldb = {
   -- port = "${port}",
   port = 7777,
   executable = {
-    -- CHANGE THIS to your path!
-    command = os.getenv('HOME') .. '/.local/share/nvim/mason/packages/codelldb/extension/adapter/codelldb',
+    command = os.getenv('HOME') .. '/.local/share/nvim/mason/bin/codelldb',
     args = {"--port", "7777"},
   }
 }
@@ -54,6 +49,9 @@ dap.configurations.cpp = {
     --   return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     -- end,
     cwd = '${workspaceFolder}',
+    -- miMode = 'gdb',
+    -- miDebuggerPath = '',
+    -- miDebuggerPath = os.getenv('HOME') .. '/.local/share/nvim/mason/bin/OpenDebugAD7',
     stopAtEntry = true,
     args = { '<', 'input.txt', '>', 'output.txt' },
   },
@@ -69,14 +67,14 @@ dap.configurations.cpp = {
   --     return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
   --   end,
   -- },
-  -- {
-  --   name = "codelldb",
-  --   type = "codelldb",
-  --   request = "launch",
-  --   program = vim.fn.getcwd() .. '/${fileBasenameNoExtension}',
-  --   cwd = '${workspaceFolder}',
-  --   stopOnEntry = true,
-  -- },
+  {
+    name = "codelldb",
+    type = "codelldb",
+    request = "launch",
+    program = vim.fn.getcwd() .. '/${fileBasenameNoExtension}',
+    cwd = '${workspaceFolder}',
+    stopOnEntry = true,
+  },
 }
 
 dap.configurations.python = {
@@ -134,10 +132,8 @@ dap_virtual_text.setup {
                                -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
 }
 
-dapui.setup
-{
-  controls =
-  {
+dapui.setup {
+  controls = {
     element = "repl",
     enabled = true,
     icons = {
@@ -153,26 +149,21 @@ dapui.setup
   },
   element_mappings = {},
   expand_lines = true,
-  floating =
-  {
+  floating = {
     border = "single",
-    mappings =
-    {
+    mappings = {
       close = { "q", "<Esc>" }
     }
   },
   force_buffers = true,
-  icons =
-  {
+  icons = {
     collapsed = "",
     current_frame = "",
     expanded = ""
   },
-  layouts =
-  {
+  layouts = {
     {
-      elements =
-      {
+      elements = {
         {
           id = "scopes",
           size = 0.5

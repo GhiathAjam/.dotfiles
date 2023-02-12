@@ -16,7 +16,7 @@ lualine.setup {
   options = {
     icons_enabled = true,
 
-    theme = 'onedarker',
+    -- theme = 'onedarker',
     -- theme = 'horizon',
     -- theme = 'tokyonight',
     -- theme = 'gruvbox',
@@ -75,5 +75,27 @@ lualine.setup {
     lualine_y = {},
     lualine_z = {}
   },
-  extensions = {}
+  extensions = {
+    'fugitive',
+    'nvim-tree',
+    'nvim-dap-ui',
+    'quickfix',
+    'toggleterm',
+
+    -- outline of code
+    -- 'aerial',
+    -- 'symbols-outline',
+
+    -- 'fzf',
+    -- 'man',
+
+    -- like undo tree
+    -- 'mundo',
+    
+    -- tree explorers
+    -- 'fern',
+    -- 'chadtree',
+    -- 'neo-tree',
+    -- 'nerdtree',
+  },
 }

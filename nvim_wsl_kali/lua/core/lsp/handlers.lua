@@ -1,29 +1,20 @@
 local M = {}
 
+vim.fn.sign_define('DiagnosticSignError',  { tex='', texthl='DiagnosticError' })
+vim.fn.sign_define('DiagnosticSignWarn',   { text='', texthl='DiagnosticWarn'})
+vim.fn.sign_define('DiagnosticSignInfo',   { text='', texthl='DiagnosticInfo' })
+vim.fn.sign_define('DiagnosticSignHint',   { text='', texthl='DiagnosticHint' })
+
 -- TODO: backfill this to template
 M.setup = function()
-  local signs = {
-    { name = 'DiagnosticSignError1', text = '' },
-    { name = 'DiagnosticSignWarn1', text = '' },
-    { name = 'DiagnosticSignHint1', text = '' },
-    { name = 'DiagnosticSignInfo1', text = '' },
-  }
-
-  for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
-  end
-
   local config = {
     -- virrual text only if error!
-    virtual_text = {
-      severity = vim.diagnostic.severity.ERROR,
-    },
-    -- show signs
-    signs = {
-      active = signs,
-    },
+    virtual_text = true,
+    -- virtual_text = {
+    --   severity = vim.diagnostic.severity.ERROR,
+    -- },
     update_in_insert = true,
-    underline = true,
+    underline = false,
     severity_sort = true,
     float = {
       focusable = false,
@@ -82,6 +73,7 @@ local function lsp_keymaps(bufnr)
   vim.keymap.set('n', '<leader>gl', vim.diagnostic.open_float, opts)
   vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev({ border = 'rounded' }) end, opts)
   vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next({ border = 'rounded' }) end, opts)
+-- map('n', '<space>q', vim.diagnostic.setloclist, opt)
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', vim.diagnostic.setloclist, opts)
 
   -- Create a command `:Format` local to the LSP buffer
