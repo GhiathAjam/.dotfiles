@@ -174,6 +174,8 @@ return packer.startup(function(use)
     -- 'LunarVim/onedarker.nvim',
   }
 
+  use { "akinsho/toggleterm.nvim", tag = '*' }
+
   -- Visuals
   use 'norcalli/nvim-colorizer.lua'
   use 'petertriho/nvim-scrollbar'

@@ -13,14 +13,6 @@ if _ then
   map('n', '<leader>fc', builtin.colorscheme, opt)
 end
 
--- Debug !
--- let g:vimspector_sign_priority = {
---   \    'vimspectorBP':         20,
---   \ }
--- let g:vimspector_code_minwidth = 70
--- let g:vimspector_terminal_minwidth = 27
--- let g:vimspector_sidebar_width = 42
-
 local ok, dap = pcall(require, 'dap')
 local ok2, _ = pcall(require, 'dapui')
 if ok then
@@ -47,6 +39,15 @@ if pcall(require, 'nvim-tree') then
 else
   map('n', '<leader>e', ':Lexplore! 33<CR>:let g:netrw_chgwin=1<CR>', opt)
 end
+
+-- Terminal Mode
+map('t', '<leader>x', [[ <C-\><C-n> ]], opt)
+map('t', '<esc>', [[<C-\><C-n>]], opt)
+map('t', 'jk', [[<C-\><C-n>]], opt)
+map('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opt)
+map('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opt)
+map('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opt)
+map('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opt)
 
 -- packer -> waste of keys!
 -- map('n', '<leader>ps', vim.cmd.PackerSync, opt)
@@ -85,7 +86,7 @@ map('n', 'N', 'Nzz', opt)
 map('x', '<leader>vp', '"_dP', opt)
 map('n', '<leader>vd', '"_d', opt)
 map('v', '<leader>vd', '"_d', opt)
-
+ 
 -- clipbard
 -- y
 map('n', '<leader>y', '"+y', opt)
@@ -140,13 +141,5 @@ map('n', '<c-down>', ' :res -3<CR>', opt)
 
 map('n', '<F9>', ':make! <CR>', opt)
 
--- LSP Mappings.
--- map('n', '[d', vim.diagnostic.goto_prev, opts)
--- map('n', ']d', vim.diagnostic.goto_next, opts)
--- map('n', '<space>q', vim.diagnostic.setloclist, opts)
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-
--- MACROS
---  delete alternate line, for copy paste madness
+map('n', '[q,', ':cprevious<CR>', opt)
+map('n', ']q,', ':cnext<CR>', opt)
