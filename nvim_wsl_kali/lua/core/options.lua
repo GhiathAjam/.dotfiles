@@ -119,8 +119,3 @@ vim.opt.viewoptions = 'folds,cursor'
 vim.opt.foldmethod = 'manual'
 
 vim.g.mapleader = ' '
-
--- colorscheme monokai-phoenix
--- hi MatchParen guifg=#E0E0E0 guibg=#E0E0E0
--- fix bad matching parenthesis!
--- ( { [  ] } )

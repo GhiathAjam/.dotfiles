@@ -1,6 +1,11 @@
 -- vim.cmd [[ colorscheme gruvbox ]]
 vim.cmd [[ colorscheme onedarker ]]
 
+-- colorscheme monokai-phoenix
+-- hi MatchParen guifg=#E0E0E0 guibg=#E0E0E0
+-- fix bad matching parenthesis!
+-- ( { [  ] } )
+
 vim.cmd [[ hi clear SpellBad ]]
 vim.cmd [[ hi clear SpellCap ]]
 vim.cmd [[ hi clear SpellRare ]]

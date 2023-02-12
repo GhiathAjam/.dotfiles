@@ -183,6 +183,7 @@ alias winpe='win32yank.exe -o --lf'
 # alias bldgr='cmakewin --build cmake-build-debug --target GAME_APPLICATION'
 alias clip='Clip.exe'
 alias explorer='explorer.exe'
+alias nv='neovide.exe --wsl'
 alias brave='/mnt/c/Program\ Files\ \(x86\)/BraveSoftware/Brave-Browser/Application/brave.exe'
 alias colortest='colortest-16'
 # replace cat, ls, grep, diff, find

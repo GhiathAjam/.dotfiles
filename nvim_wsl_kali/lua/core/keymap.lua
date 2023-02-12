@@ -41,7 +41,8 @@ end
 -- map leader e to open explorer
 -- Open Explorer to the right, set edits to first window!
 
-if vim.fn.exists(':NvimTreeToggle') == 2 then
+-- check if nvim-tree is installed
+if pcall(require, 'nvim-tree') then
   map('n', '<leader>e', ':NvimTreeToggle<CR>', opt)
 else
   map('n', '<leader>e', ':Lexplore! 33<CR>:let g:netrw_chgwin=1<CR>', opt)
