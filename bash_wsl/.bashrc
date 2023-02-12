@@ -204,6 +204,8 @@ alias tldr='tldr -t ocean'
 alias go='cd ~/Desktop/main; nvim -S Session.vim'
 # configure nvim
 alias goc='cd ~/.config/nvim; nvim init.lua'
+# dotfiles
+alias dot='cd ~/Desktop/myrepos/configs; gs'
 
 # git
 alias gs='git status'

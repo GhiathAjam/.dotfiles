@@ -1,9 +1,6 @@
 -- vim.cmd [[ colorscheme gruvbox ]]
 vim.cmd [[ colorscheme onedarker ]]
 
-vim.cmd [[ highlight BrightGreen guifg=#00FF00 ]]
-
-
 -- colorscheme monokai-phoenix
 -- hi MatchParen guifg=#E0E0E0 guibg=#E0E0E0
 -- fix bad matching parenthesis!
@@ -30,11 +27,11 @@ local onedarker = {
     b = { fg = colors.fg, bg = colors.gray3 },
     c = { fg = colors.fg, bg = colors.gray2 },
   },
-  command =  { a = { fg = colors.bg, bg = colors.yellow, gui = 'bold' } },
-  insert =   { a = { fg = colors.bg, bg = colors.green,  gui = 'bold' } },
-  visual =   { a = { fg = colors.bg, bg = colors.purple, gui = 'bold' } },
+  command  = { a = { fg = colors.bg, bg = colors.yellow, gui = 'bold' } },
+  insert   = { a = { fg = colors.bg, bg = colors.green,  gui = 'bold' } },
+  visual   = { a = { fg = colors.bg, bg = colors.purple, gui = 'bold' } },
   terminal = { a = { fg = colors.bg, bg = colors.cyan,   gui = 'bold' } },
-  replace =  { a = { fg = colors.bg, bg = colors.red1,   gui = 'bold' } },
+  replace  = { a = { fg = colors.bg, bg = colors.red1,   gui = 'bold' } },
   inactive = {
     a = { fg = colors.gray1, bg = colors.bg--[[ , gui = 'bold' ]] },
     b = { fg = colors.gray1, bg = colors.bg },
@@ -42,7 +39,7 @@ local onedarker = {
   },
 }
 
-require('lualine').setup {options = {theme = onedarker}}
+require('lualine').setup { options = { theme = onedarker } }
 
 vim.cmd [[ hi clear SpellBad ]]
 vim.cmd [[ hi clear SpellCap ]]

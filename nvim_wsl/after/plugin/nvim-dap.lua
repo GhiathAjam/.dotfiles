@@ -8,8 +8,8 @@ if not (_1 and _2 and _3) then
 end
 
 vim.fn.sign_define('DapBreakpoint',          { text='', texthl='DiagnosticError', linehl='', numhl='' })
-vim.fn.sign_define('DapBreakpointCondition', { text='', texthl='DiagnosticWarn', linehl='', numhl='' })
-vim.fn.sign_define('DapStopped',             { text='', texthl='BrightGreen', linehl='', numhl='' })
+vim.fn.sign_define('DapBreakpointCondition', { text='', texthl='DiagnosticWarn',  linehl='', numhl='' })
+vim.fn.sign_define('DapStopped',             { text='', texthl='DapUIPlayPause',  linehl='', numhl='' })
 
 -- auto start dapui when dap fires
 dap.listeners.after.event_initialized['dapui_config'] = dapui.open

@@ -37,10 +37,18 @@ lualine.setup {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_b = {
+      'branch',
+      {
+        'diff',
+         colored = true,
+         -- diff_color = { added = 'GitSignsAdd', modified = 'GitSignsChange', removed = 'GitSignsDelete', },
+         symbols = { added = ' ', modified = ' ', removed = ' ' }
+      },
+      'diagnostics'},
     lualine_c = {'filename'},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
+    lualine_y = {'progress', 'filesize'},
     lualine_z = {'location'}
   },
   inactive_sections = {
@@ -60,20 +68,32 @@ lualine.setup {
     lualine_z = {'tabs'}
   },
   winbar = {
-    lualine_a = {'diagnostics'},
-    lualine_b = {'branch'},
-    lualine_c = {'filename'},
-    lualine_x = {'diff'},
-    lualine_y = {'filesize'},
-    lualine_z = {'filetype'}
+    -- lualine_a = {
+    --   {
+    --     'diagnostics',
+    --      colored = false,
+    --       -- diagnostics_color = {
+    --       --   error = 'DiagnosticError', -- Changes diagnostics' error color.
+    --       --   warn  = 'DiagnosticWarn',  -- Changes diagnostics' warn color.
+    --       --   info  = 'DiagnosticInfo',  -- Changes diagnostics' info color.
+    --       --   hint  = 'DiagnosticHint',  -- Changes diagnostics' hint color.
+    --       -- },
+    --      -- symbols = {error = 'E', warn = 'W', info = 'I', hint = 'H'},
+    --   },
+    -- },
+    -- lualine_b = {'branch'},
+    -- lualine_c = {'filename'},
+    -- lualine_x = {'diff'},
+    -- lualine_y = {'filesize'},
+    -- lualine_z = {'filetype'}
   },
   inactive_winbar = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
+    -- lualine_a = {},
+    -- lualine_b = {},
+    -- lualine_c = {'filename'},
+    -- lualine_x = {},
+    -- lualine_y = {},
+    -- lualine_z = {}
   },
   extensions = {
     'fugitive',
