@@ -42,12 +42,12 @@ end
 
 -- Terminal Mode
 map('t', '<leader>x', [[ <C-\><C-n> ]], opt)
-map('t', '<esc>', [[<C-\><C-n>]], opt)
-map('t', 'jk', [[<C-\><C-n>]], opt)
-map('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opt)
-map('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opt)
-map('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opt)
-map('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opt)
+-- map('t', '<esc>', [[<C-\><C-n>]], opt)
+-- map('t', 'jk', [[<C-\><C-n>]], opt)
+-- map('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opt)
+-- map('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opt)
+-- map('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opt)
+-- map('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opt)
 
 -- packer -> waste of keys!
 -- map('n', '<leader>ps', vim.cmd.PackerSync, opt)
@@ -56,13 +56,14 @@ map('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opt)
 map('n', '<leader>so', function() vim.cmd.write() vim.cmd.source() end, opt)
 map('n', '<leader>w', vim.cmd.write, opt)
 map('n', '<leader>q', vim.cmd.quit, opt)
+map('n', '<leader>bd', vim.cmd.bdelete, opt)
 
 
--- better window navigation
-map('n', '<c-h>', '<c-w>h', opt)
-map('n', '<c-j>', '<c-w>j', opt)
-map('n', '<c-k>', '<c-w>k', opt)
-map('n', '<c-l>', '<c-w>l', opt)
+-- -- better window navigation
+-- map('n', '<c-h>', '<c-w>h', opt)
+-- map('n', '<c-j>', '<c-w>j', opt)
+-- map('n', '<c-k>', '<c-w>k', opt)
+-- map('n', '<c-l>', '<c-w>l', opt)
 
 -- BUFFERS
 map('n', '<s-h>', vim.cmd.bprevious, opt)
@@ -141,5 +142,5 @@ map('n', '<c-down>', ' :res -3<CR>', opt)
 
 map('n', '<F9>', ':make! <CR>', opt)
 
-map('n', '[q,', ':cprevious<CR>', opt)
-map('n', ']q,', ':cnext<CR>', opt)
+map('n', '[q', ':cprevious<CR>', opt)
+map('n', ']q', ':cnext<CR>', opt)

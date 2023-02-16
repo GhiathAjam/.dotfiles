@@ -1,5 +1,5 @@
 -- vim.cmd [[ colorscheme gruvbox ]]
-vim.cmd [[ colorscheme onedarker ]]
+vim.cmd [[ colorscheme lvim_onedarker ]]
 
 vim.cmd [[ hi VertSplit guifg=#444444 guibg=#282c34 ]]
 
@@ -42,6 +42,34 @@ local onedarker = {
 }
 
 require('lualine').setup { options = { theme = onedarker } }
+
+-- vim.cmd [[ hi clear GitSignsAdd ]]
+-- vim.cmd [[ hi clear GitSignsChange ]]
+-- vim.cmd [[ hi clear GitSignsDelete ]]
+
+-- vim.cmd [[ highlight GitSignsAdd guifg=#00CF00 ]]
+-- vim.cmd [[ highlight GitSignsChange guifg=#CFCF00 ]]
+-- vim.cmd [[ highlight GitSignsDelete guifg=#CF0000 ]]
+
+-- vim.cmd [[ hi clear DiffAdd ]]
+-- vim.cmd [[ hi clear DiffChange ]]
+
+-- vim.cmd [[ highlight DiffAdd guibg=#213020 ]]
+-- vim.cmd [[ highlight DiffChange guibg=#202000 ]]
+
+-- highlight all diagnostic virtual text with darker colors
+vim.cmd [[ hi DiagnosticVirtualTextError guifg=#A00000 gui=nocombine gui=italic ]]
+vim.cmd [[ hi DiagnosticVirtualTextWarn  guifg=#B09040 gui=nocombine gui=italic ]]
+vim.cmd [[ hi DiagnosticVirtualTextInfo  guifg=#509050 gui=nocombine gui=italic ]]
+vim.cmd [[ hi DiagnosticVirtualTextHint  guifg=#3070a0 gui=nocombine gui=italic ]]
+
+-- make diagnostic info sign green
+vim.cmd [[ hi DiagnosticSignInfo guifg=#509050 gui=nocombine gui=bold ]]
+-- make all diagnostic signs bold, same colors
+vim.cmd [[ hi DiagnosticSignError gui=nocombine gui=bold ]]
+vim.cmd [[ hi DiagnosticSignWarn  gui=nocombine gui=bold ]]
+vim.cmd [[ hi DiagnosticSignInfo  gui=nocombine gui=bold ]]
+vim.cmd [[ hi DiagnosticSignHint  gui=nocombine gui=bold ]]
 
 vim.cmd [[ hi clear SpellBad ]]
 vim.cmd [[ hi clear SpellCap ]]

@@ -264,7 +264,7 @@ require('nvim-tree').setup({
     args = {},
   },
   diagnostics = {
-    enable = false,
+    enable = true,
     show_on_dirs = false,
     show_on_open_dirs = true,
     debounce_delay = 50,
@@ -273,10 +273,11 @@ require('nvim-tree').setup({
       max = vim.diagnostic.severity.ERROR,
     },
     icons = {
-      hint = '',
-      info = '',
-      warning = '',
-      error = '',
+      -- use icons from global lsp_signs
+      hint    = vim.g.lsp_signs.Hint,
+      info    = vim.g.lsp_signs.Information,
+      warning = vim.g.lsp_signs.Warning,
+      error   = vim.g.lsp_signs.Error,
     },
   },
   filters = {

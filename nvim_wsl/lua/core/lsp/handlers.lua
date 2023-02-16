@@ -1,9 +1,9 @@
 local M = {}
 
-vim.fn.sign_define('DiagnosticSignError',  { tex='', texthl='DiagnosticError' })
-vim.fn.sign_define('DiagnosticSignWarn',   { text='', texthl='DiagnosticWarn'})
-vim.fn.sign_define('DiagnosticSignInfo',   { text='', texthl='DiagnosticInfo' })
-vim.fn.sign_define('DiagnosticSignHint',   { text='', texthl='DiagnosticHint' })
+vim.fn.sign_define('DiagnosticSignError', { text=vim.g.lsp_signs.Error,       texthl='DiagnosticSignError' })
+vim.fn.sign_define('DiagnosticSignWarn',  { text=vim.g.lsp_signs.Warning,     texthl='DiagnosticSignWarn'  })
+vim.fn.sign_define('DiagnosticSignInfo',  { text=vim.g.lsp_signs.Information, texthl='DiagnosticSignInfo'  })
+vim.fn.sign_define('DiagnosticSignHint',  { text=vim.g.lsp_signs.Hint,        texthl='DiagnosticSignHint'  })
 
 -- TODO: backfill this to template
 M.setup = function()

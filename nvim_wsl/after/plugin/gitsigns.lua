@@ -6,22 +6,12 @@ end
 -- See `:help gitsigns.txt`
 gitsigns.setup {
   signs = {
-    -- add = { text = '+' },
-    -- change = { text = '~' },
-    -- delete = { text = '_' },
-    -- topdelete = { text = '‾' },
-    -- changedelete = { text = '~' },
-    add = { text = '' },
-    change = { text = '' },
-    delete = { text = '' },
-    topdelete = { text = '' },
-    changedelete = { text = '' },
-    -- add          = { text = '│' },
-    -- change       = { text = '│' },
-    -- delete       = { text = '_' },
-    -- topdelete    = { text = '‾' },
-    -- changedelete = { text = '~' },
-    -- untracked    = { text = '┆' },
+    add          = { text = vim.g.diff_signs.Add },
+    change       = { text = vim.g.diff_signs.Change },
+    delete       = { text = vim.g.diff_signs.Delete },
+    topdelete    = { text = vim.g.diff_signs.TopDelete },
+    untracked    = { text = vim.g.diff_signs.Untracked },
+    changedelete = { text = vim.g.diff_signs.ChangeDelete },
   },
   signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
   numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
@@ -95,17 +85,3 @@ gitsigns.setup {
     map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
 }
-
--- vim.cmd [[ hi clear GitSignsAdd ]]
--- vim.cmd [[ hi clear GitSignsChange ]]
--- vim.cmd [[ hi clear GitSignsDelete ]]
-
--- vim.cmd [[ highlight GitSignsAdd guifg=#00CF00 ]]
--- vim.cmd [[ highlight GitSignsChange guifg=#CFCF00 ]]
--- vim.cmd [[ highlight GitSignsDelete guifg=#CF0000 ]]
-
--- vim.cmd [[ hi clear DiffAdd ]]
--- vim.cmd [[ hi clear DiffChange ]]
-
--- vim.cmd [[ highlight DiffAdd guibg=#213020 ]]
--- vim.cmd [[ highlight DiffChange guibg=#202000 ]]

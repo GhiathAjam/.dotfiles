@@ -22,13 +22,13 @@ vim.opt.conceallevel = 0
 -- always show tabline
 vim.opt.showtabline = 2
 
--- set number column width to 2 {default 4}
+-- set number column width {default 4}
 vim.opt.numberwidth = 3
 
 -- faster completion
 vim.opt.updatetime = 500
 
--- we went to hopsital 
+-- we went to hopsital
 -- check spelling of comments
 vim.opt.spell = true
 
@@ -107,13 +107,29 @@ vim.opt.listchars = {
 }
 
 vim.opt.fillchars = {
-  -- eob = ' ',
-  -- diff = ' ',
-  vert = ' ',
-  -- fold = ' ',
-  -- foldopen = '▾',
-  -- foldsep = '│',
+  diff      = '-',
+  -- eob       = '~',
+  eob       = ' ',
+  fold      = '·',
+  -- fold      = ' ',
+  foldclose = '+',
   -- foldclose = '▸',
+  foldopen  = '-',
+  -- foldopen  = '▾',
+  foldsep   = '│', -- |
+  -- foldsep   = '│',
+  horiz     = '─', -- -
+  horizdown = '┬', -- -
+  horizup   = '┴', -- -
+  lastline  = ' ',
+  stl       = ' ', -- ^
+  stlnc     = ' ', -- =
+  vert      = ' ', -- │ |
+  verthoriz = '┼', -- +
+  vertleft  = '┤', -- |
+  vertright = '├', -- |
+  -- window bar
+  wbr       = ' ',
 }
 
 vim.opt.signcolumn = 'yes'

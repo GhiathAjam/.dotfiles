@@ -1,7 +1,8 @@
 # forever ignored
 mpv_win/watch_later
-lvim_wsl_kali/plugin/packer_compiled.lua
-nvim_wsl_kali/plugin/packer_compiled.lua
+lvim_wsl/plugin/packer_compiled.lua
+nvim_wsl/plugin/packer_compiled.lua
+nvim_wsl/spell
 # temporarily ignored
-lvim_wsl_kali/lazy-lock.json
-nvim_wsl_kali/kickstart.lua
+lvim_wsl/lazy-lock.json
+nvim_wsl/kickstart.lua

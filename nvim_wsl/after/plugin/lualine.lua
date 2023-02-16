@@ -12,7 +12,7 @@ vim.opt.showmode = false
 local _, lualine = pcall(require, 'lualine')
 if not _ then return end
 
-lualine.setup {  
+lualine.setup {
   options = {
     icons_enabled = true,
 
@@ -43,9 +43,28 @@ lualine.setup {
         'diff',
          colored = true,
          -- diff_color = { added = 'GitSignsAdd', modified = 'GitSignsChange', removed = 'GitSignsDelete', },
-         symbols = { added = ' ', modified = ' ', removed = ' ' }
+         symbols = {
+          added = vim.g.diff_signs.Add .. ' ',
+          modified = vim.g.diff_signs.Change .. ' ',
+          removed = vim.g.diff_signs.Delete .. ' ' ,
+        },
       },
-      'diagnostics'},
+      {
+        'diagnostics',
+        -- diagnostics_color = {
+        --   error = 'DiagnosticError',
+        --   warn  = 'DiagnosticSignWarn',
+        --   info  = 'DiagnosticSignInfo',
+        --   hint  = 'DiagnosticHint',
+        -- },
+        symbols = {
+          error = vim.g.lsp_signs.Error .. ' ',
+          warn  = vim.g.lsp_signs.Warning .. ' ',
+          info  = vim.g.lsp_signs.Information .. ' ',
+          hint  = vim.g.lsp_signs.Hint .. ' ',
+        },
+      },
+    },
     lualine_c = {'filename'},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress', 'filesize'},
@@ -111,7 +130,7 @@ lualine.setup {
 
     -- like undo tree
     -- 'mundo',
-    
+
     -- tree explorers
     -- 'fern',
     -- 'chadtree',
