@@ -1,6 +1,8 @@
 -- vim.cmd [[ colorscheme gruvbox ]]
 vim.cmd [[ colorscheme onedarker ]]
 
+vim.cmd [[ hi VertSplit guifg=#444444 guibg=#282c34 ]]
+
 -- colorscheme monokai-phoenix
 -- hi MatchParen guifg=#E0E0E0 guibg=#E0E0E0
 -- fix bad matching parenthesis!

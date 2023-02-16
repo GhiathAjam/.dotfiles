@@ -106,6 +106,16 @@ vim.opt.listchars = {
   trail = '•',
 }
 
+vim.opt.fillchars = {
+  -- eob = ' ',
+  -- diff = ' ',
+  vert = ' ',
+  -- fold = ' ',
+  -- foldopen = '▾',
+  -- foldsep = '│',
+  -- foldclose = '▸',
+}
+
 vim.opt.signcolumn = 'yes'
 vim.opt.viewoptions = 'folds,cursor'
 
