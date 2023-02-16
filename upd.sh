@@ -16,13 +16,13 @@ WSL="/mnt/c/Users/Ghieath/.wslconfig"
 # Pack in one list, path & name
 declare -A configs
 configs=(
-  # ["$NVIM"]="nvim_wsl_kali/"
+  # ["$NVIM"]="nvim_wsl/"
   # ["$GIT"]="git/"
   ["$MPV"]="mpv_win/"
   ["$ALACRITTY"]="alacritty_win/alacritty.yml"
-  # ["$BASH"]="bash_wsl_kali/.bashrc"
-  # ["$TMUX"]="tmux_wsl_kali/.tmux.conf.local"
-  # ["$LUNARVIM"]="lvim_wsl_kali/"
+  # ["$BASH"]="bash_wsl/.bashrc"
+  # ["$TMUX"]="tmux_wsl/.tmux.conf.local"
+  # ["$LUNARVIM"]="lvim_wsl/"
   ["$WSL"]="wsl_distros_global/.wslconfig"
 )
 

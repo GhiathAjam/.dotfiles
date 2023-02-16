@@ -18,12 +18,14 @@ not all up yet
   - Windows 10
   - colorscheme fits both powershell 7.x & WSL
 - LunarVim:
-  - WSL (Kali) under Windows 10
+  - WSL under Windows 10
 - mpv
   - Windows 10
 - Tmux
-  - WSL (Kali) under Windows 10
+  - WSL under Windows 10
 - Bash
-  - WSL (Kali) under Windows 10
+  - WSL under Windows 10
+- Git
+  - WSL config
 - compile_commands.json:
   - Used with C++ LSPs  ccls / clangd
