@@ -1,0 +1,104 @@
+[include]
+  ; use env variable HOME HOWWW
+  ; path = ~/Desktop/repos/delta/themes.gitconfig
+
+[user]
+  ; Please adapt and uncomment the following lines:
+  name = غياث-Gheiath
+  email = ajamghiath@gmail.com
+  ; email = ghiath.ajam01@eng-st.cu.edu.eg
+
+[init]
+  defaultBranch = main
+
+[rebase]
+  instructionFormat = format:%s |BY: %an <%ae>, %ar
+
+; define command which will be used when "nvim" is set as a merge tool
+[mergetool "nvim"]
+  cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+
+[merge]
+  tool = nvim
+  ; conflictstyle = diff3
+
+[mergetool]
+  prompt = false
+
+[diff]
+  colorMoved = default
+
+[core]
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+
+[delta]
+  navigate     = true
+  side-by-side = true
+  hyperlinks   = true
+  features     = decorations
+
+[delta "interactive"]
+  keep-plus-minus-markers = true
+
+[delta "decorations"]
+  side-by-side = true
+  dark = true
+  ;
+  ; syntax-theme = none
+  syntax-theme = 1337
+  ; syntax-theme = Nord
+  ; syntax-theme = OneHalfDark
+  ; syntax-theme = Solarized (dark)
+  ; syntax-theme = Sublime Snazzy
+  ; syntax-theme = TwoDark
+  ; syntax-theme = Visual Studio Dark+
+  ; syntax-theme = ansi
+  ; syntax-theme = base16
+  ; syntax-theme = base16-256
+  ; syntax-theme = gruvbox-dark
+  ; syntax-theme = zenburn
+  ; syntax-theme = GitHub
+  ; syntax-theme = Monokai Extended Light
+  ; syntax-theme = OneHalfLight
+  ; syntax-theme = Solarized (light)
+  ; syntax-theme = gruvbox-light
+  ; syntax-theme = Vibrant Sunburst
+  ;
+  ; whitespace-error-style = reverse red
+  commit-decoration-style = bold box ul "#00FF00"
+  ; commit-style = raw
+  file-style = omit
+  hunk-header-style = file
+  hunk-header-file-style = "#AAAAAA"
+  hunk-header-decoration-style = "#00FFFF" box ul
+
+  line-numbers = true
+  line-numbers-left-style  = black
+  line-numbers-right-style = black
+  line-numbers-minus-style = "#FF0000" 
+  line-numbers-plus-style  = "#00FF00"
+  line-numbers-zero-style  = "#AAAAAA"
+  zero-style = normal
+  minus-style = "#FF0000" "#400000"
+  minus-emph-style = "#FF0000"
+  minus-non-emph-style = "#FFFF00"
+  plus-style = "#00FF00" "#004000"
+  plus-emph-style = "#00FF00"
+  plus-non-emph-style = "#FFFF00"
+
+  blame-code-style = syntax
+  blame-format = "{author:<18} #{commit:>9} {timestamp:^16} "
+  blame-palette = "#203040" "#304050" "#404050" "#405060"
+  blame-separator-format = " {n:^3_block}"
+  ; blame-separator-style = raw raw
+  blame-timestamp-output-format = " %d/%m/%y  %I %P"
+
+  merge-conflict-begin-symbol = ~
+  merge-conflict-end-symbol = ~
+  merge-conflict-ours-diff-header-style = "#F1FA8C" bold
+  merge-conflict-ours-diff-header-decoration-style = "#434C5E" box
+  merge-conflict-theirs-diff-header-style = "#F1FA8C" bold
+  merge-conflict-theirs-diff-header-decoration-style = "#434C5E" box

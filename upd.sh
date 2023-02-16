@@ -3,6 +3,7 @@
 # PATHS
 REPO=$HOME"/Desktop/myrepos/configs"
 NVIM=$HOME"/.config/nvim/"
+GIT=$HOME"/.config/git/"
 scoop="/mnt/c/Users/Ghieath/scoop"
 MPV=$scoop"/persist/mpv/portable_config/"
 ALACRITTY=$scoop"/persist/alacritty/alacritty.yml"
@@ -16,6 +17,7 @@ WSL="/mnt/c/Users/Ghieath/.wslconfig"
 declare -A configs
 configs=(
   # ["$NVIM"]="nvim_wsl_kali/"
+  # ["$GIT"]="git/"
   ["$MPV"]="mpv_win/"
   ["$ALACRITTY"]="alacritty_win/alacritty.yml"
   # ["$BASH"]="bash_wsl_kali/.bashrc"
