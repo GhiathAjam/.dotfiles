@@ -1,5 +1,11 @@
--- vim.cmd [[ colorscheme gruvbox ]]
-vim.cmd [[ colorscheme lvim_onedarker ]]
+local ok1, _ = pcall(require, 'lvim_onedarker')
+local ok2, _ = pcall(require, 'onedarker')
+
+if ok1 then
+  vim.cmd [[ colorscheme lvim_onedarker ]]
+elseif ok2 then
+  vim.cmd [[ colorscheme onedarker ]]
+end
 
 vim.cmd [[ hi VertSplit guifg=#444444 guibg=#282c34 ]]
 
