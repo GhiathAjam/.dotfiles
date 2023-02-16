@@ -1,9 +1,11 @@
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path =
+    fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
     vim.notify('INSTALLING PACKER')
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({'git', 'clone', '--depth', '1',
+      'https://github.com/wbthomason/packer.nvim', install_path})
     -- vim.cmd [[packadd packer.nvim]]
     -- vim.cmd [[ packloadall! ]]
     return true
@@ -42,13 +44,15 @@ return packer.startup(function(use)
 
   -- use 'folke/lsp-colors.nvim'
 
-  use 'jose-elias-alvarez/null-ls.nvim' -- LSP diagnostics and code actions
-  --  use {
-  --    'w0rp/ale',
-  --    ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
-  --    cmd = 'ALEEnable',
-  --    config = 'vim.cmd[[ALEEnable]]'
-  --  }
+  -- LSP diagnostics and code actions
+  -- use 'jose-elias-alvarez/null-ls.nvim'
+  -- use {
+  --   'w0rp/ale',
+  --   ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown',
+  --     'racket', 'vim', 'tex'},
+  --   cmd = 'ALEEnable',
+  --   config = 'vim.cmd[[ALEEnable]]'
+  -- }
 
   use {
     'mfussenegger/nvim-dap',
@@ -126,7 +130,8 @@ return packer.startup(function(use)
   --   requires = {
   --     -- 9000+ Snippets
   --     { 'ms-jpq/coq.artifacts', branch = 'artifacts' },
-  --     -- lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
+  --     -- lua & third party sources
+  --     -- See https://github.com/ms-jpq/coq.thirdparty
   --     -- Need to **configure separately**
   --     -- shell repl
   --     -- nvim lua api
@@ -145,10 +150,13 @@ return packer.startup(function(use)
   -- Copilot
   -- ########
   use 'zbirenbaum/copilot.lua'
-  use {
-    'zbirenbaum/copilot-cmp',
-    after = { 'copilot.lua', 'nvim-cmp' },
-  }
+  -- use {
+  --   'zbirenbaum/copilot-cmp',
+  --   after = { 'copilot.lua', 'nvim-cmp' },
+  -- }
+
+  -- alternatives
+  -- use 'Exafunction/codeium.vim'
 
   use 'junegunn/vim-easy-align'
 
@@ -168,10 +176,14 @@ return packer.startup(function(use)
 
   -- Colors
   use {
-    -- 'morhetz/gruvbox',
-    'ellisonleao/gruvbox.nvim',
-     { 'LunarVim/onedarker.nvim', branch = 'freeze' },
-    -- 'LunarVim/onedarker.nvim',
+    -- lock as I modified its source lol
+    {
+      'LunarVim/onedarker.nvim',
+      branch = 'freeze',
+      as = 'lvim_onedarker',
+      lock = true
+    },
+    { 'LunarVim/onedarker.nvim', }
   }
 
   use { "akinsho/toggleterm.nvim", tag = '*' }
@@ -184,10 +196,22 @@ return packer.startup(function(use)
   -- Plug 'wfxr/minimap.vim'
 
   -- Building / Running
-  --  use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
+  -- use {
+  --   'tpope/vim-dispatch',
+  --   opt = true,
+  --   cmd = { 'Dispatch', 'Make', 'Focus', 'Start' }
+  -- }
 
-  --  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
-  --  use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
+  -- use {
+  --   'iamcco/markdown-preview.nvim',
+  --   run = 'cd app && yarn install',
+  --   cmd = 'MarkdownPreview'
+  -- }
+
+  -- use {
+  --   'glacambre/firenvim',
+  --   run = function() vim.fn['firenvim#install'](0) end
+  -- }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

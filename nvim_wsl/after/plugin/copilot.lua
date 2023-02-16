@@ -9,23 +9,21 @@ require('copilot').setup {
       jump_next = ']]',
       accept = '<CR>',
       refresh = 'gr',
-      open = '<M-CR>'
+      open = '<M-CR>',
     },
   },
   suggestion = {
-    -- avoid conflict with nvim-cmp
-    enabled = false,
-    -- enabled = true,
-    auto_trigger = false,
+    enabled = true,
+    -- Start suggesting as soon as you enter insert mode.
+    auto_trigger = true,
     debounce = 75,
     keymap = {
-      accept = '<M-l>',
       accept_word = false,
       accept_line = false,
-      -- next = '<M-]>',
-      next = '<C-;>',
+      accept = '<M-CR>',
       prev = '<M-[>',
-      dismiss = '<C-]>',
+      next = '<M-]>',
+      dismiss = '<M-BS>',
     },
   },
   filetypes = {
@@ -40,5 +38,13 @@ require('copilot').setup {
     ['.'] = false,
   },
   copilot_node_command = 'node', -- Node.js version must be > 16.x
-  server_opts_overrides = {},
+  server_opts_overrides = {
+    -- trace = "verbose",
+    -- settings = {
+    --   advanced = {
+    --     listCount = 5, -- #completions for panel
+    --     inlineSuggestCount = 5, -- #completions for getCompletions
+    --   }
+    -- },
+  },
 }

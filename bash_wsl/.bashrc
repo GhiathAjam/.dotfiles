@@ -214,6 +214,8 @@ alias gs='git status'
 alias emacs='emacsclient -c -a ""'
 alias et='\emacs -nw'
 
+alias vi='nvim -u NONE'
+
 # sudo mkdir -p /run/user/$UID
 # sudo chown gheiath /run/user/$UID
 # sudo chmod 700 /run/user/$UID
