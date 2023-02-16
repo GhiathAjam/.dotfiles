@@ -25,7 +25,9 @@ not all up yet
   - WSL under Windows 10
 - Bash
   - WSL under Windows 10
-- Git
+- Git & Delta
   - WSL config
 - compile_commands.json:
   - Used with C++ LSPs  ccls / clangd
+- Bat (batcat)
+  - WSL config

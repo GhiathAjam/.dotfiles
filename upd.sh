@@ -4,6 +4,7 @@
 REPO=$HOME"/Desktop/myrepos/configs"
 NVIM=$HOME"/.config/nvim/"
 GIT=$HOME"/.config/git/"
+BAT=$HOME"/.config/bat/"
 scoop="/mnt/c/Users/Ghieath/scoop"
 MPV=$scoop"/persist/mpv/portable_config/"
 ALACRITTY=$scoop"/persist/alacritty/alacritty.yml"
@@ -12,12 +13,12 @@ TMUX=$HOME"/.tmux.conf.local"
 LUNARVIM=$HOME"/.config/lvim/"
 WSL="/mnt/c/Users/Ghieath/.wslconfig"
 
-
 # Pack in one list, path & name
 declare -A configs
 configs=(
   # ["$NVIM"]="nvim_wsl/"
   # ["$GIT"]="git/"
+  # ["$BAT"]="bat_wsl"
   ["$MPV"]="mpv_win/"
   ["$ALACRITTY"]="alacritty_win/alacritty.yml"
   # ["$BASH"]="bash_wsl/.bashrc"
