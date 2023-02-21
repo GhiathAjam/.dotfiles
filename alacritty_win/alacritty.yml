@@ -24,6 +24,8 @@
   # TERM: xterm-256color
 
 
+# winpty_backend: false
+
 window:
   # Window dimensions (changes require restart)
   #
@@ -89,13 +91,6 @@ window:
   # Allow terminal applications to change Alacritty's window title.
   dynamic_title: true
 
-  # Window class (Linux/BSD only):
-  # class:
-    # Application instance name
-    # instance: Alacritty
-    # General application class
-    # general: Alacritty
-
   # Decorations theme variant (Linux/BSD only)
   #
   # Override the variant of the GTK theme/Wayland client side decorations.
@@ -106,7 +101,7 @@ window:
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  history: 10000
+  history: 40000
 
   # Scrolling distance multiplier.
   multiplier: 3
@@ -122,68 +117,42 @@ tabspaces: 2
 
 # Font configuration
 font:
-  # Normal (roman) font face
   normal:
-    # Font family
-    #
-    # Default:
-    #   - (macOS) Menlo
-    #   - (Linux/BSD) monospace
-    #   - (Windows) Consolas
     # family: JetBrainsMono NFM
     # family: FiraCode NFM
     # family: Source Code Pro
     family: CaskaydiaCove NFM
     # family: Consolas
-
-    # The `style` can be specified to pick a specific face.
     style: Regular
 
-  # Bold font face
   bold:
-    # Font family
-    #
-    # If the bold family is not specified, it will fall back to the
-    # value specified for the normal font.
+    # falls back to normal
+
     # family: JetBrainsMono NFM
     # family: FiraCode NFM
     # family: Source Code Pro
     family: CaskaydiaCove NFM
     # family: Consolas
-
-    # The `style` can be specified to pick a specific face.
     style: Bold
 
-  # Italic font face
   italic:
-    # Font family
-    #
-    # If the italic family is not specified, it will fall back to the
-    # value specified for the normal font.
+    # falls back to normal
+
     # family: JetBrainsMono NFM
     # family: FiraCode NFM
     # family: Source Code Pro
     family: CaskaydiaCove NFM
     # family: Consolas
-
-    # The `style` can be specified to pick a specific face.
-    # style: Italic
     style: Oblique
 
-  # Bold italic font face
   bold_italic:
-    # Font family
-    #
-    # If the bold italic family is not specified, it will fall back to the
-    # value specified for the normal font.
+    # falls back to normal
+
     # family: JetBrainsMono NFM
     # family: FiraCode NFM
     # family: Source Code Pro
     family: CaskaydiaCove NFM
     # family: Consolas
-
-    # The `style` can be specified to pick a specific face.
-    # style: Bold Italic
     style: Bold Oblique
 
   # Point size
@@ -192,26 +161,31 @@ font:
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
-    x: 0
-    y: 0
+    x: 1
+    y: 1
+
+  # Glyph offset determines the locations of the glyphs within their cells with
+  # the default being at the bottom. Increasing `x` moves the glyph to the
+  # right, increasing `y` moves the glyph upward.
+  #glyph_offset:
+  #  x: 0
+  #  y: 0
 
   # Use built-in font for box drawing characters.
   #
   # If `true`, Alacritty will use a custom built-in font for box drawing
   # characters (Unicode points 2500 - 259f).
   #
-  #builtin_box_drawing: true
+  # builtin_box_drawing: true
 
 # If `true`, bold text is drawn using the bright color variants.
 # draw_bold_text_with_bright_colors: true
 
-## Color Template
-# Colors (Tomorrow Night)
-#colors:
+colors:
   # Default colors
-  #primary:
-  #  background: '#1d1f21'
-  #  foreground: '#c5c8c6'
+  primary:
+    background: '#202020'
+    foreground: '#c0c5ce'
 
     # Bright and dim foreground colors
     #
@@ -228,9 +202,9 @@ font:
   #
   # Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
-  #cursor:
-  #  text: CellBackground
-  #  cursor: CellForeground
+  cursor:
+   text: CellBackground
+   cursor: CellForeground
 
   # Vi mode cursor colors
   #
@@ -238,14 +212,14 @@ font:
   #
   # Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
-  #vi_mode_cursor:
+  # vi_mode_cursor:
   #  text: CellBackground
   #  cursor: CellForeground
 
   # Search colors
   #
   # Colors used for the search bar and match highlighting.
-  #search:
+  # search:
     # Allowed values are CellForeground/CellBackground, which reference the
     # affected cell, or hexadecimal colors like #ff00ff.
     #matches:
@@ -255,12 +229,9 @@ font:
     #  foreground: '#ffffff'
     #  background: '#000000'
 
-    #bar:
-    #  background: '#c5c8c6'
-    #  foreground: '#1d1f21'
-
   # Keyboard regex hints
-  #hints:
+  hints:
+    hyperlinks: true
     # First character in the hint label
     #
     # Allowed values are CellForeground/CellBackground, which reference the
@@ -287,37 +258,48 @@ font:
   #  foreground: None
   #  background: None
 
+  # Footer bar
+  #
+  # Color used for the footer bar on the bottom, used by search regex input,
+  # hyperlink URI preview, etc.
+  #
+  #footer_bar:
+  #  background: '#c5c8c6'
+  #  foreground: '#1d1f21'
+
   # Selection colors
   #
   # Colors which should be used to draw the selection area.
   #
   # Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
-  #selection:
-  #  text: CellBackground
-  #  background: CellForeground
+  selection:
+    text: CellBackground
+    background: CellForeground
+    # text: CellForeground
+    # background: '#3e4451'
 
   # Normal colors
-  #normal:
-  #  black:   '#1d1f21'
-  #  red:     '#cc6666'
-  #  green:   '#b5bd68'
-  #  yellow:  '#f0c674'
-  #  blue:    '#81a2be'
-  #  magenta: '#b294bb'
-  #  cyan:    '#8abeb7'
-  #  white:   '#c5c8c6'
+  normal:
+    black:   '#4c4c4c'
+    red:     '#ff3c3c'
+    green:   '#0dbc79'
+    yellow:  '#e5e510'
+    blue:    '#3b8eea'
+    magenta: '#bc3fbc'
+    cyan:    '#11a8cd'
+    white:   '#e5e5e5'
 
   # Bright colors
-  #bright:
-  #  black:   '#666666'
-  #  red:     '#d54e53'
-  #  green:   '#b9ca4a'
-  #  yellow:  '#e7c547'
-  #  blue:    '#7aa6da'
-  #  magenta: '#c397d8'
-  #  cyan:    '#70c0b1'
-  #  white:   '#eaeaea'
+  bright:
+    black:   '#666666'
+    red:     '#f14c4c'
+    green:   '#23d18b'
+    yellow:  '#f5f543'
+    blue:    '#3b8eea'
+    magenta: '#d670d6'
+    cyan:    '#29b8db'
+    white:   '#e5e5e5'
 
   # Dim colors
   #
@@ -350,501 +332,10 @@ font:
   # regardless of their background color.
   #transparent_background_colors: false
 
-#######################################
-##      START OF COLOR SCHEMES       ##
-#######################################
-schemes:
-  ### Doom One ###
-  DoomOne: &DoomOne
-    primary:
-      background: '#282c34'
-      foreground: '#bbc2cf'
-    cursor:
-      text: CellBackground
-      cursor: '#528bff'
-    selection:
-      text: CellForeground
-      background: '#3e4451'
-    normal:
-      black:   '#1c1f24'
-      red:     '#ff6c6b'
-      green:   '#98be65'
-      yellow:  '#da8548'
-      blue:    '#0000af'
-      magenta: '#c678dd'
-      cyan:    '#5699af'
-      white:   '#202328'
-    bright:
-      black:   '#5b6268'
-      red:     '#da8548'
-      green:   '#30ef00'
-      yellow:  '#ecbe7b'
-      blue:    '#0f8fff'   # This is 2257a0 in Doom Emacs but I lightened it.
-      magenta: '#a9a1e1'
-      cyan:    '#46f9ef'
-      white:   '#dfdfdf'
 
-  ### Dracula ###
-  Dracula: &Dracula
-    primary:
-      background: '#282a36'
-      foreground: '#f8f8f2'
-    cursor:
-      text: CellBackground
-      cursor: CellForeground
-    vi_mode_cursor:
-      text: CellBackground
-      cursor: CellForeground
-    search:
-      matches:
-        foreground: '#44475a'
-        background: '#50fa7b'
-      focused_match:
-        foreground: '#44475a'
-        background: '#ffb86c'
-      bar:
-        background: '#282a36'
-        foreground: '#f8f8f2'
-    line_indicator:
-      foreground: None
-      background: None
-    selection:
-      text: CellForeground
-      background: '#44475a'
-    normal:
-      black:   '#000000'
-      red:     '#ff5555'
-      green:   '#50fa7b'
-      yellow:  '#f1fa8c'
-      blue:    '#bd93f9'
-      magenta: '#ff79c6'
-      cyan:    '#8be9fd'
-      white:   '#bfbfbf'
-    bright:
-      black:   '#4d4d4d'
-      red:     '#ff6e67'
-      green:   '#5af78e'
-      yellow:  '#f4f99d'
-      blue:    '#caa9fa'
-      magenta: '#ff92d0'
-      cyan:    '#9aedfe'
-      white:   '#e6e6e6'
-    dim:
-      black:   '#14151b'
-      red:     '#ff2222'
-      green:   '#1ef956'
-      yellow:  '#ebf85b'
-      blue:    '#4d5b86'
-      magenta: '#ff46b0'
-      cyan:    '#59dffc'
-      white:   '#e6e6d1'
-
-  ### Gruvbox dark ###
-  GruvboxDark: &GruvboxDark
-    # Default colors
-    primary:
-      # hard contrast: background = '0x1d2021'
-      background: '#282828'
-      # soft contrast: background = '0x32302f'
-      foreground: '#ebdbb2'
-
-    # Normal colors
-    normal:
-      black:   '#282828'
-      red:     '#cc241d'
-      green:   '#98971a'
-      yellow:  '#d79921'
-      blue:    '#458588'
-      magenta: '#b16286'
-      cyan:    '#689d6a'
-      white:   '#a89984'
-
-    # Bright colors
-    bright:
-      black:   '#928374'
-      red:     '#fb4934'
-      green:   '#b8bb26'
-      yellow:  '#fabd2f'
-      blue:    '#83a598'
-      magenta: '#d3869b'
-      cyan:    '#8ec07c'
-      white:   '#ebdbb2'
-
-### Gruv2 ###
-  Gruv2: &Gruv2
-    primary:
-      # hard contrast background - '#1d2021'
-      background:        &gruvbox_dark_bg '#282828'
-      # soft contrast background - '#32302f'
-      foreground:        '#ebdbb2'
-      bright_foreground: '#fbf1c7'
-      dim_foreground:    '#a89984'
-    cursor:
-      text:   CellBackground
-      cursor: CellForeground
-    vi_mode_cursor:
-      text:   CellBackground
-      cursor: CellForeground
-    # search:
-    #   matches:
-    #     foreground: '#000000'
-    #     background: '#ffffff'
-    #   focused_match:
-    #    foreground: CellBackground
-    #    background: CellForeground
-    #   bar:
-    #     background: ''
-    #     foreground: ''
-    # line_indicator:
-    #   foreground: None
-    #   background: None
-    selection:
-      text:       CellBackground
-      background: CellForeground
-    bright:
-      black:   '#928374'
-      red:     '#fb4934'
-      green:   '#b8bb26'
-      yellow:  '#fabd2f'
-      blue:    '#83a598'
-      magenta: '#d3869b'
-      cyan:    '#8ec07c'
-      white:   '#ebdbb2'
-
-    normal:
-      black:   *gruvbox_dark_bg
-      red:     '#cc241d'
-      green:   '#98971a'
-      yellow:  '#d79921'
-      blue:    '#458588'
-      magenta: '#b16286'
-      cyan:    '#689d6a'
-      white:   '#a89984'
-    dim:
-      black:   '#32302f'
-      red:     '#9d0006'
-      green:   '#79740e'
-      yellow:  '#b57614'
-      blue:    '#076678'
-      magenta: '#8f3f71'
-      cyan:    '#427b58'
-      white:   '#928374'
-
-    # indexed_colors: []
-
-### Monokai ###
-  MonokaiPro: &MonokaiPro
-    # Default colors
-    primary:
-      background: '#2D2A2E'
-      foreground: '#FCFCFA'
-
-    # Normal colors
-    normal:
-      black:   '#403E41'
-      red:     '#FF6188'
-      green:   '#A9DC76'
-      yellow:  '#FFD866'
-      blue:    '#FC9867'
-      magenta: '#AB9DF2'
-      cyan:    '#78DCE8'
-      white:   '#FCFCFA'
-
-    # Bright colors
-    bright:
-      black:   '#727072'
-      red:     '#FF6188'
-      green:   '#A9DC76'
-      yellow:  '#FFD866'
-      blue:    '#FC9867'
-      magenta: '#AB9DF2'
-      cyan:    '#78DCE8'
-      white:   '#FCFCFA'
-
-  ### Nord ###
-  Nord: &Nord
-    # Default colors
-    primary:
-      background: '#2E3440'
-      foreground: '#D8DEE9'
-
-    # Normal colors
-    normal:
-      black:   '#3B4252'
-      red:     '#BF616A'
-      green:   '#A3BE8C'
-      yellow:  '#EBCB8B'
-      blue:    '#81A1C1'
-      magenta: '#B48EAD'
-      cyan:    '#88C0D0'
-      white:   '#E5E9F0'
-
-    # Bright colors
-    bright:
-      black:   '#4C566A'
-      red:     '#BF616A'
-      green:   '#A3BE8C'
-      yellow:  '#EBCB8B'
-      blue:    '#81A1C1'
-      magenta: '#B48EAD'
-      cyan:    '#8FBCBB'
-      white:   '#ECEFF4'
-
-  ### Oceanic Next ###
-  OceanicNext: &OceanicNext
-    # Default colors
-    primary:
-      background: '#1b2b34'
-      foreground: '#d8dee9'
-
-    # Colors the cursor will use if `custom_cursor_colors` is true
-    cursor:
-      text: '#1b2b34'
-      cursor: '#ffffff'
-
-    # Normal colors
-    normal:
-      black:   '#343d46'
-      red:     '#EC5f67'
-      green:   '#99C794'
-      yellow:  '#FAC863'
-      blue:    '#6699cc'
-      magenta: '#c594c5'
-      cyan:    '#5fb3b3'
-      white:   '#d8dee9'
-
-    # Bright colors
-    bright:
-      black:   '#343d46'
-      red:     '#EC5f67'
-      green:   '#99C794'
-      yellow:  '#FAC863'
-      blue:    '#6699cc'
-      magenta: '#c594c5'
-      cyan:    '#5fb3b3'
-      white:   '#d8dee9'
-
-  ### Palenight ###
-  Palenight: &Palenight
-    # Default colors
-    primary:
-      background: '#292d3e'
-      foreground: '#d0d0d0'
-
-    # Normal colors
-    normal:
-      black:   '#292d3e'
-      red:     '#f07178'
-      green:   '#c3e88d'
-      yellow:  '#ffcb6b'
-      blue:    '#82aaff'
-      magenta: '#c792ea'
-      cyan:    '#89ddff'
-      white:   '#d0d0d0'
-
-    # Bright colors
-    bright:
-      black:   '#434758'
-      red:     '#ff8b92'
-      green:   '#ddffa7'
-      yellow:  '#ffe585'
-      blue:    '#9cc4ff'
-      magenta: '#e1acff'
-      cyan:    '#a3f7ff'
-      white:   '#ffffff'
-
-  ### Solarized Dark ###
-  SolarizedDark: &SolarizedDark
-    # Default colors
-    primary:
-      background: '#002b36' # base03
-      foreground: '#839496' # base0
-
-    # Cursor colors
-    cursor:
-      text:   '#002b36' # base03
-      cursor: '#839496' # base0
-
-    # Normal colors
-    normal:
-      black:   '#073642' # base02
-      red:     '#dc322f' # red
-      green:   '#859900' # green
-      yellow:  '#b58900' # yellow
-      blue:    '#268bd2' # blue
-      magenta: '#d33682' # magenta
-      cyan:    '#2aa198' # cyan
-      white:   '#eee8d5' # base2
-
-    # Bright colors
-    bright:
-      black:   '#002b36' # base03
-      red:     '#cb4b16' # orange
-      green:   '#586e75' # base01
-      yellow:  '#657b83' # base00
-      blue:    '#839496' # base0
-      magenta: '#6c71c4' # violet
-      cyan:    '#93a1a1' # base1
-      white:   '#fdf6e3' # base3
-
-  ### Solarized Light ###
-  SolarizedLight: &SolarizedLight
-    # Default colors
-    primary:
-      background: '#fdf6e3' # base3
-      foreground: '#657b83' # base00
-
-    # Cursor colors
-    cursor:
-      text:   '#fdf6e3' # base3
-      cursor: '#657b83' # base00
-
-    # Normal colors
-    normal:
-      black:   '#073642' # base02
-      red:     '#dc322f' # red
-      green:   '#859900' # green
-      yellow:  '#b58900' # yellow
-      blue:    '#268bd2' # blue
-      magenta: '#d33682' # magenta
-      cyan:    '#2aa198' # cyan
-      white:   '#eee8d5' # base2
-
-    # Bright colors
-    bright:
-      black:   '#002b36' # base03
-      red:     '#cb4b16' # orange
-      green:   '#586e75' # base01
-      yellow:  '#657b83' # base00
-      blue:    '#839496' # base0
-      magenta: '#6c71c4' # violet
-      cyan:    '#93a1a1' # base1
-      white:   '#fdf6e3' # base3
-
-  ### Tomorrow Night ###
-  TomorrowNight: &TomorrowNight
-     # Default colors
-    primary:
-      background: '#1d1f21'
-      foreground: '#c5c8c6'
-
-    # Colors the cursor will use if `custom_cursor_colors` is true
-    cursor:
-      text: '#1d1f21'
-      cursor: '#ffffff'
-
-    # Normal colors
-    normal:
-      black:   '#1d1f21'
-      red:     '#cc6666'
-      green:   '#b5bd68'
-      yellow:  '#e6c547'
-      blue:    '#81a2be'
-      magenta: '#b294bb'
-      cyan:    '#70c0ba'
-      white:   '#373b41'
-
-    # Bright colors
-    bright:
-      black:   '#666666'
-      red:     '#ff3334'
-      green:   '#9ec400'
-      yellow:  '#f0c674'
-      blue:    '#81a2be'
-      magenta: '#b77ee0'
-      cyan:    '#54ced6'
-      white:   '#282a2e'
-
-  ### Gheiath ###
-  # Gruvbox
-  Gheiath: &Gheiath
-     # Default colors
-    primary:
-      background: '#000000'
-      foreground: '#cccccc'
-
-    # Colors the cursor will use if `custom_cursor_colors` is true
-    cursor:
-      text: '#000000'
-      cursor: '#ffffff'
-
-    # Normal colors
-    normal:
-      black:   '#000000'
-      red:     '#ff0000'
-      green:   '#00ff00'
-      yellow:  '#ffff00'
-      blue:    '#0000ff'
-      magenta: '#9933ff'
-      cyan:    '#70c0ba'
-      white:   '#373b41'
-
-    # Bright colors
-    bright:
-      black:   '#666666'
-      red:     '#ff3334'
-      green:   '#9ec400'
-      yellow:  '#f0c674'
-      blue:    '#81a2be'
-      magenta: '#b77ee0'
-      cyan:    '#54ced6'
-      white:   '#e8eaee'
-
-
-
-######################################################################
-## SET THEME: Choose ONE color scheme from those in the above list. ##
-## ###################################################################
-# Available themes are:
-# *DoomOne
-# *Dracula
-# *GruvboxDark
-# *Gruv2
-# *MonokaiPro
-# *Nord
-# *OceanicNext
-# *Palenight
-# *SolarizedLight
-# *SolarizedDark
-# *TomorrowNight
-# *Gheiath
-
-colors: *Gruv2
-
-#######################################
-##       END OF COLOR SCHEMES        ##
-#######################################
-
-# Bell
-#
-# Any time the BEL code is received, Alacritty "rings" the visual bell.
+# No bell please
 bell:
-#   - Ease
-#   - EaseOut
-#   - EaseOutSine
-#   - EaseOutQuad
-#   - EaseOutCubic
-#   - EaseOutQuart
-#   - EaseOutQuint
-#   - EaseOutExpo
-#   - EaseOutCirc
-#   - Linear
-  animation: EaseOutExpo
-  # duration in milliseconds
   duration: 0
-  color: '#ffffff'
-  # Bell Command
-  #
-  # This program is executed whenever the bell is rung.
-  #
-  # When set to `command: None`, no command will be executed.
-  #
-  # Example:
-  #   command:
-  #     program: notify-send
-  #     args: ["Hello, World!"]
-  #
-  #command: None
 
 selection:
   # This string contains all characters that are used as separators for semantic words
@@ -870,7 +361,7 @@ cursor:
     #   - Off: Disable blinking by default
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
-    blinking: Off
+    blinking: Always
 
   # Vi mode cursor style
   #
@@ -883,6 +374,11 @@ cursor:
   # Cursor blinking interval in milliseconds.
   #blink_interval: 750
 
+  # Time after which cursor stops blinking, in seconds.
+  #
+  # Specifying '0' will disable timeout for blinking.
+  #blink_timeout: 5
+
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
   unfocused_hollow: true
@@ -891,8 +387,10 @@ cursor:
   # from `0.0` to `1.0`.
   #thickness: 0.15
 
-# Shell
+live_config_reload: true
+
 #
+# Shell
 # You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
 # Entries in `shell.args` are passed unmodified as arguments to the shell.
 #
@@ -912,9 +410,6 @@ shell:
 # directory of the parent process will be used.
 # working_directory: C:\Users\Ghieath\
 
-# Send ESC (\x1b) before characters when alt is pressed.
-alt_send_esc: true
-
 mouse:
   # Click settings
   #
@@ -925,20 +420,24 @@ mouse:
   #triple_click: { threshold: 300 }
 
   # If this is `true`, the cursor is temporarily hidden when typing.
-  hide_when_typing: false
+  hide_when_typing: true
 
-# Regex hints
+# Hints
 #
-# Terminal hints can be used to find text in the visible part of the terminal
-# and pipe it to other applications.
-# hints:
+# Terminal hints can be used to find text or hyperlink in the visible part of
+# the terminal and pipe it to other applications.
+#hints:
   # Keys used for the hint labels.
-  # alphabet: "jfkdls;ahgurieowpq"
+  #alphabet: "jfkdls;ahgurieowpq"
 
   # List with all available hints
   #
-  # Each hint must have a `regex` and either an `action` or a `command` field.
-  # The fields `mouse`, `binding` and `post_processing` are optional.
+  # Each hint must have any of `regex` or `hyperlinks` field and either an
+  # `action` or a `command` field. The fields `mouse`, `binding` and
+  # `post_processing` are optional.
+  #
+  # The `hyperlinks` option will cause OSC 8 escape sequence hyperlinks to be
+  # highlighted.
   #
   # The fields `command`, `binding.key`, `binding.mods`, `binding.mode` and
   # `mouse.mods` accept the same values as they do in the `key_bindings` section.
@@ -948,7 +447,8 @@ mouse:
   #
   # If the `post_processing` field is set to `true`, heuristics will be used to
   # shorten the match if there are characters likely not to be part of the hint
-  # (e.g. a trailing `.`). This is most useful for URIs.
+  # (e.g. a trailing `.`). This is most useful for URIs and applies only to
+  # `regex` matches.
   #
   # Values for `action`:
   #   - Copy
@@ -959,22 +459,18 @@ mouse:
   #       Select the hint's text.
   #   - MoveViModeCursor
   #       Move the vi mode cursor to the beginning of the hint.
-  #
-  #   DEFAULT WORKS!
-  #  enabled:
-  #   - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
-  #             [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
-  #     command: xdg-open
-  #   command: explorer.exe
-  #  post_processing: true
-  #  mouse:
-  #   enabled: true
-  #      mods: None
+  #enabled:
+  # - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
+  #           [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+  #   hyperlinks: true
+  #   command: xdg-open
+  #   post_processing: true
+  #   mouse:
+  #     enabled: true
+  #     mods: None
   #   binding:
   #     key: U
   #     mods: Control|Shift
-
-
 
 # Mouse bindings
 #
@@ -1169,6 +665,18 @@ mouse:
 #   - SearchHistoryNext
 #       Go to the next regex in the search history.
 #
+# - Linux/BSD exclusive actions:
+#
+#   - CopySelection
+#       Copy from the selection buffer.
+#   - PasteSelection
+#       Paste from the selection buffer.
+#
+# - `command`: Fork and execute a specified command plus arguments
+#
+#    The `command` field must be a map containing a `program` string and an
+#    `args` array of command line parameter strings. For example:
+#       `{ program: "alacritty", args: ["-e", "vttest"] }`
 #
 # And optionally:
 #

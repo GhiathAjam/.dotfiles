@@ -222,11 +222,14 @@ alias vi='nvim -u NONE'
 # sudo chmod 700 /run/user/$UID
 
 ## .dotfiles
+## maybe merge in some fzf ?
 alias cb='nvim ~/.bashrc'
 alias cn='nvim ~/.config/nvim/init.lua'
 # alias cq='nvim /mnt/c/Users/Ghieath/AppData/Roaming/qutebrowser/config/config.py'
-alias ca='nvim /mnt/c/Users/Ghieath/scoop/persist/alacritty/alacritty.yml'
 alias cm='nvim /mnt/c/Users/Ghieath/scoop/persist/mpv/portable_config'
+alias ca='nvim /mnt/c/Users/Ghieath/scoop/persist/alacritty/alacritty.yml'
+alias cw='nvim /mnt/c/Users/Ghieath/scoop/persist/wezterm/wezterm.lua'
+alias cm='nvim /mnt/c/Users/Ghieath/scoop/persist/wsltty/config/config'
 
 # powerline
 # powerline-daemon -q
