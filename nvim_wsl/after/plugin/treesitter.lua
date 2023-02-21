@@ -261,5 +261,3 @@ require'treesitter-context'.setup {
   -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
   separator = nil,
 }
-
--- vim.cmd ' hi TreesitterContextBottom gui=underline guisp=Grey '

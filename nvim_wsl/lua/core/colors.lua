@@ -93,12 +93,21 @@ vim.cmd [[ highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine ]]
 vim.cmd [[ highlight IndentBlanklineIndent7 guibg=#1f1f1f gui=nocombine ]]
 vim.cmd [[ highlight IndentBlanklineIndent8 guibg=#1a1a1a gui=nocombine ]]
 
+-- the bar on side
+vim.cmd [[ highlight IndentBlanklineContextChar guifg=#b0a0a0 ]]
+-- the underline
+-- vim.cmd [[ highlight IndentBlanklineContextStart gui=underline guisp=#00ff00 ]]
+vim.cmd [[ highlight IndentBlanklineContextStart gui=underline guibg=#304020 ]]
+
+-- don't know what this does lol
+-- vim.cmd [[ highlight IndentBlanklineContextSpaceChar guifg=#00FF00 gui=nocombine ]]
+
 if true then
   if false then
     if false then
       if true then
         if false then
-          if false then
+          if    false     then
             print 'hii'
 
 

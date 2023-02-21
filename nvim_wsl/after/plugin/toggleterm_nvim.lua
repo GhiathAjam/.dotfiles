@@ -87,8 +87,8 @@ require('toggleterm').setup {
 
 local Terminal  = require('toggleterm.terminal').Terminal
 
-local python2 = Terminal:new({ cmd = 'python', count = 5 })
-function _python_toggle() python2:toggle() end
-vim.api.nvim_set_keymap('n', '<c-p>', '<cmd>lua _python_toggle()<CR>', {noremap = true, silent = true})
+-- local python2 = Terminal:new({ cmd = 'python', count = 5 })
+-- function _PYTHON_TOGGLE() python2:toggle() end
+-- vim.api.nvim_set_keymap('n', '<c-s-p>', '<cmd>lua _PYTHON_TOGGLE()<CR>', {noremap = true, silent = true})
 
 -- WARNING: do not use any of the private functionality of the terminal or other non-public parts of the API as these can change in the future.
