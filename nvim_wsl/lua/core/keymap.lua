@@ -49,6 +49,10 @@ map('t', '<leader>x', [[ <C-\><C-n> ]], opt)
 -- map('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opt)
 -- map('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opt)
 
+-- Paste
+vim.cmd [[ tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi' ]]
+
+
 -- packer -> waste of keys!
 -- map('n', '<leader>ps', vim.cmd.PackerSync, opt)
 
@@ -87,7 +91,7 @@ map('n', 'N', 'Nzz', opt)
 map('x', '<leader>vp', '"_dP', opt)
 map('n', '<leader>vd', '"_d', opt)
 map('v', '<leader>vd', '"_d', opt)
- 
+
 -- clipbard
 -- y
 map('n', '<leader>y', '"+y', opt)
