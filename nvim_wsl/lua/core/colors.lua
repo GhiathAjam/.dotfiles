@@ -94,10 +94,10 @@ vim.cmd [[ highlight IndentBlanklineIndent7 guibg=#1f1f1f gui=nocombine ]]
 vim.cmd [[ highlight IndentBlanklineIndent8 guibg=#1a1a1a gui=nocombine ]]
 
 -- the bar on side
-vim.cmd [[ highlight IndentBlanklineContextChar guifg=#b0a0a0 ]]
+vim.cmd [[ highlight IndentBlanklineContextChar guifg=#000000 ]]
 -- the underline
 -- vim.cmd [[ highlight IndentBlanklineContextStart gui=underline guisp=#00ff00 ]]
-vim.cmd [[ highlight IndentBlanklineContextStart gui=underline guibg=#304020 ]]
+vim.cmd [[ highlight IndentBlanklineContextStart gui=underline guibg=#000000 ]]
 
 -- don't know what this does lol
 -- vim.cmd [[ highlight IndentBlanklineContextSpaceChar guifg=#00FF00 gui=nocombine ]]
