@@ -17,11 +17,28 @@ telescope.setup {
     --     Currently mappings still need to be added, Example:
     mappings = {
       i = {
-        ['<C-Down>'] = require('telescope.actions').cycle_history_next,
-        ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
         ['<C-j>'] = require('telescope.actions').cycle_history_next,
         ['<C-k>'] = require('telescope.actions').cycle_history_prev,
+        ['<C-Down>'] = require('telescope.actions').preview_scrolling_down,
+        ['<C-Up>'] = require('telescope.actions').preview_scrolling_up,
       },
+    },
+    layout_strategy = 'horizontal',
+    layout_config = {
+      horizontal = {
+        height = 0.7,
+        width = 0.9,
+        -- what is this?
+        -- preview_cutoff = 120,
+        prompt_position = "bottom",
+        preview_width = 0.5,
+      }
+    },
+    border = true,
+    borderchars = {
+      prompt  = { "─", "│", "─", "│", "┌", '┐', '┘', '└' },
+      results = { "─", "│", "─", "│", "┌", '┐', '┘', '└' },
+      preview = { "─", "│", "─", "│", "┌", '┐', '┘', '└' },
     },
   },
   pickers = {
@@ -32,7 +49,19 @@ telescope.setup {
       follow = true,
     },
   },
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"    
+    },
+  },
 }
+
+require('telescope').load_extension('fzf')
+require"telescope".load_extension("frecency")
 
 -- See:  
   -- |telescope.mappings|

@@ -6,11 +6,17 @@ map('n', '<leader>x', function() print 'hii' end, opt)
 local _, builtin = pcall(require, 'telescope.builtin')
 if _ then
   map('n', '<leader>ff', builtin.find_files, opt)
+  map('n', '<leader>fr', ':Telescope frecency<CR>', opt)
+  map('n', '<leader>fF', function()
+    builtin.find_files({ hidden = true }) end, opt)
   map('n', '<leader>fg', builtin.live_grep, opt)
   -- map('n', '<leader>fs', builtin.grep_string, opt)
   map('n', '<leader>fb', builtin.buffers, opt)
   map('n', '<leader>fh', builtin.help_tags, opt)
-  map('n', '<leader>fc', builtin.colorscheme, opt)
+  -- map('n', '<leader>fc', builtin.colorscheme, opt)
+  map('n', '<leader>fc', ':Telescope neoclip<CR>', opt)
+  map('n', '<leader>fs', function()
+    builtin.symbols{ sources = {'emoji', 'gitmoji', 'math'} } end, opt)
 end
 
 local ok, dap = pcall(require, 'dap')
@@ -18,8 +24,11 @@ local ok2, _ = pcall(require, 'dapui')
 if ok then
   map('n', '<F2>', dap.toggle_breakpoint, opt)
   -- conditional breakpoint
-  map('n', '<leader>B', ':lua require("dap").set_breakpoint(vim.fn.input("Breakpoint Condition: "))<CR>', opt)
-  -- map('n', '<leader>C', ':lua require("dap").set_breakpoint(nil, vim.fn.input("Brekpoint hit count: "))<CR>', opt)
+  map('n', '<leader><F2>', function ()
+   dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, opt)
+  -- map('n', '<leader>C', function ()
+    -- dap.set_breakpoint(nil, vim.fn.input('Breakpoint hit count: '))
+    -- end, opt)
   map('n', '<F4>', dap.terminate, opt)
   map('n', '<F5>', dap.continue, opt)
   map('n', '<F6>', dap.step_over, opt)
@@ -88,11 +97,13 @@ map('n', 'n', 'nzz', opt)
 map('n', 'N', 'Nzz', opt)
 
 -- don't ruin the buffer
-map('x', '<leader>vp', '"_dP', opt)
-map('n', '<leader>vd', '"_d', opt)
-map('v', '<leader>vd', '"_d', opt)
+-- use gp ?
+-- map('x', '<leader>vp', '"_dP', opt)
+map('v', 'gp', '"_dP', opt)
+-- map('n', '<leader>vd', '"_d', opt)
+-- map('v', '<leader>vd', '"_d', opt)
 
--- clipbard
+-- clipboard
 -- y
 map('n', '<leader>y', '"+y', opt)
 map('v', '<leader>y', '"+y', opt)

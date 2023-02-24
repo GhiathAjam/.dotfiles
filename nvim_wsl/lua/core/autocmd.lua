@@ -21,7 +21,8 @@ vim.api.nvim_create_autocmd('VimEnter', {
 vim.api.nvim_create_autocmd('BufWinEnter', {
   group = myg,
   pattern = { '*.c', '*.h', '*.cpp', '*.txt', '*.vim', '*.lua' },
-  command = 'silent! loadview',
+  -- command = 'silent! loadview',
+  command = 'echo "no loading view"',
 })
 
 vim.api.nvim_create_autocmd('BufWinLeave', {

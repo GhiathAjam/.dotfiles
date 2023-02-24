@@ -61,11 +61,34 @@ return packer.startup(function(use)
   }
 
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    -- or                            , branch = '0.1.x',
+    {
+      'nvim-telescope/telescope.nvim', tag = '0.1.0',
+      -- or                            , branch = '0.1.x',
+    },
+    { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+    { 'nvim-telescope/telescope-symbols.nvim' },
+    -- https://github.com/nvim-telescope/telescope-frecency.nvim
+    {
+    "nvim-telescope/telescope-frecency.nvim",
+    requires = { "kkharji/sqlite.lua" }
+    },
+    -- { 'gbrlsnchs/telescope-lsp-handlers.nvim' },
+    -- { 'ghassan0/telescope-glyph.nvim' },
+    {
+      "AckslD/nvim-neoclip.lua",
+      requires = {
+        {'kkharji/sqlite.lua', module = 'sqlite'},
+        {'nvim-telescope/telescope.nvim'},
+      },
+    },
+    -- { 'axkirillov/easypick.nvim' },
+    -- { 'octarect/telescope-menu.nvim' },
+    -- { 'debugloop/telescope-undo.nvim' },
+    -- { 'nvim-telescope/telescope-packer.nvim' },
   }
   -- use 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
   -- Plug 'junegunn/fzf.vim'
+  -- https://github.com/ibhagwan/fzf-lua
 
 
   use 'ThePrimeagen/vim-be-good'
