@@ -81,7 +81,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -101,6 +101,7 @@ fi
 ## MEEEEE
 # Exports
 export EDITOR='nvim'
+export SUDO_EDITOR='nvim'
 export VISUAL='nvim'
 export WATCH_INTERVAL=1
 export LESS='RFiJ --incsearch'
@@ -200,3 +201,6 @@ wsl.exe -d wsl-vpnkit --cd /app service wsl-vpnkit status >/dev/null || \
 
 # export LIBGL_ALWAYS_INDIRECT=1
 export DISPLAY=:0
+
+## TODO:
+# extend PRUNEDEPTH to include more dirs (/mnt in WSL)

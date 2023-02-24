@@ -98,7 +98,9 @@
 # * rule: horizontal lines to delimit files.
 # * numbers: show line numbers in the side bar.
 # * snip: draw separation lines between distinct line ranges.
---style full
+
+# this breaks batman hmmmmm
+# --style full
 
 # -L, --list-languages
 # Display a list of supported languages for syntax highlighting.
