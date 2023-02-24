@@ -1,26 +1,32 @@
 # To use common configuration in %APPDATA%\mintty, simply remove this file
 
 # NerdFonts don't get smoothed properly
+# Font=MS Gothic
 # Font=CaskaydiaCove NFM
-Font=JetBrainsMono NFM
+# Font=JetBrainsMono NFM
+Font=JetBrains Mono
 # Font=Anonymice NFM
 # Font=FiraCode NFM
-# FontRTL=Courier New
-FontChoice=Arabic:6
-Font6=Gabriola
-Font7=Bahnschrift
+
+FontRTL=Courier New
+FontChoice=Private:3;PictoSymbols:3
+Font3=FiraCode NFM
 
 FontHeight=11
 # FontWeight=600
-FontSmoothing=full
+
 # FontRender=uniscribe
 # FontRender=textout
+
+# UnderlineManual=false
 
 BoldAsFont=no
 BoldAsColour=yes
 ColSpacing=0
 RowSpacing=-1
 
+LigaturesSupport=2
+Ligatures=2
 
 Padding=0
 Transparency=5
@@ -30,6 +36,8 @@ NoAltScreen=no
 Term=xterm-256color
 
 Charset=UTF-8
+Charwidth=unicode
+CharNarrowing=100
 DisplaySpeedup=9
 # disable bell
 BellType=0
@@ -41,7 +49,6 @@ BellType=0
 # – full    Emojis are full-size with original aspect ratio; note that they may overlap into the next character(s).
 EmojiPlacement=full
 
-ThemeFile=flat-ui
 # Emojis=noto
 Emojis=none
 
@@ -50,9 +57,55 @@ ClipShortcuts=no
 WindowShortcuts=no
 CtrlShiftShortcuts=yes
 
+
+# This setting determines how the terminal window should be shown at startup:
+# – normal (default)
+# – min (minimized)
+# – max (maximized)
+# – full (full screen)
+# – hide (invisible)
+Window=full
+
+
 # Mouse
 CopyOnSelect=no
 # Modifier key for overriding default
 ClickTargetMod=shift
 ZoomMouse=no
 AllowBlinking=yes
+
+
+# Colors
+ThemeFile=
+CursorColour=253,157,79
+
+BackgroundColour=32,32,32
+ForegroundColour=192,197,206
+Black=76,76,76
+Red=255,60,60
+Green=13,188,121
+Yellow=229,229,16
+Blue=59,142,234
+Magenta=188,63,188
+Cyan=17,168,205
+White=229,229,229
+
+BoldBlack=102,102,102
+BoldRed=241,76,76
+BoldGreen=35,209,139
+BoldYellow=245,245,67
+BoldBlue=59,142,234
+BoldMagenta=214,112,214
+BoldCyan=41,184,219
+BoldWhite=229,229,229
+
+# UnderlineColour=-1
+# StrikeoutColour=200,0,0
+# OverlineColour=-1
+# # – Ctrl+mouse-move hovering colour
+# HoverColour=-1
+# HighlightBackgroundColour=
+# HighlightForegroundColour=
+# SearchForegroundColour=black
+# SearchBackgroundColour=light yellow
+# SearchCurrentColour=bright yellow
