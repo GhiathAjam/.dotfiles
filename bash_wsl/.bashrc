@@ -158,10 +158,7 @@ alias go='cd ~/Desktop/main; nvim -S Session.vim'
 # configure nvim
 alias goc='cd ~/.config/nvim; nvim init.lua'
 # dotfiles
-alias dot='cd ~/Desktop/myrepos/configs; gs'
-
-# git
-alias gs='git status'
+alias dot='cd ~/Desktop/myrepos/configs && git s'
 
 # EMACS
 alias emacs='emacsclient -c -a ""'
@@ -182,6 +179,7 @@ alias cm='nvim /mnt/c/Users/Ghieath/scoop/persist/mpv/portable_config'
 alias ca='nvim /mnt/c/Users/Ghieath/scoop/persist/alacritty/alacritty.yml'
 alias cw='nvim /mnt/c/Users/Ghieath/scoop/persist/wezterm/wezterm.lua'
 alias cm='nvim /mnt/c/Users/Ghieath/scoop/persist/wsltty/config/config'
+alias cg='nvim ~/.config/git/config'
 
 # powerline
 # powerline-daemon -q

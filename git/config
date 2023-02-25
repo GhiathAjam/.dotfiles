@@ -11,6 +11,37 @@
 [init]
   defaultBranch = main
 
+[alias]
+  s = status
+  comit = commit
+
+  ; aliases for git log
+  lg    = log --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative
+  lga   = log --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative --all
+  lgs   = log --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative --stat
+  lgsa  = log --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative --stat --all
+  lgl   = log --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative --stat --all --numstat
+  lglg  = log --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative --stat --all --numstat --graph
+  lglga = log --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative --stat --all --numstat --graph --all
+
+  # *********************
+  # Github
+  # From - https://salferrarello.com/git-alias-open-pull-request-github/
+  pr = "!f() { \
+     open \"$(git ls-remote --get-url $(git config --get branch.$(git rev-parse --abbrev-ref HEAD).remote) \
+     | sed 's|git@github.com:\\(.*\\)$|https://github.com/\\1|' \
+     | sed 's|\\.git$||'; \
+     )/compare/$(\
+     git config --get branch.$(git rev-parse --abbrev-ref HEAD).merge | cut -d '/' -f 3- \
+     )?expand=1\"; \
+  }; f"
+  hub = "!f() { \
+     open \"$(git ls-remote --get-url \
+     | sed 's|git@github.com:\\(.*\\)$|https://github.com/\\1|' \
+     | sed 's|\\.git$||'; \
+     )\"; \
+  }; f"
+
 [rebase]
   instructionFormat = format:%s |BY: %an <%ae>, %ar
 
