@@ -9,6 +9,8 @@ end
 
 vim.cmd [[ hi VertSplit guifg=#444444 guibg=#282c34 ]]
 
+vim.cmd [[ hi Macro     guifg=#FFFFFF gui=italic ]]
+
 -- colorscheme monokai-phoenix
 -- hi MatchParen guifg=#E0E0E0 guibg=#E0E0E0
 -- fix bad matching parenthesis!

@@ -5,7 +5,7 @@ REPO=$HOME"/Desktop/myrepos/configs"
 NVIM=$HOME"/.config/nvim/"
 GIT=$HOME"/.config/git/"
 BAT=$HOME"/.config/bat/"
-scoop="/mnt/c/Users/Ghieath/scoop"
+scoop=$WINHOME"/scoop"
 MPV=$scoop"/persist/mpv/portable_config/"
 ALACRITTY=$scoop"/persist/alacritty/alacritty.yml"
 WSLTTY=$scoop"/persist/wsltty/config/config"
@@ -13,7 +13,7 @@ WEZTERM=$scoop"/persist/wezterm/wezterm.lua"
 BASH=$HOME"/.bashrc"
 TMUX=$HOME"/.tmux.conf.local"
 LUNARVIM=$HOME"/.config/lvim/"
-WSL="/mnt/c/Users/Ghieath/.wslconfig"
+WSL=$WINHOME"/.wslconfig"
 
 # Pack in one list, path & name
 declare -A configs

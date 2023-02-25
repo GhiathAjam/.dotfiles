@@ -88,7 +88,7 @@ dap.configurations.python = {
 
     program = "${file}"; -- This configuration will launch the current file if used.
     pythonPath = '/usr/bin/python3';
-    -- pythonPath = '/home/gheiath/.local/share/nvim/mason/packages/debugpy/venv/bin/python';
+    -- pythonPath = os.getenv('HOME') .. '/.local/share/nvim/mason/packages/debugpy/venv/bin/python';
     -- pythonPath = function()
     --   -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
     --   -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.

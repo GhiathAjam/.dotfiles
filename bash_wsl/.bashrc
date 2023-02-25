@@ -52,24 +52,24 @@ unset blackbg yellow green blue
 
 # enable color support of ls, less and man, and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    # alias ls='ls --color=auto'
-    # alias dir='dir --color=auto'
-    # alias vdir='vdir --color=auto'
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  # alias ls='ls --color=auto'
+  # alias dir='dir --color=auto'
+  # alias vdir='vdir --color=auto'
 
-    # alias grep='grep --color=auto'
-    # alias fgrep='fgrep --color=auto'
-    # alias egrep='egrep --color=auto'
-    # alias diff='diff --color=auto'
-    alias ip='ip --color=auto'
+  # alias grep='grep --color=auto'
+  # alias fgrep='fgrep --color=auto'
+  # alias egrep='egrep --color=auto'
+  # alias diff='diff --color=auto'
+  alias ip='ip --color=auto'
 
-    export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
-    export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
-    export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
-    export LESS_TERMCAP_so=$'\E[01;33m'    # begin reverse video
-    export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
-    export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
-    export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+  export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
+  export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
+  export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+  export LESS_TERMCAP_so=$'\E[01;33m'    # begin reverse video
+  export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+  export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+  export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 fi
 
 # colored GCC warnings and errors
@@ -111,6 +111,8 @@ export LESS='RFi --incsearch'
 # export XDG_CACHE_HOME="$HOME/.cache"
 # export XDG_RUNTIME_DIR="/run/user/$UID"
 # export XDG_RUNTIME_DIR="/tmp/$UID-runtime"
+
+export WINHOME=$(wslpath $WSLENV)
 
 # more PATH
 export PATH="$HOME/.emacs.d/bin:$PATH"
@@ -171,15 +173,19 @@ alias vi='nvim -u NONE'
 # sudo chmod 700 /run/user/$UID
 
 ## .dotfiles
-## maybe merge in some fzf ?
-alias cb='nvim ~/.bashrc'
-alias cn='nvim ~/.config/nvim/init.lua'
-# alias cq='nvim /mnt/c/Users/Ghieath/AppData/Roaming/qutebrowser/config/config.py'
-alias cm='nvim /mnt/c/Users/Ghieath/scoop/persist/mpv/portable_config'
-alias ca='nvim /mnt/c/Users/Ghieath/scoop/persist/alacritty/alacritty.yml'
-alias cw='nvim /mnt/c/Users/Ghieath/scoop/persist/wezterm/wezterm.lua'
-alias cm='nvim /mnt/c/Users/Ghieath/scoop/persist/wsltty/config/config'
-alias cg='nvim ~/.config/git/config'
+alias cgg='nvim $(echo "
+  qutebrowser: /mnt/c/Users/Ghieath/AppData/Roaming/qutebrowser/config/config.py
+  mpv:         /mnt/c/Users/Ghieath/scoop/persist/mpv/portable_config
+  alacritty:   /mnt/c/Users/Ghieath/scoop/persist/alacritty/alacritty.yml
+  wezterm:     /mnt/c/Users/Ghieath/scoop/persist/wezterm/wezterm.lua
+  wsltty:      /mnt/c/Users/Ghieath/scoop/persist/wsltty/config/config
+  wsl:         /mnt/c/Users/Ghieath/.wslconfig
+  bash:        $HOME/.bashrc
+  neovim:      $HOME/.config/nvim/init.lua
+  git:         $HOME/.config/git/config
+  bat:         $HOME/.config/bat/config" |\
+   fzf --preview="bat --line-range=:500 {-1}" |\
+   cut -d: -f2 )'
 
 # powerline
 # powerline-daemon -q

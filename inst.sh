@@ -5,14 +5,16 @@ REPO=$HOME"/Desktop/myrepos/configs"
 NVIM=$HOME"/.config/nvim/"
 GIT=$HOME"/.config/git/"
 BAT=$HOME"/.config/bat/"
-scoop="/mnt/c/Users/Ghieath/scoop"
+scoop=$WINHOME"/scoop"
 MPV=$scoop"/persist/mpv/portable_config/"
 ALACRITTY=$scoop"/persist/alacritty/alacritty.yml"
+WSLTTY=$scoop"/persist/wsltty/config/config"
+WEZTERM=$scoop"/persist/wezterm/wezterm.lua"
 BASH=$HOME"/"
 ## Avoid duplicate, TODO: improve
 TMUX=$HOME"/Desktop/.."
 LUNARVIM=$HOME"/.config/lvim/"
-WSL="/mnt/c/Users/Ghieath/.wslconfig"
+WSL=$WINHOME"/.wslconfig"
 
 # Pack in one list, path & name
 # can't use set, must be array!
@@ -23,6 +25,8 @@ configs=(
   ["$BAT"]="bat_wsl"
   # ["$MPV"]="mpv_win/"
   # ["$ALACRITTY"]="alacritty_win/alacritty.yml"
+  # ["$WSLTTY"]="wsltty/config"
+  # ["$WEZTERM"]="wezterm/wezterm.lua"
   ["$BASH"]="bash_wsl"
   ["$TMUX"]="tmux_wsl"
   ["$LUNARVIM"]="lvim_wsl"

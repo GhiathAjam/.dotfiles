@@ -27,7 +27,7 @@
   # *********************
   # Github
   # From - https://salferrarello.com/git-alias-open-pull-request-github/
-  pr = "!f() { \
+  github-pr = "!f() { \
      open \"$(git ls-remote --get-url $(git config --get branch.$(git rev-parse --abbrev-ref HEAD).remote) \
      | sed 's|git@github.com:\\(.*\\)$|https://github.com/\\1|' \
      | sed 's|\\.git$||'; \
