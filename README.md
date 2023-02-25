@@ -35,7 +35,8 @@ not all up yet
   - WSL under Windows 10
 - Git & Delta
   - WSL config
-- compile_commands.json:
-  - Used with C++ LSPs: ccls / clangd
+- C++
+  - compile_flags.txt
+  - .clang-format
 - Bat (batcat)
   - WSL config
