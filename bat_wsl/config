@@ -46,7 +46,7 @@
 # Explicitly set the width of the terminal instead of determining it automatically. If
 # prefixed with '+' or '-', the value will be treated as an offset to the actual terminal
 # width. See also: '--wrap'.
---terminal-width -2
+# --terminal-width -2
 
 # --decorations <when>
 # Specify when to use the decorations that have been specified via '--style'. The
