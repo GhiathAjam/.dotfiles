@@ -15,6 +15,8 @@ vim.opt.makeprg = './%'
 vim.opt.colorcolumn = '80'
 -- menuone -> show menu even if single match
 vim.opt.completeopt = { 'menuone', 'preview', 'noselect', 'noinsert' }
+vim.opt.wildignorecase = true
+vim.opt.fileignorecase = false
 
 -- so that `` is visible in markdown files
 vim.opt.conceallevel = 0
