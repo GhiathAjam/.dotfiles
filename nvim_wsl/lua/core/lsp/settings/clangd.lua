@@ -1,5 +1,5 @@
 return {
-	settings = {
+  settings = {
     cmd = {
       'clangd --arz3',
       -- '--background-index',

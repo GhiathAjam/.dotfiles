@@ -94,18 +94,23 @@ vim.opt.undofile = true
 -- show hidden characters
 vim.opt.list = true
 vim.opt.listchars = {
-  -- space = '␣•·⋅',
-  lead = ' ',
-  tab = '→·',
+  -- tab = '→·',
+  -- tab = '→-',
   -- multispace = '---+'
   -- leadmultispace = '---+'
-  extends  = '»',
-  precedes = '«',
+  -- extends  = '»',
+  -- precedes = '«',
   -- conceal = '·',
   -- nbsp = '␣',
-  space = '·',
-  eol = '↴',
-  trail = '•',
+  -- space = '␣•·⋅',
+  -- space = '·',
+  -- lead = '·',
+  trail = '·',
+  -- eol = '↴',
+  -- eol = '↵',
+  eol = '⤶',
+  -- eol = '↵',
+  -- trail = '•',
 }
 
 vim.opt.fillchars = {

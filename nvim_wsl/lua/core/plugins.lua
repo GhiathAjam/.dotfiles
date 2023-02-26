@@ -1,11 +1,11 @@
 local ensure_packer = function()
   local fn = vim.fn
   local install_path =
-    fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+      fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
     vim.notify('INSTALLING PACKER')
-    fn.system({'git', 'clone', '--depth', '1',
-      'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1',
+      'https://github.com/wbthomason/packer.nvim', install_path })
     -- vim.cmd [[packadd packer.nvim]]
     -- vim.cmd [[ packloadall! ]]
     return true
@@ -69,16 +69,16 @@ return packer.startup(function(use)
     { 'nvim-telescope/telescope-symbols.nvim' },
     -- https://github.com/nvim-telescope/telescope-frecency.nvim
     {
-    "nvim-telescope/telescope-frecency.nvim",
-    requires = { "kkharji/sqlite.lua" }
+      'nvim-telescope/telescope-frecency.nvim',
+      requires = { 'kkharji/sqlite.lua' }
     },
     -- { 'gbrlsnchs/telescope-lsp-handlers.nvim' },
     -- { 'ghassan0/telescope-glyph.nvim' },
     {
-      "AckslD/nvim-neoclip.lua",
+      'AckslD/nvim-neoclip.lua',
       requires = {
-        {'kkharji/sqlite.lua', module = 'sqlite'},
-        {'nvim-telescope/telescope.nvim'},
+        { 'kkharji/sqlite.lua',           module = 'sqlite' },
+        { 'nvim-telescope/telescope.nvim' },
       },
     },
     -- { 'axkirillov/easypick.nvim' },
@@ -106,7 +106,7 @@ return packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter-textobjects',
     'JoosepAlviste/nvim-ts-context-commentstring',
     'andymass/vim-matchup',
-   }
+  }
   -- LSP, Tree-sitter, or regex matching.
   use 'RRethy/vim-illuminate'
 

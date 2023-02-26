@@ -1,9 +1,9 @@
 local status_ok, gitsigns = pcall(require, "gitsigns")
 if not status_ok then
+  vim.notify('Missing gitsigns')
   return
 end
 
--- See `:help gitsigns.txt`
 gitsigns.setup {
   signs = {
     add          = { text = vim.g.diff_signs.Add },

@@ -1,6 +1,6 @@
 [wsl2]
-# Boolean to turn on or off support for GUI applications (WSLg) in WSL. Only available for Windows 11.
-guiApplications=false
+# Boolean to turn on or off support for GUI applications (WSLg) in WSL
+guiApplications=true
 #How much memory to assign to the WSL 2 VM.
 # default: min (4GB, 50%)
 #memoey=2GB
