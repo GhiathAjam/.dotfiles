@@ -15,7 +15,7 @@ g++
 -Wshadow
 -Wformat=2
 -Wfloat-equal
--Wconversion
+-Wnoconversion
 -Wlogical-op
 -Wshift-overflow=2
 -Wduplicated-branches
