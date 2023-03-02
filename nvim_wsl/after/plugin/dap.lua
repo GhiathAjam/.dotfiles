@@ -1,9 +1,9 @@
-local _1, dap              = pcall(require, 'dap')
-local _2, dapui            = pcall(require, 'dapui')
-local _3, dap_virtual_text = pcall(require, 'nvim-dap-virtual-text')
+local ok1, dap              = pcall(require, 'dap')
+local ok2, dapui            = pcall(require, 'dapui')
+local ok3, dap_virtual_text = pcall(require, 'nvim-dap-virtual-text')
 
-if not (_1 and _2 and _3) then
-  vim.notify('Hey Gh: one of: dap, dapui, dap-virtual text missing')
+if not (ok1 and ok2 and ok3) then
+  vim.notify('One of: dap, dapui, dap-virtual text plugins not found', vim.log.levels.WARN)
   return
 end
 

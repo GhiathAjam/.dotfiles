@@ -1,6 +1,6 @@
-local _, scrollbar = pcall(require, 'scrollbar')
-if not scrollbar then
-  vim.notify('Scrollbar plugin not found', vim.log.levels.ERROR)
+local ok, scrollbar = pcall(require, 'scrollbar')
+if not ok then
+  vim.notify('scrollbar plugin not found', vim.log.levels.WARN)
   return
 end
 

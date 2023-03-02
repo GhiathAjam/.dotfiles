@@ -1,13 +1,34 @@
+local ok, _ = pcall(require, 'nvim-treesitter')
+if not ok then
+  vim.notify('treesitter plugin not found', vim.log.levels.WARN)
+  return
+end
+
+-- check on all treesitter extensions
+
+local exts = {
+  -- 'nvim-treesitter-refactor',
+  'nvim-ts-rainbow2',
+  'nvim-treesitter-textobjects',
+  'nvim-ts-context-commentstring',
+  'vim-matchup',
+}
+
+for _, ext in pairs(exts) do
+  local ok = packer_plugins[ext] and packer_plugins[ext].loaded
+  if not ok then
+    vim.notify('treesitter extension not found: ' .. ext, vim.log.levels.WARN)
+  end
+end
+
 require('nvim-treesitter.configs').setup {
   -- A list of parser names, or 'all'
-  ensure_installed = { 'help', 'cpp', 'c', 'markdown', 'lua', 'vim', 'python', 'bash', 'r' },
-
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
+  ensure_installed = { 'help', 'cpp', 'c', 'markdown', 'lua', 'vim', 'python',
+    'bash', 'r' },
 
   -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = false,
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI
+  auto_install = true,
 
   -- List of parsers to ignore installing (for 'all')
   -- ignore_install = { 'javascript' },
@@ -16,9 +37,10 @@ require('nvim-treesitter.configs').setup {
     -- `false` will disable the whole extension
     enable = true,
 
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- 'true' will run `:h syntax` and tree-sitter at the same time.
+    -- use `true` if you depend on 'syntax' being enabled (like for indentation)
+    -- Using this option may slow down your editor,
+    -- and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
@@ -62,9 +84,10 @@ require('nvim-treesitter.configs').setup {
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
         ["ac"] = "@class.outer",
-        -- You can optionally set descriptions to the mappings (used in the desc parameter of
-        -- nvim_buf_set_keymap) which plugins like which-key display
-        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+        -- You can optionally set descriptions to the mappings (used in the
+        -- desc parameter of nvim_buf_set_keymap) which plugins like which-key
+        ["ic"] = { query = "@class.inner",
+          desc = "Select inner part of a class region" },
       },
       -- You can choose the select mode (default is charwise 'v')
       --
@@ -107,14 +130,19 @@ require('nvim-treesitter.configs').setup {
         -- ["]m"] = "@function.outer",
         -- ["]]"] = { query = "@class.outer", desc = "Next class start" },
         --
-        -- You can use regex matching and/or pass a list in a "query" key to group multiple queires.
+        -- You can use regex matching and/or pass a list in a "query" key to
+        -- group multiple queires.
         -- ["]o"] = "@loop.*",
         -- ["]o"] = { query = { "@loop.inner", "@loop.outer" } }
         --
-        -- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
-        -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
-        -- ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
-        ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+        -- You can pass a query group to use query from
+        -- `queries/<lang>/<query_group>.scm file in your runtime path.
+        -- Below example nvim-treesitter's `locals.scm` and `folds.scm`.
+        -- They also provide highlights.scm and indent.scm.
+        -- ["]s"] = { query = "@scope", query_group = "locals",
+        -- desc = "Next scope" },
+        ["]z"] = { query = "@fold", query_group = "folds",
+          desc = "Next fold" },
       },
       goto_next_end = {
         -- ["]M"] = "@function.outer",
@@ -151,8 +179,9 @@ require('nvim-treesitter.configs').setup {
   },
 
   matchup = {
-    enable = true,              -- mandatory, false will disable the whole extension
-    -- disable = { "c", "ruby" },  -- optional, list of language that will be disabled
+    enable = true, -- mandatory, false will disable the whole extension
+    -- optional, list of language that will be disabled
+    -- disable = { "c", "ruby" },
     -- [options]
   },
 
@@ -165,14 +194,20 @@ require('nvim-treesitter.configs').setup {
 vim.cmd [[ let g:matchup_matchparen_offscreen = {'method': 'popup', 'border': 'none'} ]]
 
 if true then
-  x=1 
+  x = 1
 elseif true then
-  x=2
+  x = 2
 elseif false then
-  x=5
+  x = 5
 end
 
-require'treesitter-context'.setup {
+local ok, treesitter_context = pcall(require, 'treesitter-context')
+if not ok then
+  vim.notify('treesitter-context not found', vim.log.levels.WARN)
+  return
+end
+
+treesitter_context.setup {
   enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
   max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
   trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
@@ -256,7 +291,7 @@ require'treesitter-context'.setup {
   --     you can safely ignore them.
 
   zindex = 20, -- The Z-index of the context window
-  mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+  mode = 'cursor', -- Line used to calculate context. Choices: 'cursor', 'topline'
   -- Separator between context and content. Should be a single character string, like '-'.
   -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
   separator = nil,

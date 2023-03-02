@@ -3,7 +3,7 @@ local ensure_packer = function()
   local install_path =
       fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    vim.notify('INSTALLING PACKER')
+    vim.notify('INSTALLING PACKER', vim.log.levels.INFO)
     fn.system({ 'git', 'clone', '--depth', '1',
       'https://github.com/wbthomason/packer.nvim', install_path })
     -- vim.cmd [[packadd packer.nvim]]
@@ -66,6 +66,7 @@ return packer.startup(function(use)
       -- or                            , branch = '0.1.x',
     },
     { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+    -- { 'ghassan0/telescope-glyph.nvim' },
     { 'nvim-telescope/telescope-symbols.nvim' },
     -- https://github.com/nvim-telescope/telescope-frecency.nvim
     {
@@ -73,7 +74,6 @@ return packer.startup(function(use)
       requires = { 'kkharji/sqlite.lua' }
     },
     -- { 'gbrlsnchs/telescope-lsp-handlers.nvim' },
-    -- { 'ghassan0/telescope-glyph.nvim' },
     {
       'AckslD/nvim-neoclip.lua',
       requires = {

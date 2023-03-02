@@ -1,8 +1,8 @@
-local _1, mark = pcall(require, 'harpoon.mark')
-local _2, ui   = pcall(require, 'harpoon.ui')
+local ok1, mark = pcall(require, 'harpoon.mark')
+local ok2, ui   = pcall(require, 'harpoon.ui')
 
-if not (_1 and _2) then 
-  vim.notify('Hey Gh: HARPOOOOOOON NOT HERE')
+if not (ok1 and ok2) then
+  vim.notify('harpoon plugin not found', vim.log.levels.WARN)
   return
 end
 

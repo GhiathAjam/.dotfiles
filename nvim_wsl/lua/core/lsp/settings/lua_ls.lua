@@ -2,9 +2,9 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
-local _, neodev = pcall(require, 'neodev')
-if not _ then
-  vim.notify('hey Gh: neodev missing')
+local ok, neodev = pcall(require, 'neodev')
+if not ok then
+  vim.notify('neodev plugin not found', vim.log.levels.WARN)
   return
 end
 
@@ -33,26 +33,26 @@ neodev.setup {
 }
 
 return {
-	settings = {
+  settings = {
 
-		Lua = {
+    Lua = {
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT',
         -- Setup your lua path
         -- path = runtime_path,
       },
-			diagnostics = {
+      diagnostics = {
         -- Get the language server to recognize the `vim` global
-				globals = { 'vim' },
-			},
-			workspace = {
-				library = {
-					[vim.fn.expand('$VIMRUNTIME/lua')] = true,
-					[vim.fn.stdpath('config') .. '/lua'] = true,
-				},
+        globals = { 'vim' },
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.stdpath('config') .. '/lua'] = true,
+        },
         checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
-			},
+      },
       telemetry = {
         enable = false,
       },
@@ -60,6 +60,6 @@ return {
       completion = {
         callSnippet = "Replace"
       },
-		},
-	},
+    },
+  },
 }

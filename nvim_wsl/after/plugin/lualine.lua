@@ -9,8 +9,11 @@ vim.opt.showmode = false
 -- let g:airline_symbols.colnr = ':'
 -- let g:airline_symbols.
 
-local _, lualine = pcall(require, 'lualine')
-if not _ then return end
+local ok, lualine = pcall(require, 'lualine')
+if not ok then
+  vim.notify('lualine plugin not found', vim.log.levels.WARN)
+  return
+end
 
 lualine.setup {
   options = {

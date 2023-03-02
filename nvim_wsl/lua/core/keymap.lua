@@ -1,4 +1,4 @@
-local opt = { noremap = true, silent = true }
+local opt = vim.g.map_opt
 local map = vim.keymap.set
 
 map('n', '<leader>x', function() print 'hii' end, opt)
@@ -42,7 +42,7 @@ end
 -- map leader e to open explorer
 -- Open Explorer to the right, set edits to first window!
 
--- check if nvim-tree is installed
+-- Nvim-tree plugin
 if pcall(require, 'nvim-tree') then
   map('n', '<leader>e', ':NvimTreeToggle<CR>', opt)
 else

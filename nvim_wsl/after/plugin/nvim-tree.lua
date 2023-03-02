@@ -1,6 +1,6 @@
-local status_ok, nvim_tree = pcall(require, 'nvim-tree')
-if not status_ok then
-  vim.notify('Gh: Missing nvim-tree')
+local ok, nvim_tree = pcall(require, 'nvim-tree')
+if not ok then
+  vim.notify('nvim-tree plugin not found', vim.log.levels.WARN)
   return
 end
 
@@ -89,7 +89,7 @@ end
 --   },
 -- }
 
-require('nvim-tree').setup({
+nvim_tree.setup({
   auto_reload_on_write = true,
   disable_netrw = false,
   hijack_cursor = false,

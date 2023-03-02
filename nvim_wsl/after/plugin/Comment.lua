@@ -1,5 +1,11 @@
+local ok, Comment = pcall(require, 'Comment')
+if not ok then
+  vim.notify('Comment plugin not found', vim.log.levels.WARN)
+  return
+end
+
 -- :h comment.config
-require('Comment').setup {
+Comment.setup {
     -- Add a space b/w comment and the line
     padding = true,
     -- Whether the cursor should stay at its position
@@ -38,8 +44,14 @@ require('Comment').setup {
         extra = true,
     },
     -- Function to call before (un)comment
-    -- pre_hook = nil,
-    pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+    pre_hook = nil,
     -- Function to call after (un)comment
     post_hook = nil,
 }
+
+if packer_plugins['nvim-ts-context-commentstring'] and
+  packer_plugins['nvim-ts-context-commentstring'].loaded then
+  Comment.setup {
+    pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+  }
+end

@@ -1,13 +1,13 @@
 local ok, neoclip = pcall(require, 'neoclip')
 if not ok then
-  vim.notify('neoclip not installed', vim.log.levels.ERROR)
+  vim.notify('neoclip plugin not found', vim.log.levels.WARN)
   return
 end
 
 -- Defaults
-require('neoclip').setup({
+neoclip.setup({
   history = 1000,
-  enable_persistent_history = false,
+  enable_persistent_history = true,
   length_limit = 1048576,
   continuous_sync = false,
   db_path = vim.fn.stdpath("data") .. "/databases/neoclip.sqlite3",
@@ -39,7 +39,7 @@ require('neoclip').setup({
     telescope = {
       i = {
         select = '<cr>',
-        -- paste = '<c-p>',
+        paste = '<CR>',
         -- paste_behind = '<c-k>',
         -- replay = '<c-q>',  -- replay a macro
         delete = '<c-d>',  -- delete an entry

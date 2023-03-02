@@ -27,5 +27,8 @@ local diff_signs = {
     -- changedelete = { text = '~' },
     -- untracked    = { text = '┆' },
 
+local map_opt = { noremap = true, silent = true }
+
 vim.g.lsp_signs = lsp_signs
 vim.g.diff_signs = diff_signs
+vim.g.map_opt = map_opt

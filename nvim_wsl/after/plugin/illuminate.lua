@@ -1,5 +1,11 @@
+local ok, illuminate = pcall(require, 'illuminate')
+if not ok then
+  vim.notify('illuminate plugin not found', vim.log.levels.WARN)
+  return
+end
+
 -- default configuration
-require('illuminate').configure({
+illuminate.configure({
     -- providers: provider used to get references in the buffer, ordered by priority
     providers = {
         'lsp',

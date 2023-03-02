@@ -1,6 +1,6 @@
-local status_ok, gitsigns = pcall(require, "gitsigns")
-if not status_ok then
-  vim.notify('Missing gitsigns')
+local ok, gitsigns = pcall(require, "gitsigns")
+if not ok then
+  vim.notify('gitsigns plugin not found', vim.log.levels.WARN)
   return
 end
 
@@ -16,7 +16,7 @@ gitsigns.setup {
   signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
   numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-  word_diff  = true, -- Toggle with `:Gitsigns toggle_word_diff`
+  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
   watch_gitdir = {
     interval = 1000,
     follow_files = true

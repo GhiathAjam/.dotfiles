@@ -70,7 +70,11 @@ local onedarker = {
   },
 }
 
-require('lualine').setup { options = { theme = onedarker } }
+local _, lualine = pcall(require, 'lualine')
+if _ then
+  lualine.setup { options = { theme = onedarker } }
+end
+
 
 -- vim.cmd [[ hi clear GitSignsAdd ]]
 -- vim.cmd [[ hi clear GitSignsChange ]]

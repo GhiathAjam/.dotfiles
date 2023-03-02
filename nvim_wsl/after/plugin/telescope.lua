@@ -1,4 +1,30 @@
-local telescope = require 'telescope'
+local ok, telescope = pcall(require, 'telescope')
+if not ok then
+  vim.notify("telescope plugin not found", vim.log.levels.WARN)
+  return
+end
+
+local exts = {
+  'telescope-fzf-native.nvim',
+  -- 'telescope-glyph.nvim',
+  'telescope-symbols.nvim' ,
+  'telescope-frecency.nvim',
+  -- 'telescope-lsp-handlers.nvim',
+  'nvim-neoclip.lua',
+  -- 'easypick.nvim',
+  -- 'telescope-menu.nvim',
+  -- 'telescope-undo.nvim',
+  -- 'telescope-packer.nvim',
+}
+
+for _, ext in pairs(exts) do
+  local ok = packer_plugins[ext] and packer_plugins[ext].loaded
+  if not ok then
+    vim.notify('telescope extension not found: ' .. ext, vim.log.levels.WARN)
+  end
+end
+
+local actions = require('telescope.actions')
 
 telescope.setup {
   defaults = {
@@ -17,10 +43,10 @@ telescope.setup {
     --     Currently mappings still need to be added, Example:
     mappings = {
       i = {
-        ['<C-j>'] = require('telescope.actions').cycle_history_next,
-        ['<C-k>'] = require('telescope.actions').cycle_history_prev,
-        ['<C-Down>'] = require('telescope.actions').preview_scrolling_down,
-        ['<C-Up>'] = require('telescope.actions').preview_scrolling_up,
+        ['<C-j>']    = actions.cycle_history_next,
+        ['<C-k>']    = actions.cycle_history_prev,
+        ['<C-Down>'] = actions.preview_scrolling_down,
+        ['<C-Up>']   = actions.preview_scrolling_up,
       },
     },
     layout_strategy = 'horizontal',
@@ -60,8 +86,9 @@ telescope.setup {
   },
 }
 
-require('telescope').load_extension('fzf')
-require"telescope".load_extension("frecency")
+telescope.load_extension('fzf')
+telescope.load_extension('frecency')
+telescope.load_extension('neoclip')
 
 -- See:  
   -- |telescope.mappings|

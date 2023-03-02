@@ -1,4 +1,10 @@
-require('copilot').setup {
+local ok, copilot = pcall(require, 'copilot')
+if not ok then
+  vim.notify('copilot plugin not found', vim.log.levels.WARN)
+  return
+end
+
+copilot.setup {
   panel = {
     -- Disable to avoid conflict with nvim-cmp
     enabled = false,

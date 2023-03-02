@@ -1,12 +1,15 @@
-local _, colorizer = pcall(require, 'colorizer')
-if not _ then return end
+local ok, colorizer = pcall(require, 'colorizer')
+if not ok then
+  vim.notify('colorizer plugin not found', vim.log.levels.WARN)
+  return
+end
 
 colorizer.setup (
   {
   },
-  -- second arguemnt is default options
+  -- second argument is default options
   {
-    RGB      = true,         -- #RGB hex codes
+    RGB      = false,         -- #RGB hex codes
     RRGGBB   = true,         -- #RRGGBB hex codes
     names    = true,         -- "Name" codes like Blue
     RRGGBBAA = false,        -- #RRGGBBAA hex codes

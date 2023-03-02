@@ -1,9 +1,9 @@
 local M = {}
 
-vim.fn.sign_define('DiagnosticSignError', { text=vim.g.lsp_signs.Error,       texthl='DiagnosticSignError' })
-vim.fn.sign_define('DiagnosticSignWarn',  { text=vim.g.lsp_signs.Warning,     texthl='DiagnosticSignWarn'  })
-vim.fn.sign_define('DiagnosticSignInfo',  { text=vim.g.lsp_signs.Information, texthl='DiagnosticSignInfo'  })
-vim.fn.sign_define('DiagnosticSignHint',  { text=vim.g.lsp_signs.Hint,        texthl='DiagnosticSignHint'  })
+vim.fn.sign_define('DiagnosticSignError', { text = vim.g.lsp_signs.Error, texthl = 'DiagnosticSignError' })
+vim.fn.sign_define('DiagnosticSignWarn', { text = vim.g.lsp_signs.Warning, texthl = 'DiagnosticSignWarn' })
+vim.fn.sign_define('DiagnosticSignInfo', { text = vim.g.lsp_signs.Information, texthl = 'DiagnosticSignInfo' })
+vim.fn.sign_define('DiagnosticSignHint', { text = vim.g.lsp_signs.Hint, texthl = 'DiagnosticSignHint' })
 
 -- TODO: backfill this to template
 M.setup = function()
@@ -65,15 +65,21 @@ local function lsp_keymaps(bufnr)
   -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
   -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-  -- vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-  vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
+  -- vim.api.nvim_buf_create_user_command(bufnr, 'Rename', 'lua vim.lsp.buf.rename()',
+  --   { desc = 'Rename symbol with LSP' })
+  vim.keymap.set('n', 'gR', vim.lsp.buf.rename, opts)
+  if pcall(require, 'telescope') then
+    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
+  else 
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+  end
   -- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
 
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
+  -- See `:help vim.diagnostic.*` for documentation on any of the below functions
   vim.keymap.set('n', '<leader>gl', vim.diagnostic.open_float, opts)
   vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev({ border = 'rounded' }) end, opts)
   vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next({ border = 'rounded' }) end, opts)
--- map('n', '<space>q', vim.diagnostic.setloclist, opt)
+  -- map('n', '<space>q', vim.diagnostic.setloclist, opt)
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', vim.diagnostic.setloclist, opts)
 
   -- Create a command `:Format` local to the LSP buffer
@@ -84,7 +90,7 @@ local function lsp_keymaps(bufnr)
   -- map('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   -- map('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
   -- map('n', '<space>wl', function()
-    -- print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  -- print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 end
 
 M.on_attach = function(client, bufnr)
@@ -97,17 +103,17 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-if not status_ok then
-  vim.notify('××××××cmp_nvim_lsp doesn\'t exist')
+local ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if not ok then
+  vim.notify('cmp_nvim_lsp plugin not found', vim.log.levels.WARN)
   return
 end
 M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 M.capabilities.offsetEncoding = 'utf-8'
 
--- local status_ok, coq = pcall(require, 'coq')
--- if not status_ok then
---   vim.notify('××××××coq doesn\'t exist')
+-- local ok, coq = pcall(require, 'coq')
+-- if not ok then
+  -- vim.notify('coq plugin not found', vim.log.levels.WARN)
 --   return
 -- end
 -- M.capabilities = coq.lsp_ensure_capabilities(capabilities)

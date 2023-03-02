@@ -1,4 +1,10 @@
-require('toggleterm').setup {
+local ok, toggleterm = pcall(require, 'toggleterm')
+if not ok then
+  vim.notify('toggleterm not found', vim.log.levels.WARN)
+  return
+end
+
+toggleterm.setup {
   -- size can be a number or function which is passed the current terminal
   size = 20,
   -- size = 20 | function(term)

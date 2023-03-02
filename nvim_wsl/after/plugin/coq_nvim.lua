@@ -1,9 +1,13 @@
-if true then
+local ok1, coq = pcall(require, 'coq')
+local ok2, coq_3p = pcall(require, 'coq_3p')
+
+if not (ok1 and ok2) then
+  vim.notify('Coq or coq_3p plugins not found', vim.log.levels.WARN)
   return
 end
 
 -- Coq third party config
-require 'coq_3p' {
+coq_3p {
   -- { src = 'nvimlua', short_name = 'nLUA', conf_only = false  },
   -- { src = 'builtin/c'       },
   -- {

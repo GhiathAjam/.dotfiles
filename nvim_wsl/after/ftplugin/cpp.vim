@@ -1,7 +1,7 @@
 " Vim filetype plugin file
-" Language:	C++
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last Change:	2020 Jul 26
+" Language: C++
+" Maintainer: Bram Moolenaar <Bram@vim.org>
+" Last Change:  2020 Jul 26
 
 " Only do this when not done yet for this buffer
 if exists("b:did_ftplugin")

@@ -1,4 +1,4 @@
 return {
-	settings = {
-	},
+  settings = {
+  },
 }

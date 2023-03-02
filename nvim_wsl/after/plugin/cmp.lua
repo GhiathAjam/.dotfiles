@@ -1,12 +1,12 @@
-local cmp_status_ok, cmp = pcall(require, 'cmp')
-if not cmp_status_ok then
-  vim.notify('cmp no exist, nvim-cmp.lua')
+local ok, cmp = pcall(require, 'cmp')
+if not ok then
+  vim.notify('cmp plugin not found', vim.log.levels.WARN)
   return
 end
 
-local snip_status_ok, luasnip = pcall(require, 'luasnip')
-if not snip_status_ok then
-  vim.notify('luasnip no exist, nvim-cmp.lua')
+local ok, luasnip = pcall(require, 'luasnip')
+if not ok then
+  vim.notify('luasnip plugin not found', vim.log.levels.WARN)
   return
 end
 
@@ -56,9 +56,9 @@ cmp.setup {
   },
   mapping = {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
-		['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-k>'] = cmp.mapping.select_prev_item({count=10}),
-		['<C-j>'] = cmp.mapping.select_next_item({count=10}),
+    ['<C-j>'] = cmp.mapping.select_next_item({count=10}),
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
     -- ['<c-x><c-n>'] = cmp.mapping(cmp.mapping.complete({config={sources={{name='digraphs'}}}}), { 'i', 'c' }),

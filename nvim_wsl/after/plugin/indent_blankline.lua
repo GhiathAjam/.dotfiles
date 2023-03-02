@@ -1,4 +1,10 @@
-require('indent_blankline').setup {
+local ok, indent_blankline = pcall(require, 'indent_blankline')
+if not ok then
+  vim.notify('indent_blankline plugin not found', vim.log.levels.WARN)
+  return
+end
+
+indent_blankline.setup {
     show_end_of_line = true,
     space_char_blankline = ' ',
     show_trailing_blankline_indent = false,
