@@ -31,16 +31,21 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 #[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+bold='\[\e[1m\]'
+italic='\[\e[3m\]'
 blackbg='\[\e[48;2;0;0;0m\]'
 yellow='\[\e[38;2;210;200;14m\]'
 green='\[\e[38;2;0;200;0m\]'
 blue='\[\e[38;2;0;200;220m\]'
+reset='\[\e[0m\]'
 # component_separators = { left = '', right = ''},
 # section_separators = { left = '', right = ''},
-PS1='\[\e[3;1m'$blackbg$yellow'󰀄 \u@\H '\
-$blue'  \w  '$green\
+PS1=$bold$italic$blackbg\
+$yellow'󰀄 \u@\H '\
+$blue'  \w  '\
+$green\
 "\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1 /')"\
-'\[\e[0m '
+$reset' '
 
 # newline between command and output
 PS0='\n'
@@ -48,7 +53,7 @@ PS0='\n'
 # newline before prompt
 PROMPT_COMMAND="echo"
 
-unset blackbg yellow green blue
+unset bold italic blackbg yellow green blue reset
 
 # enable color support of ls, less and man, and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -73,7 +78,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+# export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
