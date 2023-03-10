@@ -123,7 +123,7 @@ export WINHOME=$(wslpath $WSLENV)
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="$HOME/Desktop/scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-# export CPLUS_INCLUDE_PATH="/usr/include/x86_64-linux-gnu/c++/11:.:/usr/include/c++/11:/usr/include/c++/11/backward:/usr/lib/gcc/x86_64-linux-gnu/11/include:/usr/local/include:/usr/include/x86_64-linux-gnu:/usr/include:$CPLUS_INCLUDE_PATH"
+export CPLUS_INCLUDE_PATH="$HOME/.local/include:$CPLUS_INCLUDE_PATH"
 
 # Sources
 # better colors
@@ -188,7 +188,8 @@ alias cgg='nvim $(echo "
   bash:        $HOME/.bashrc
   neovim:      $HOME/.config/nvim/init.lua
   git:         $HOME/.config/git/config
-  bat:         $HOME/.config/bat/config" |\
+  bat:         $HOME/.config/bat/config
+  zathura      $HOME/.config/zathura/zathurarc" |\
    fzf --preview="bat --line-range=:500 {-1}" |\
    cut -d: -f2 )'
 
