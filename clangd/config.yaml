@@ -1,0 +1,18 @@
+CompileFlags:
+  Add: [ g++, -g, -Wunused-macros, -Wstack-usage=12345678, -Wuninitialized, -fmax-errors=1, -fsanitize=pointer-subtract, -fsanitize=pointer-compare, -fno-sanitize-recover, -fsanitize=address, -fsanitize=undefined, -Wall, -Wextra, -pedantic, -Wshadow, -Wformat=2, -Wfloat-equal, -Wnoconversion, -Wlogical-op, -Wshift-overflow=2, -Wduplicated-branches, -Wduplicated-cond, -Wcast-qual, -Wcast-align, -D_GLIBCXX_DEBUG, -D_GLIBCXX_ASSERTIONS, -D_GLIBCXX_DEBUG_PEDANTIC, -D_FORTIFY_SOURCE=2, -fstack-protector, -D LLOC, -std=c++20 ]
+
+
+# BasedOnStyle: Google
+# IndentWidth: 2
+# ColumnLimit: 80
+# AlignAfterOpenBracket: Align
+# BreakBeforeBraces: Allman
+# AllowShortBlocksOnASingleLine: Never
+# AllowShortCaseLabelsOnASingleLine: true
+# AllowShortEnumsOnASingleLine: true
+# AllowShortFunctionsOnASingleLine: None
+# AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+# AllowShortLambdasOnASingleLine: Inline
+# AllowShortLoopsOnASingleLine: true
+#
+# IncludeBlocks: Preserve
