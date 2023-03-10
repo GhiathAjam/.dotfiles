@@ -28,6 +28,10 @@ main() {
   NVIM=$HOME"/.config/nvim/"
   LUNARVIM=$HOME"/.config/lvim/"
   ZATHURA=$HOME"/.config/zathura/"
+  CLANGD=$HOME"/.config/clangd/"
+  CLANGFORMAT=$HOME"/"
+  INCLUDE=$HOME"/.local/include/"
+  CPPTEMPLATE=$HOME"/Desktop/"
   # Windows:
   WSL=$WINHOME"/.wslconfig"
   scoop=$WINHOME"/scoop"
@@ -46,21 +50,30 @@ main() {
     # "$NVIM nvim_wsl/"
     # "$LUNARVIM lvim_wsl/"
     # "$ZATHURA zathura_wsl/"
-    "$WSL wsl_distros_global/.wslconfig"
-    "$MPV mpv_win/"
-    "$ALACRITTY alacritty_win/alacritty.yml"
-    "$WSLTTY wsltty/config"
-    "$WEZTERM wezterm/wezterm.lua"
+    # "$CLANGD clangd/"
+    # "$CLANGFORMAT clang_format/"
+    # "$INCLUDE include_wsl/"
+    # "$CPPTEMPLATE cpp_template/"
+    "$WSL wsl_distros_global/.wslconfig NONE"
+    "$MPV mpv_win/ watch_later"
+    "$ALACRITTY alacritty_win/alacritty.yml NONE"
+    "$WSLTTY wsltty/config NONE"
+    "$WEZTERM wezterm/wezterm.lua NONE"
   )
+
 
   for pair in "${configs[@]}"; do
     ar=($pair)
+    # remote
     path=${ar[0]}
+    # local
     name=$REPO/${ar[1]}
+    # exclusions
+    exc=${ar[2]}
     printf "Copying $path To:\t $name \n"
-    printf "Command: rsync -a $path $name \n\n"
-    # rsync -avh --progress $path $name
-    printf "\n\n"
+    printf "Command: rsync -a $path $name --exclude $exc \n\n"
+    # rsync -avh --progress $path $name --exclude $exc
+    # printf "\n\n"
   done
 }
 
