@@ -238,6 +238,12 @@ return packer.startup(function(use)
 
   use 'jalvesaq/Nvim-R'
 
+  -- use 'p00f/cphelper.nvim'
+  use {
+    'searleser97/cpbooster.vim',
+    opt = true,
+    cmd = { 'Test', 'Debug', 'Addtc', 'Submit' },
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

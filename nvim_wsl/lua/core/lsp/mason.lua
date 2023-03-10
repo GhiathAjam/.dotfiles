@@ -58,6 +58,8 @@ for _, server in pairs(servers) do
   local conf_exists, conf_opts = pcall(require, 'core.lsp.settings.' .. server)
   if conf_exists then
     opts = vim.tbl_deep_extend('force', conf_opts, opts)
+  else
+    vim.notify('Can\'t require: core.lsp.settings.' .. server, vim.log.levels.WARN)
   end
 
   -- print all entries of opts table

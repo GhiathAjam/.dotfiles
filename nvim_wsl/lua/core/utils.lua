@@ -28,7 +28,9 @@ local diff_signs = {
     -- untracked    = { text = '┆' },
 
 local map_opt = { noremap = true, silent = true }
+local map_buffer_opt = { noremap = true, silent = true, buffer = 0 }
 
 vim.g.lsp_signs = lsp_signs
 vim.g.diff_signs = diff_signs
 vim.g.map_opt = map_opt
+vim.g.map_buffer_opt = map_buffer_opt

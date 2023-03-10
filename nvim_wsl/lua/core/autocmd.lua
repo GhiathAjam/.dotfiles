@@ -10,6 +10,34 @@
 local myg = vim.api.nvim_create_augroup('user', { clear = true })
 vim.api.nvim_clear_autocmds({ group = myg })
 
+vim.api.nvim_create_autocmd('BufReadPost', {
+  group = myg,
+  pattern = '*',
+  callback = function(data)
+    -- check if file is readonly
+    if vim.bo.readonly then return end
+    vim.cmd 'retab!'
+  end
+})
+--
+vim.api.nvim_create_autocmd('VimEnter', {
+  group = myg,
+  callback = function(data)
+    --
+    print(data.file)
+    print(vim.fn.isdirectory(data.file))
+    if not (vim.fn.isdirectory(data.file) == 1) then
+      return
+    end
+    --
+    vim.cmd.cd(data.file)
+    --
+    if pcall(require, 'nvim-tree') then
+      require('nvim-tree.api').tree.open()
+    end
+  end
+})
+
 -- colorscheme
 vim.api.nvim_create_autocmd('VimEnter', {
   group = myg,
@@ -41,7 +69,7 @@ vim.api.nvim_create_autocmd('FileType', {
     -- -= 'cro'
     -- vim.opt.formatoptions:remove { 'c', 'r', 'o' }
     vim.opt.formatoptions:remove { 'c', 'o' }
-    end,
+  end,
 })
 
 -- -- Copilot
@@ -55,16 +83,16 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('TextYankPost', {
   group = myg,
   callback = function()
-    vim.highlight.on_yank { higroup='IncSearch', timeout=150 }
+    vim.highlight.on_yank { higroup = 'IncSearch', timeout = 150 }
   end
 })
 
--- Terminal mode
-vim.api.nvim_create_autocmd('TermOpen', {
-  group = myg,
-  pattern = '*',
-  command = 'startinsert'
-})
+-- -- Terminal mode
+-- vim.api.nvim_create_autocmd('TermOpen', {
+--   group = myg,
+--   pattern = '*',
+--   command = 'startinsert'
+-- })
 
 -- python
 vim.api.nvim_create_autocmd('FileType', {
@@ -76,21 +104,51 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- cpp
--- vim.api.nvim_create_autocmd('FileType', {
---   group = myg,
---   pattern = 'cpp',
---   command = 'setlocal commentstring=//%s',
--- })
+
+-- cpbooster
+vim.api.nvim_create_autocmd('FileType', {
+  group = myg,
+  -- pattern for competitive programming
+  -- pattern = '[A-Za-z][0-9]?_*.cpp',
+  pattern = 'cpp',
+  callback = function(data)
+    -- check for file pattern
+    if string.find(data.file, '^[a-zA-Z][0-9]?_.*%.cpp$') == nil then
+      return
+    end
+    -- MAPPINGS
+    -- Test Cases :Test
+    vim.keymap.set('n', '<F9>', function()
+      -- empty for all
+      local test_case = vim.fn.input('Test case number: ')
+      vim.cmd(':Test ' .. test_case)
+    end, vim.g.map_buffer_opt)
+    --
+    -- Debugging :Debug
+    vim.keymap.set('n', '<F11>', function()
+      -- empty for user input
+      local test_case = vim.fn.input('DEBUG Test case number: ')
+      vim.cmd(':Debug ' .. test_case)
+    end, vim.g.map_buffer_opt)
+    --
+    -- Add test cases :Addtc
+    -- Interactive tasks? use toggleterm? or just use debug mode
+    -- Submit :Submit
+    -- vim.keymap.set('n', '', ':Submit<CR>', vim.g.map_buffer_opt)
+  end
+})
+
+
 
 -- load template
 -- autocmd local to buffer in cpp files
 vim.api.nvim_create_autocmd('FileType', {
   group = myg,
   pattern = 'cpp',
-  command = ':command! -buffer Tmp %d| 0read ~/Desktop/tmp.cpp| 11,19fo| 33,46fo| 47d| :normal 28Gzz'
+  command = ':command! -buffer Template %d| 0read ~/Desktop/template.cpp| 11,19fo| 33,46fo| 47d| :normal 28Gzz'
 })
 
--- compile
+-- set makeprg for cpp
 vim.api.nvim_create_autocmd('FileType', {
   group = myg,
   pattern = 'cpp',
@@ -107,19 +165,19 @@ vim.api.nvim_create_autocmd('FileType', {
   end
 })
 
--- run
-vim.api.nvim_create_autocmd('FileType', {
-  group = myg,
-  pattern = 'cpp',
-  command = 'nnoremap <buffer> <F10> :!%:h/%:t:r <./input.txt > ./output.txt <CR>'
-})
+-- -- run
+-- vim.api.nvim_create_autocmd('FileType', {
+--   group = myg,
+--   pattern = 'cpp',
+--   command = 'nnoremap <buffer> <F10> :!%:h/%:t:r <./input.txt > ./output.txt <CR>'
+-- })
 
--- run interactively
-vim.api.nvim_create_autocmd('FileType', {
-  group = myg,
-  pattern = 'cpp',
-  command = 'nnoremap <buffer> <F11> :!%:h/_%:t:r <CR>'
-})
+-- -- run interactively
+-- vim.api.nvim_create_autocmd('FileType', {
+--   group = myg,
+--   pattern = 'cpp',
+--   command = 'nnoremap <buffer> <F11> :!%:h/_%:t:r <CR>'
+-- })
 
 -- fuzzy search documentation!
 vim.api.nvim_create_autocmd('FileType', {
@@ -130,9 +188,10 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- fuzzy search templates!
 -- autocmd filetype cpp :command :T
--- submit hh
-vim.api.nvim_create_autocmd('FileType', {
-  group = myg,
-  pattern = 'cpp',
-  command = ':command! -buffer -nargs=+ Cfsubmit :!cf.exe submit -f % <args> <CR>'
-})
+
+-- -- submit hh
+-- vim.api.nvim_create_autocmd('FileType', {
+--   group = myg,
+--   pattern = 'cpp',
+--   command = ':command! -buffer -nargs=+ Cfsubmit :!cf.exe submit -f % <args> <CR>'
+-- })

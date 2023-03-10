@@ -1,7 +1,7 @@
 return {
   settings = {
     cmd = {
-      'clangd --arz3',
+      'clangd',
       -- '--background-index',
       -- '--pch-storage=memory',
       -- '--clang-tidy',
@@ -20,7 +20,7 @@ return {
       "--all-scopes-completion",
       "--cross-file-rename",
       "--completion-style=detailed",
-      "--header-insertion-decorators",
+      -- "--header-insertion-decorators",
       "--header-insertion=never",
       "--pch-storage=memory",
     },
@@ -29,7 +29,17 @@ return {
       -- usePlaceholders = true,
       -- completeUnimported = true,
       -- semanticHighlighting = true,
-      headerInsertion='never',
+      headerInsertion = 'never',
     },
+    -- root_dir = root_pattern(
+    --   '.clangd',
+    --   '.clang-tidy',
+    --   '.clang-format',
+    --   'compile_commands.json',
+    --   'compile_flags.txt',
+    --   'configure.ac',
+    --   '.git'
+    -- )
+    root_dir = '/home/gh/main',
   }
 }

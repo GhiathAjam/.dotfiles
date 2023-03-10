@@ -1,9 +1,13 @@
 local M = {}
 
-vim.fn.sign_define('DiagnosticSignError', { text = vim.g.lsp_signs.Error, texthl = 'DiagnosticSignError' })
-vim.fn.sign_define('DiagnosticSignWarn', { text = vim.g.lsp_signs.Warning, texthl = 'DiagnosticSignWarn' })
-vim.fn.sign_define('DiagnosticSignInfo', { text = vim.g.lsp_signs.Information, texthl = 'DiagnosticSignInfo' })
-vim.fn.sign_define('DiagnosticSignHint', { text = vim.g.lsp_signs.Hint, texthl = 'DiagnosticSignHint' })
+vim.fn.sign_define('DiagnosticSignError',
+  { text = vim.g.lsp_signs.Error, texthl = 'DiagnosticSignError' })
+vim.fn.sign_define('DiagnosticSignWarn',
+  { text = vim.g.lsp_signs.Warning, texthl = 'DiagnosticSignWarn' })
+vim.fn.sign_define('DiagnosticSignInfo',
+  { text = vim.g.lsp_signs.Information, texthl = 'DiagnosticSignInfo' })
+vim.fn.sign_define('DiagnosticSignHint',
+  { text = vim.g.lsp_signs.Hint, texthl = 'DiagnosticSignHint' })
 
 -- TODO: backfill this to template
 M.setup = function()
@@ -28,13 +32,11 @@ M.setup = function()
 
   vim.diagnostic.config(config)
 
-  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = 'rounded',
-  })
+  vim.lsp.handlers['textDocument/hover'] =
+      vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded', })
 
-  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = 'rounded',
-  })
+  vim.lsp.handlers['textDocument/signatureHelp'] =
+      vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded', })
 end
 
 local function lsp_highlight_document(client)
@@ -54,41 +56,39 @@ local function lsp_highlight_document(client)
 end
 
 local function lsp_keymaps(bufnr)
-  local opts = { noremap = true, silent = true, buffer = bufnr }
-
   -- Enable completion triggered by <c-x><c-o>
   -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-  -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-  -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, vim.g.map_buffer_opt)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, vim.g.map_buffer_opt)
+  -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, vim.g.map_buffer_opt)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, vim.g.map_buffer_opt)
+  -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, vim.g.map_buffer_opt)
   -- vim.api.nvim_buf_create_user_command(bufnr, 'Rename', 'lua vim.lsp.buf.rename()',
   --   { desc = 'Rename symbol with LSP' })
-  vim.keymap.set('n', 'gR', vim.lsp.buf.rename, opts)
+  vim.keymap.set('n', 'gR', vim.lsp.buf.rename, vim.g.map_buffer_opt)
   if pcall(require, 'telescope') then
-    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
-  else 
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, vim.g.map_buffer_opt)
+  else
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, vim.g.map_buffer_opt)
   end
-  -- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+  -- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, vim.g.map_buffer_opt)
 
   -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-  vim.keymap.set('n', '<leader>gl', vim.diagnostic.open_float, opts)
-  vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev({ border = 'rounded' }) end, opts)
-  vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next({ border = 'rounded' }) end, opts)
+  vim.keymap.set('n', '<leader>gl', vim.diagnostic.open_float, vim.g.map_buffer_opt)
+  vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev({ border = 'rounded' }) end, vim.g.map_buffer_opt)
+  vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next({ border = 'rounded' }) end, vim.g.map_buffer_opt)
   -- map('n', '<space>q', vim.diagnostic.setloclist, opt)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', vim.diagnostic.setloclist, opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', vim.diagnostic.setloclist, vim.g.map_buffer_opt)
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format({ async = true })
   end, { desc = 'Format current buffer with LSP' })
 
-  -- map('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  -- map('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  -- map('n', '<space>wa', vim.lsp.buf.add_workspace_folder, vim.g.map_buffer_opt)
+  -- map('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, vim.g.map_buffer_opt)
   -- map('n', '<space>wl', function()
   -- print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 end
@@ -113,7 +113,7 @@ M.capabilities.offsetEncoding = 'utf-8'
 
 -- local ok, coq = pcall(require, 'coq')
 -- if not ok then
-  -- vim.notify('coq plugin not found', vim.log.levels.WARN)
+--   vim.notify('coq plugin not found', vim.log.levels.WARN)
 --   return
 -- end
 -- M.capabilities = coq.lsp_ensure_capabilities(capabilities)
