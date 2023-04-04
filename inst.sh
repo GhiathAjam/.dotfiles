@@ -32,6 +32,8 @@ main() {
   CLANGFORMAT=$HOME"/"
   INCLUDE=$HOME"/.local/include/"
   CPPTEMPLATE=$HOME"/Desktop/"
+  CPBOOSTER=$HOME"/.config/cpbooster/"
+  GDU=$HOME"/.config/gdu/"
   # Windows:
   WSL=$WINHOME"/.wslconfig"
   scoop=$WINHOME"/scoop"
@@ -54,6 +56,10 @@ main() {
     # "$CLANGFORMAT clang_format"
     # "$INCLUDE include_wsl"
     # "$CPPTEMPLATE cpp_template"
+    # "$CPBOOSTER cpbooster_wsl"
+    # "$GDU gdu_wsl"
+
+    # Windows
     # "$WSL wsl_distros_global/.wslconfig"
     # "$MPV mpv_win/"
     # "$ALACRITTY alacritty_win/alacritty.yml"
