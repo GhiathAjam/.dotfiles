@@ -1,7 +1,10 @@
+-- TODO CHECK IF INSIDE WSL
 vim.g.clipboard = {
   copy = {
-    ['+'] = 'win32yank.exe -i --crlf',
-    ['*'] = 'win32yank.exe -i --crlf',
+    -- ['+'] = 'win32yank.exe -i --crlf',
+    -- ['*'] = 'win32yank.exe -i --crlf',
+    ['+'] = 'clip.exe',
+    ['*'] = 'clip.exe',
   },
   paste = {
     ['+'] = 'win32yank.exe -o --lf',

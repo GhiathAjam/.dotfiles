@@ -137,12 +137,12 @@ bind "set show-all-if-unmodified on"
 bind "set completion-map-case on"
 bind "TAB:menu-complete"
 
-alias wincp='win32yank.exe -i --crlf'
-alias winpe='win32yank.exe -o --lf'
+# alias wincp='win32yank.exe -i --crlf'
+# alias winpe='win32yank.exe -o --lf'
 # alias cmakewin='/mnt/c/Program\ Files/JetBrains/Clion\ 2021.2/bin/cmake/win/bin/cmake.exe'
 # alias bldgr='cmakewin --build cmake-build-debug --target GAME_APPLICATION'
-alias clip='Clip.exe'
-alias explorer='explorer.exe'
+alias clip='/mnt/c/Windows/system32/clip.exe'
+alias explorer='/mnt/c/Windows/explorer.exe'
 alias nv='neovide.exe --wsl'
 alias brave='/mnt/c/Program\ Files\ \(x86\)/BraveSoftware/Brave-Browser/Application/brave.exe'
 alias colortest='colortest-16'
