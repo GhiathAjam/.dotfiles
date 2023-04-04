@@ -14,8 +14,13 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   group = myg,
   pattern = '*',
   callback = function(data)
+    -- check if modifiable is off
+    if not vim.bo.modifiable then return end
     -- check if file is readonly
     if vim.bo.readonly then return end
+    -- check if unnamed buffer
+    -- print(data.file)
+    -- if data.file == '' then return end
     vim.cmd 'retab!'
   end
 })
