@@ -120,6 +120,6 @@ return {
   -- When the direction is RightToLeft or AutoRightToLeft,
   -- wezterm will try to show the text right justified.
 
-  -- bidi_enabled = false,
-  -- bidi_direction = "LeftToRight",
+  bidi_enabled = true,
+  bidi_direction = "LeftToRight",
 }
