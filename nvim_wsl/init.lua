@@ -2,6 +2,10 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- global variable
+vim.g.NOGITSIGNS=1
+vim.g.NOCMP=1
+
 require('core.utils')
 require('core.plugins')
 require('core.options')

@@ -1,4 +1,10 @@
 local ok, gitsigns = pcall(require, "gitsigns")
+
+if vim.g.NOGITSIGNS then
+  vim.notify('gitsigns plugin disabled', vim.log.levels.INFO)
+  return
+end
+
 if not ok then
   vim.notify('gitsigns plugin not found', vim.log.levels.WARN)
   return

@@ -1,4 +1,10 @@
 local ok, cmp = pcall(require, 'cmp')
+
+if vim.g.NOCMP then
+  vim.notify('cmp plugin disabled', vim.log.levels.INFO)
+  return
+end
+
 if not ok then
   vim.notify('cmp plugin not found', vim.log.levels.WARN)
   return

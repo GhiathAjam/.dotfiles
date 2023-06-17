@@ -238,6 +238,10 @@ return packer.startup(function(use)
 
   use 'jalvesaq/Nvim-R'
 
+  -- jupyter
+  use 'jupyter-vim/jupyter-vim'
+  -- use 'dccsillag/magma-nvim'
+
   -- use 'p00f/cphelper.nvim'
   use {
     'searleser97/cpbooster.vim',

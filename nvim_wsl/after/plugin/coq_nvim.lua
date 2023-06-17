@@ -2,7 +2,7 @@ local ok1, coq = pcall(require, 'coq')
 local ok2, coq_3p = pcall(require, 'coq_3p')
 
 if not (ok1 and ok2) then
-  vim.notify('Coq or coq_3p plugins not found', vim.log.levels.WARN)
+  vim.notify('Coq or coq_3p plugins not found', vim.log.levels.INFO)
   return
 end
 

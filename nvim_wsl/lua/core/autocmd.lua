@@ -10,27 +10,30 @@
 local myg = vim.api.nvim_create_augroup('user', { clear = true })
 vim.api.nvim_clear_autocmds({ group = myg })
 
-vim.api.nvim_create_autocmd('BufReadPost', {
-  group = myg,
-  pattern = '*',
-  callback = function(data)
-    -- check if modifiable is off
-    if not vim.bo.modifiable then return end
-    -- check if file is readonly
-    if vim.bo.readonly then return end
-    -- check if unnamed buffer
-    -- print(data.file)
-    -- if data.file == '' then return end
-    vim.cmd 'retab!'
-  end
-})
---
+-- vim.api.nvim_create_autocmd('BufReadPost', {
+--   group = myg,
+--   -- except make
+--   pattern = '*',
+--   except = 'make',
+--   callback = function(data)
+--     -- check if modifiable is off
+--     if not vim.bo.modifiable then return end
+--     -- check if file is readonly
+--     if vim.bo.readonly then return end
+--     -- check if unnamed buffer
+--     -- print(data.file)
+--     -- if data.file == '' then return end
+--     vim.cmd 'retab!'
+--   end
+-- })
+
+-- cd into directory
 vim.api.nvim_create_autocmd('VimEnter', {
   group = myg,
   callback = function(data)
     --
-    print(data.file)
-    print(vim.fn.isdirectory(data.file))
+    -- print(data.file)
+    -- print(vim.fn.isdirectory(data.file))
     if not (vim.fn.isdirectory(data.file) == 1) then
       return
     end
@@ -54,8 +57,8 @@ vim.api.nvim_create_autocmd('VimEnter', {
 vim.api.nvim_create_autocmd('BufWinEnter', {
   group = myg,
   pattern = { '*.c', '*.h', '*.cpp', '*.txt', '*.vim', '*.lua' },
-  -- command = 'silent! loadview',
-  command = 'echo "no loading view"',
+  command = 'silent! loadview',
+  -- command = 'echo "no loading view"',
 })
 
 vim.api.nvim_create_autocmd('BufWinLeave', {
@@ -105,6 +108,26 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = 'python',
   callback = function()
     vim.opt_local.makeprg = [[python3 %]]
+  end
+})
+
+-- lex
+vim.api.nvim_create_autocmd('FileType', {
+  group = myg,
+  pattern = 'lex',
+  callback = function()
+    vim.opt_local.makeprg = [[lex %]]
+    vim.opt_local.commentstring = [[/*%s*/]]
+  end
+})
+
+-- Colon https://github.com/AhmadJamal01/Colon
+vim.api.nvim_create_autocmd({'BufNewFile','BufRead'}, {
+  group = myg,
+  pattern = '*.cln',
+  callback = function()
+    vim.opt_local.commentstring = [[#%s]]
+    vim.opt_local.syntax = 'cpp'
   end
 })
 
